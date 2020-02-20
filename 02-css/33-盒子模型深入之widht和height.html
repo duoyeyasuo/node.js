@@ -1,0 +1,30 @@
+<!-- 
+    盒子模型深入width 和 height
+
+    对于块级元素来说，width 和 height表示内容区域
+    对于行内元素来说，width 和 height无效
+
+    1）width 有默认值  是auto  不同性别的元素  auto指定的含义是不一样  块级元素auto是贪婪性  占父元素的100%  对于行内元素是懒惰性  宽度由内容撑起来
+    2）对于行内元素来说，它的高度由font-size决定。
+    3）width 和 height 也可以设置百分比，是相对于父元素的width 和 height来说的。
+    4）设置百分比，在移动端开发时会用到，PC端很少用到，当然PC端的咋响应式开发也会用到。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        div{border: 1px solid red; width: 50%;}
+        p{background-color: pink; width: 50%;}
+        span{border: 1px solid gold; font-size: 12px;}
+    </style>
+</head>
+<body>
+    <div>
+        <p>box</p>
+    </div>
+    <span>spanspan</span>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- 
+    盒子模型深入border
+
+    边框：
+        边框的粗细 border-width
+        边框的样式 border-style
+        边框的颜色 border-color
+
+    只设置边框的粗细，在谷歌浏览器中是没有效果的。
+
+    要让让边框显示出来，至少要设置边框的粗细和边框的样式，边框的颜色有默认值，是黑色。
+
+    使用边框制作网页上的小三角：
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .box{
+            width: 100px;
+            height: 100px;
+            border-width: 1px 2px 3px 4px;
+            border-style: solid dotted solid dashed;
+            border-color: gold skyblue pink lawngreen;
+        }
+        .item{
+            /* border: 20px solid red; */
+
+            /* width: 0;
+            border-top: 20px solid red;
+            border-right: 20px solid green;
+            border-bottom: 20px solid blue;
+            border-left: 20px solid pink; */
+
+            /* width: 0;
+            border-top: 20px solid red;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid transparent; */
+
+            /* width: 0;
+            border-top: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid red;
+            border-left: 20px solid transparent; */
+
+            width: 0;
+            border: 20px solid transparent;
+            /* border-bottom: 20px solid red; */
+            border-right: 20px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用border制作小三角 -->
+    <div class="item"></div>
+
+    <!-- <div class="box"></div> -->
+</body>
+</html>

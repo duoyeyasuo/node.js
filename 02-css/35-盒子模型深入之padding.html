@@ -1,0 +1,39 @@
+<!-- 
+    盒子模型深入padding
+
+    对于块级元素来说，padding在四个方向都可以设置。
+    对于行内元素来说，padding在垂直方向上是不影响网页空间的，水平方向还是影响网页的空间。
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .item{
+            background-color: gold;
+            padding-left: 5px;
+            padding-right: 25px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>span</span>
+        <span>span</span>
+        <span class="item">span</span>
+        <span>span</span>
+        <span>span</span>
+        <span>span</span>
+    </div>
+</body>
+</html>

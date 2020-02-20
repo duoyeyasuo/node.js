@@ -1,0 +1,78 @@
+<!-- 
+    盒子模型深入margin
+
+    对于行内元素来说，margin在水平方向上有效，在垂直方向上是无效的。
+
+    对于块级元素来说，margin会发生塌陷（重叠）。margin的塌陷的条件：
+        1）必须是块级元素
+        2）垂直方向  水平方向不可能塌陷
+
+    对于margin的塌陷来说，分两类：
+        1）兄弟元素之间的margin塌陷
+        2）父子元素之间的margin塌陷
+
+    兄弟元素之间的margin塌陷：
+        上面的盒子设置margin-bottom，下面的盒子设置margin-top。 
+        取大优先
+        解决：
+            1）子元素浮动起来  父元素的宽度和子元素的宽度一样
+            2）设置为inline-block 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        /* div{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+        .item{
+            background-color: gold;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        } */
+        .father{
+            width: 50px;
+            height: 400px;
+            border: 2px solid red;
+        }
+        .son1, .son2{
+            width: 50px;
+            height: 50px;
+            /* float: left; 是为了解决兄弟元素之间的margin塌陷问题 */
+            /* float: left; */
+
+            /* 也是解决margin塌陷问题 */
+            display: inline-block;
+        }
+        .son1{
+            margin-bottom: 100px;
+        }
+        .son2{
+            margin-top: 98px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div style="background-color: gold;" class="son1">son1</div>
+        <div style="background-color: skyblue" class="son2">son2</div>
+    </div>
+    <hr>
+    <!-- <div>
+        <span>span</span>
+        <span>span</span>
+        <span class="item">span</span>
+        <span>span</span>
+        <span>span</span>
+        <span>span</span>
+        <span>span</span>
+    </div> -->
+</body>
+</html>
