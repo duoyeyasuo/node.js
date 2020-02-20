@@ -1,0 +1,66 @@
+<!-- 
+
+    git是代码管理工具，github是一个代码的托管平台（网站）。
+
+    今天讲git的目的就是先用起来。高级使用放到后面说。
+
+    git的使用：
+        1）git是一个工具，把工具下载下来。得到一个安装包。
+        2）安装git。和安装QQ一样，什么也不用选，直接下一步，下一步....。
+           如果在电脑的空白处，鼠标右键，出现Git GUI 和 Git Bash 表示Git安装OK了。
+        3）使用Git可以创建一个本地代码仓库，使用Github可以创建一个远程仓库。
+
+    玩一下本地仓库：
+        设置一个用户名和邮箱（告诉git你是谁），这一步必须地。 只做一次
+            建议把上午申请github的用户名和邮箱在这里设置，如下：
+            git config --global user.name "yuanfang1024"
+            git config --global user.email "1234567890@qq.com"
+
+            通过git config --list可以看一下是否设置OK。
+
+
+        创建一个本仓库： 一个项目就是一个本地仓库。
+            通过git init这个命令，就可以创建一个本地仓库（.git），你在哪个文件夹下面创建，这个文件夹就是一个本地仓库。
+
+        学习几个概念：
+            工作区：.git之个的区域叫工作区，写代码时是在工作区中写。
+            本地仓库：  .git叫本地仓库
+                历史区：  通过git add * 表示把工作区的代码扔到历史区。
+                版本库：  通过git commit -m "完成了首页面"  把历史区的代码扔到版本库，形成一个版本。
+
+        总结：
+            git init 创建一个本地仓库 
+            git add * 把工作区的代码扔到暂存区
+            git commit -m "xx" 把暂存区的代码扔到历史区（版本库）
+            git log 查看版本库中有哪些版本
+            git status  查看一个工作区的代码是否提交到历史区。
+
+     玩一下远程仓库：
+        在github上创建一个远程仓库。
+        把本地仓库与远程仓库进行关联：git remote add origin https://github.com/yuanfang1024/taobao.git
+        把本地仓库的代码扔到远程仓库：git push -u origin master 
+
+        后面的操作就就重复：
+        1）完成列表页面的样式  list.css
+        2）git add *   
+        3）git commit -m "完成了列表页面的样式"
+        4) git push -u origin master
+        ... 
+
+
+
+        几个常用的linux命令：
+            clear  清屏
+
+ -->
+
+ <!-- 
+     使用github管理课堂代码：
+        1）github创建一个远程仓库 
+        2）克隆远程仓库到本地   克隆下来也是一个本地仓库  克隆只需要克隆一次
+            git clone 远程仓库的地址
+        3）后在如果远程仓库有新的代码 大家只需要 pull下来就OK了  不需要再克隆了
+            git pull   只需要git pull 后面不需要加任何参数
+
+        push  push的时候不需要关联，因为是从远程仓库克隆下来的，已经关联了。
+  -->

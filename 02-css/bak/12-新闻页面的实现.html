@@ -1,0 +1,54 @@
+<!-- 
+    目标：http://news.cctv.com/2020/02/16/ARTIZKAaaPlEFx6Ji94mIgRn200216.shtml
+
+    流式布局：
+        从上到下，默认标签的布局方式。特点：男标签独占一行，女标签并排显示。
+    
+    
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>新闻页面</title>
+     <style>
+         /* RESET.CSS  */
+         *{margin: 0; padding: 0;}
+         body{background-color: #F5F5F5; 
+            font: 16px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+         }
+         .w1000{width: 1000px; padding: 50px; background-color: #FFFFFF;  margin: 50px auto;}
+
+         /* NEWS CSS */
+        .newsItem{text-indent: 2em;}
+        .news .change a{color: #333;}
+        .news .time{color: #666;}
+        /* display:block表示变性手术  女标签-->男标签 */
+        /* 让男标签居中：margin:0 auto */
+        .news img{display: block; margin: 0 auto;}
+     </style>
+ </head>
+ <body>
+     <div class="news">
+         <div class="w1000">
+             <p class="change"><a href="">新闻频道</a> > <a href="">国际新闻</a></p>
+             <h1>世卫：中国为全球控制疫情赢得时间</h1>  <br> 
+             <p class="time">来源：央视网  |  2020年02月16日 20:11</p>  <br>
+             <img src="./images/news.png" alt=""> 
+             <br>
+             <br>
+             <p class="newsItem"><strong>央视网消息</strong>（新闻联播）：多位国际社会各领域人士日前表示，中国为控制疫情所做出的努力为世界作出巨大贡献。</p>
+             <br>
+             <p class="newsItem">世界卫生组织总干事谭德塞15日表示，中国采取的从源头上控制新冠肺炎疫情的措施令人鼓舞，这些措施为世界争取了时间。</p>
+             <br>
+             <!-- style="text-align: center;"  对于图片居中是不能直接使用text-align:center属性 -->
+             <img src="./images/img1.png" alt="">
+             <p class="newsItem">谭德塞还强调，应对当前的疫情，国际社会最大的敌人不是新冠病毒本身，而是导致人们对立的污名化。</p>
+             <p class="newsItem">世卫组织卫生紧急项目负责人迈克尔·瑞安14日强调，中国政府在抗击疫情时与世卫组织始终保持密切合作，全球应对疫情要基于事实而非臆测。</p>
+             <h3>国际社会积极评价中国抗击疫情举措</h3>
+             <p class="newsItem">东盟轮值主席国越南日前发表主席声明说，对中方抗击疫情的努力表示支持，并强调东盟各国应齐心协力应对新冠肺炎疫情。</p>
+
+         </div>
+     </div>
+ </body>
+ </html>

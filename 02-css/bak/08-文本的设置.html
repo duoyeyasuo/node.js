@@ -1,0 +1,85 @@
+<!-- 
+    字体 和 文本 区别？
+    答：大量的字体就构成了文本。
+
+    对于文本的设置，常用的属性如下：
+        text-indent  设置首行空两格   logo
+        text-align  设置文本对齐方式  
+        text-decoration 设置文本的修饰线
+        line-height  设置文本的行高
+
+    text-decoration：
+        设置文本的修饰线
+        underline  下划线
+        overline  上划线  基本上没用
+        line-throuth  删除线  
+        none 没有修饰线
+
+        注意的细节：
+            1）a标签默认就有下划线，通常在页面中会去掉a标签默认的下划线，当鼠标放上去时，添加下划线，并且改变它的颜色。
+            2）对于line-throuth 通常会用到电商网站中的原价上。
+
+    text-indent：
+        indent是缩进的意思，表示文本缩进。 首行空两格。
+        em:是一个单位，表示一个汉字的高度，汉字是正方形，em也可以表示一个汉字的宽度。
+
+        注意细节：
+            1）text-indent可以设置负值，向另一个方向缩进。
+            2）对于网站的Logo，通常会写文本，然后把文本设置text-indent:-1000px  目的就是让经隐藏掉。
+
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本设置</title>
+    <style>
+        /* p{text-decoration: underline;} */
+        /* p{text-decoration: overline;} */
+        /* p{text-decoration: line-through;} */
+        p{
+            /* text-indent: 10px; */
+            text-indent: 2em;
+        }
+        .box{
+            text-indent: -10px;
+        }
+        a{text-decoration: none;}
+        a:hover{text-decoration: underline; color: gold;}
+
+        .logo{
+            background-color: skyblue;
+            height: 100px;
+        }
+        .logo h1{
+            height: 100px;
+            /* 默认情况下，给一个标签设置背景图片，它会在水平和垂直方向上进行平铺 */
+            background-image: url("./images/tblogo.png");
+            /* no-repeat 表示不平铺 */
+            background-repeat: no-repeat;
+
+            /* 让文字看不到，但是也有，只不过在浏览器外面，目的是为了SEO */
+            /* text-indent也有继承性 */
+            text-indent: -999px;
+            
+        }
+        .logo h1 span{
+            /* 不能给span设置text-indent */
+            /* text-indent: 20px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <h1>
+            <!-- 通常为了SEO，h1中会放文本，把logo作为标签的背景图 -->
+            <!-- 文本怎么处理？让它消失掉，可以设置text-indent -->
+            <span>淘宝网</span>
+        </h1>
+    </div>
+    <a href="http://www.baidu.com">百度一下，你就知道</a>
+    <p class="box">今日（2月16日）15时，国务院联防联控机制举行新闻发布会，请国家卫生健康委疾控局副局长周宇辉、国家卫生健康委基层司副司长诸宏明等介绍疫情防控工作进展情况，并答记者问。</p>
+    <p>今日（2月16日）15时，国务院联防联控机制举行新闻发布会，请国家卫生健康委疾控局副局长周宇辉、国家卫生健康委基层司副司长诸宏明等介绍疫情防控工作进展情况，并答记者问。</p>
+    <p>今日（2月16日）15时，国务院联防联控机制举行新闻发布会，请国家卫生健康委疾控局副局长周宇辉、国家卫生健康委基层司副司长诸宏明等介绍疫情防控工作进展情况，并答记者问。</p>
+</body>
+</html>

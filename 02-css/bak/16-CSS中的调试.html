@@ -1,0 +1,59 @@
+<!-- 
+    CSS中的调试：  重点
+        开发者工具
+
+    在调试面板中，样式是有分类的：
+        inherited from xxx  继承过来的样式
+        user agent stylesheet 浏览器默认样式
+        我们自己写的样式。
+
+    调试样式：
+        1）修改样式  就是修改CSS的属性值：
+            数值类型：直接选中，修改，回国  /  通过鼠标滚轮修改  / 键盘上的上下箭头
+            颜色类型：直接选中，修改  /  单击 弹出颜色面板
+            字符串类型： float:left   直接选中  修改  会有提示   也可以按上下箭头
+
+        2）关闭样式 
+            让一条样式是否起作用，每一个样式前面都有一个单选按钮，可以点击。
+
+        3）添加样式 
+            在任何一条样式的最后面，单击一下，自动换行，添加样式   有提示
+
+
+        样式上面有删除线，表示这个样式没有起作用。
+
+    如果看到一个样式上面有删除线（样式是不起作用了），原因可能是：
+        1）属性名或属性值写错了
+        2）这条CSS的优先级不够
+        3）手动关闭了样式
+        ... 
+
+    说明：
+        在调试面板中写样式，当刷新浏览器的时候，所有的调试都会消失。
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>CSS中的调试</title>
+     <style>
+         body{
+             font: normal normal 14px/1 "宋体";
+         }
+         .box{
+             width: 100px;
+             height: 100px;
+             float: left;
+             background-color: gold;
+             xxx:100px;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="box" style="color: red;">
+         学习CSS的调试
+         你的支付宝：<strong>1</strong>元
+     </div>
+ </body>
+ </html>

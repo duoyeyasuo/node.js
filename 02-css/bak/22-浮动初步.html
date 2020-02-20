@@ -1,0 +1,62 @@
+<!-- 
+    CSS中的核心：
+        1）盒子模型  初步学习了
+        2）浮动  现在也是初步学习，后面深入
+
+    浮动在CSS也是相当重要。
+
+    如果不使用浮动，只按照不同种类的标签进行布局，这种布局方案叫流式布局。不足：不能让块级标签并排显示。
+
+    所谓的流式布局，就是按照标准文档流进行的布局。流式布局就是遵循标准文档流进行的布局方案。
+
+    浮动布局：
+        目的：可以让块级元素在同一行上并排显示。  让一个块级元素在同一行并排显示的方案比较多，浮动仅仅是其中的一个方案而已。
+
+        浮动是半脱离标准文档流的。
+
+        一个元素浮动了，它并没有脱离父元素。
+
+        两个div，如果上面的div浮动了，下面的div就会钻上去，但是如果下面的div中有文字，这文字是没有办法钻上去。这是浮动的特性：字围效果。
+    
+        两个div，都浮动了，出国，此时它俩就贴靠在一起，这是浮动的另一个特性：贴靠性。此时两个div就可以并排显示了。
+        
+        如果一个父元素中的子元素都浮动了，儿子都出国了，就不能撑起父元素了，父元素的高度就变了0，也就是所谓的父元素高度塌陷。
+        也就是说对父元素的高度造成了影响，清除这种影响，也就是如何清除浮动，可以使用overflow:hidden 
+
+        overflow:hidden 
+            本职工作是用来处理溢出的，但是它有一个小偏方，可以用来清除浮动。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动</title>
+    <style>
+        .box{
+            width: 300px;
+            /* height: 300px; */
+            border: 3px solid red;
+            /* overflow:hidden就可以解决父元素高度塌陷问题 */
+            overflow: hidden;
+        }
+        .son1{
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+            float: left;
+        }
+        .son2{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="son1">son1</div>
+        <div class="son2">son2</div>
+    </div>
+</body>
+</html>

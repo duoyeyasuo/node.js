@@ -1,0 +1,73 @@
+<!-- 
+    text-align:
+        设置文本的对齐方式，常用的属性值如下：
+        left   左对齐   默认值
+        center 居中对齐   
+        right  右对齐  
+        justify  用的不多  两端对齐   只对英文有效
+
+    line-height:
+        设置文本的行高（一行的高度）
+
+        注意细节：
+            1）行高可以设置px
+            2）行高可以设置陪数，如1.5表示是字体大小的1.5倍。
+            3）利用line-height实现垂直居中。
+            4）可以把line-height设置到font属性中。 用的比较多。
+
+    补充一下font的知识点：
+        font 属性可以用来作为 font-style, font-variant, font-weight, font-size, line-height 和 font-family 属性的简写，或将元素的字体设置为系统字体。
+        font-style
+        font-variant
+        font-weight
+        font-size
+        line-height
+        font-family
+
+        font: bold 24px/1 sans-serif;
+        24px表示font-size  
+        /1  表示line-height=1   表示line-height=24px
+        sans-serif 表示font-family
+
+        分析几个网站的font属性：
+            淘宝：font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+            京东：font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+            百度：font: 12px arial;
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本设置</title>
+    <style>
+        body{
+            font-size: 14px;
+        }
+        h1{
+            border: 2px solid red;
+            /* 让h1这个盒子中的文本，居中对齐 */
+            text-align: center;
+
+            /* 让h1这个盒子中的文本，右对齐 */
+            /* text-align: right; */
+
+            /* h1默认没有设置高度，它的高度是靠内容撑起来的 */
+            height: 200px;
+
+            /* 通过设置line-height可以让文本垂直居中 */
+            /* 如果line-height和height值一样，就可以实现垂直居中 */
+            line-height: 200px;
+        }
+        p{
+            /* line-height: 30px; */
+
+            /* font-size是14px  line-height是font-size的1.5倍  14+7=21px */
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>学习text-align</h1>
+    <p>此外，来自美国、英国、加拿大、瑞士、智利等国的16位国际知名卫生法学家日前在英国期刊《柳叶刀》发表评论文章说，新冠肺炎暴发期间，一些国家对中国人实施旅行限制，这违反了《国际卫生条例》。他们在文章中呼吁各国撤销已实施的非法旅行限制。</p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动小案例</title>
+    <style>
+        /* 初始化样式 */
+        *{margin: 0; padding: 0;}
+        ul{list-style-type: none;}
+        body{font: normal normal 16px/1.5 arial;}
+        h1,h2,h3{font-weight: normal;}
+        a{text-decoration: none;}
+
+        /* 常用样式 */
+        .w960{ width: 960px; margin-left: auto; margin-right: auto;}
+        .fl{float: left;}
+        .fr{float: right;}
+
+        /* 网站logo区域样式=========================== */
+        .logo{
+            background-color: #E65224;
+            height: 73px; /* 108-35 */
+            padding-top: 35px;  /* logo区域的占据空间就变大了 */
+        }
+        .logo ul{
+            overflow: hidden;
+        }
+        .logo ul p{
+            color: #fff;
+        }
+        .logo ul strong{
+            color: #fff;
+        }
+        .logo ul h1 a{
+            display: block;
+            width: 182px;
+            height: 45px;
+            background: url("./images/logo.png") no-repeat;
+            text-indent: -999px;
+        }
+    </style>
+</head>
+<body>
+     <!-- 网站整体 start -->
+     <div class="wraper">
+        <div class="logo">
+            <ul class="w960">
+                <li class="fl">
+                    <h1>
+                        <a href="">利牛网</a>
+                    </h1>
+                </li>
+                <li class="fr">
+                    <img class="fl" src="./images/phone.png" alt="电话">
+                    <div class="fr">
+                        <p>财富热线</p>
+                        <strong>1234567890</strong>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 网站整体 end -->
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- 
+    一个页面的样式：https://blog.csdn.net/weixin_39676449/article/details/89816639
+        reset.css 重置样式。 *{margin: 0; padding: 0;} 可以把*改成页面中所用的标签。可以提升性能。
+    
+    浮动：
+        块级标签默认情况下，是不能并排显示，可以让它浮动起来，浮动起来就可以并排显示。
+
+    清除浮动：
+        如果一个盒子中的子元素浮动了，出国了，父元素高度就塌陷（高度变成0），也就是说造成了影响，清除这种影响。
+        清除浮动所造成的影响。
+
+    可以把浮动和清除浮动做成工具类，如下：
+
+    对于i标签来说，它是行内标签，不能设置width和高度。
+
+    标签的分类：
+        男标签（块级标签） 可以并排显示  可以设置宽度高度
+        女标签：
+            行内标签（女） i,a,span.. 不能并排显示  不能设置宽高
+            行内块标签（人妖 img input） 可以并排显示 可以设置宽度高度
+        display可以改变一个标签的性别。
+
+    调试CSS用的非常多：
+        F12  
+        style面板
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网站的顶部</title>
+    <!-- 样式的初始化 -->
+    <link rel="stylesheet" href="./css/topreset.css">
+    <!-- 网站顶部的样式 -->
+    <link rel="stylesheet" href="./css/top.css">
+</head>
+<body>
+    <!-- 整个页面start -->
+    <div class="wraper">
+        <!-- 网站顶部 start -->
+        <div class="top">
+            <div class="w1000 clearfix">
+                <ul class="fl">
+                    <li><i class="icon-hotline"></i>客服热线：400-050-1889(8:30-21-30)</li>
+                    <li><i class="icon-wx"></i></li>
+                    <li><i class="icon-qq"></i></li>
+                    <li><i class="icon-wb"></i></li>
+                    <li><i class="icon-tb"></i></li>
+                </ul>
+                <ul class="fr">
+                    <li><a href="#"><i class="icon-phone"></i>下载客户端</a></li>
+                    <li><a href="#">免费注册</a></li>
+                    <li class="last"><a href="#">立即登录</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 网站顶部 end -->
+    </div>
+</body>
+</html>

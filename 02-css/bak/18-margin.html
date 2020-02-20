@@ -1,0 +1,62 @@
+<!-- 
+    也是初步研究，深入还是放到后面。
+
+    margin:  
+        外边距   作用：设置盒子与盒子之间的距离。
+        格式：margin: 10px    上，右，下，左的margin都是10px
+             margin: 10px 20px  上，下是10px   左，右是20px
+             margin: 10px 20px 30px  上是10px   左，右是20px, 下30px
+             margin: 10px 20px 30px 40px  上是10px  右是20px, 下30px  左是40px
+
+        很多标签有默认的margin：
+            body的默认margin在谷歌浏览器下 上下左右都是8px 
+            p的默认margin 上下是16px  左右是0
+            h1的默认margin 上下是21px  左右是0
+            ul的默认margin 上下是16px  左右是0
+            ... 
+            有默认的Margin肯定是不利于布局与美化，所以一般情况下都会清除默认的marign:
+            *{margin:0;}  如果是0的话，px可以不写。
+
+        margin是分四个方向：
+            margin-top 
+            margin-right
+            margin-left
+            margin-bottom 
+            可以单独设置某个方向上的margin  
+
+        margin的应用：
+            1）可以让块级元素水平居中。  margin: 0 auto;
+            2）让一个网页的版心居中。  w960  
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>margin</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         .w960{width: 960px; margin-left: auto; margin-right: auto;}
+         .box{
+             /* width: 100px; */
+             height: 100px;
+             background-color: gold;
+             margin: 50px auto;
+             /* margin-left: auto;
+             margin-right: auto; */
+         }
+         .item{
+             background-color: skyblue;
+             height: 400px;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="box w960">box</div>
+
+     <div class="item w960">item</div>
+     <!-- <ul>这是一个ul</ul> -->
+     <!-- <h1>这是一个h1标签</h1> -->
+     <!-- <p>这是一个p标签</p> -->
+ </body>
+ </html>

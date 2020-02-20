@@ -1,0 +1,133 @@
+<!-- 
+    CSS中的属性的分类（40个左右）：
+        关于字体设置的相关属性 *
+        关于文本设置的相关属性 *
+        盒子模型相关的属性 ***
+        浮动布局相关的属性 ***
+        层布局相关的属性 *
+        FLEX布局相关的属性 **
+        CSS3中新增加的属性 **
+
+    关于字体设置的相关属性：
+        font-family  字体的形式 
+        font-size  字体的大小
+        font-style  字体的是否倾斜
+        font-weight  字体的是否加粗
+        font  是前面几个的复合属性
+        color 字体的颜色
+
+    font-family：
+        1)用来设置字体的形式，设置什么样的字体。取决于用户电脑装了什么样的字体。
+        2)通常window用户字体文件：C:\Windows\Fonts   最基本你的电脑上是有宋体。
+        3)如果没有设置字体，默认是"Microsoft YaHei";
+        4)对于font-family来说，后面可以跟上多个字体，优先级是从前向后，如果电脑上有这个字体就使用这个字体。
+        5)对于我们开发者来说，字体不需要我们设计，由设计师来决定。
+    
+    font-size：用来设置字体的大小
+        1)在谷歌浏览器中，针对span,p...常规标签中的字体，默认大小就是16px。
+        2)通常一个网页中字体大小是12px或14px
+
+    color: 设置字体的颜色
+        1) 设置颜色的时候，可以使用单词，但是用的比较少。
+        2) 通常会使用16进制来表示颜色  _ _  _ _  _ _  前两位表示红  中间两位表示绿  后两位表示蓝
+        3) 使用rgba()来表示颜色  red  green  blue  a透明度
+        4) 项目中使用16进制来表示颜色用的相当多
+        6) 有很多取颜色的工具，帮我们取颜色
+        7) 如果设置a标签中内容的颜色，必须要选中a标签
+
+    font-style：用来设置字体是否倾斜
+        1) 最常用的属性值有两个，一个是normal， 一个是italic
+        2) 通常调用em不倾斜
+
+    font-weight：用来设置字体是否加粗
+        1) 最常用的属性值有两个，一个是normal， 一个是bold  bolder表示更粗
+        2) 通常调用hn不加粗
+        3) 可以设置数字 100  200  300  400 ...  用不到
+
+    font：是前面所有属性的一个复合属性
+        font: font-style, font-weight, font-size, font-family
+        如：font: italic bold 30px "黑体";
+        1）font-style, font-weight 可以省略不写，也可以交换位置
+        2）font-size, font-family  不可以省略不写，也不可以交换位置
+        3）font-style, font-weight不写的话，就是默认值 normal
+        4）每个属性值中间使用空格隔开
+        5）font属性中不能写color属性
+
+    字体设置的继承性：
+        对于字体的设置，只需要在body中设置就OK，其它的标签都继承这个属性。
+
+
+    计算属性：
+        在没有设置CSS属性的条件，浏览器也会根据合适的条件，计算出一个标签的属性，这个属性是计算属性。
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于字体的设置</title>
+    <style>
+        h1{
+            font-family: "楷体", Arial, Helvetica, sans-serif;
+        }
+        span{
+            /* font-size: 14px; */
+        }
+        div{
+            /* color: skyblue; */
+            /* 用16进制表示颜色的时候，需要以#打头 */
+            /* 0 1 2 3 4 5 6 7 8 9 a b c d e f */
+            /* color: #ff0000; */
+
+            /* color: #00ff00; */
+
+            /* 6个数中，前两位一样，中间两位一样，后两位一样，可以简写3位 */
+            /* color: #0f0; */
+
+            /* 使用rgb来表示颜色 0~255 */
+            /* color: rgb(255, 0, 0); */
+
+            /* 使用rgb来表示颜色 0~255  a是透明度  取值0~1  0.5可以简写成.5 */
+            color: rgba(255, 0, 0, .5);
+        }
+        h2{
+            font-style: italic;
+            font-weight: normal;
+        }
+        em{
+            font-style: normal;
+        }
+        footer{
+            font-weight: bolder;
+        }
+        section{
+            font: italic bold 30px "黑体";
+        }
+        nav{
+            /* 有继承性 */
+            font-size: 30px;
+            color: red;
+        }
+        nav ul li  a{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>学习font-family</h1>
+    <span>学习font-size</span>
+    <p>学习font-size</p>
+    <div>学习color</div>
+    <h2>学习font-style</h2>
+    <em>em是用来强调的</em>
+    <footer>学习font-weight</footer>
+    <section>学习font属性</section>
+
+    <nav>
+        <ul>
+            <li>xxxx</li>
+            <li><a href="">对于a标签设置color</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

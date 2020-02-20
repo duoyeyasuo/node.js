@@ -1,0 +1,24 @@
+/* 此文件中放了一些重置样式和自己封装好的一些常用样式 */
+
+/* 重置样式 start */
+*{margin: 0; padding: 0;}
+h1,h2,h3,h4{font-weight: normal;}
+ul{list-style-type: none;}
+a{text-decoration: none;}
+em{font-style: normal;}
+img{display: block;}
+/* ...... */
+/* 重置样式 end */
+
+/* =================================== */
+
+/* 工具类 start */
+.clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}  /* 清除浮动 */
+.clearfix { *zoom:1; } /* 清除浮动 */
+/* 左浮动 */
+.fl { float:left}
+/* 右浮动 */
+.fr {float:right}
+.w1000{width: 1000px; margin: 0 auto;}
+body{color: #666; font: normal normal 16px/1 "微软雅黑";}
+/* 工具类 end */

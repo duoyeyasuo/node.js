@@ -1,0 +1,47 @@
+<!-- 
+    后面每写一个标签，都要搞清它的性别。
+
+    在HTML，元素是进行分类的：
+        块级元素
+            男标签
+            表格标签
+            div
+            h1, h2, h3, h4, h5, h6
+            p 
+            ul li ol li dl dt dd  
+            form 
+        行级元素
+            行内元素   女标签
+                span, a, em, strong, label, button, i...
+            行内块元素  人妖标签
+                img input 
+
+        分三类的话：块级元素，行内元素，行内块元素。
+
+    盒子模型上的6大属性，对不性别的标签的作用是不一样的：
+        对于块级标签来说，独占一行，盒子模型上的6大属性都是生效。
+        对于行内元素来说，并排显示，width和height是不起作用，设置了也是白设置。margin和padding在水平方向上有效，在垂直方向上是没有效果。
+        对于行内块元素来说，它可以并排显示，除了不独占一行外，其它的和块级标签一样。也就是盒子模型上的6大属性都是生效。
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>标签的分类</title>
+     <style>
+         span{
+             width: 100px;
+             height: 10px;
+             background-color: gold;
+             margin-left: 100px;
+             margin-top: 100px;
+         }
+     </style>
+ </head>
+ <body>
+     <span>span</span>
+     <span>span</span>
+     <span>span</span>
+ </body>
+ </html>

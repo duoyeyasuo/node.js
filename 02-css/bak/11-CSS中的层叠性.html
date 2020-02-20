@@ -1,0 +1,61 @@
+<!-- 
+    CSS中的层叠性：
+        可以对一个标签，通过不同的方式，设置多种样式，哪一个样式起作用，这就是层叠性所研究的内容。
+
+    结论：
+        1）行内样式 > 内部样式    行内样式 > 外部样式    内部样式 = 外部样式（就近原则）
+        2）ID > CLASS > P
+        3）自身有的样式 > 继承的样式 
+        4）通过特殊值进行比较  ID:100   CLASS:10   P:1   把钱加一块，谁多就以谁为准，如果一样多，就近原则
+        5）可以使用!important 改变优先级。用的不多。了解就OK。
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>CSS中的层叠性</title>
+     <!-- <link rel="stylesheet" href="./out.css"> -->
+    <style>
+        /* span{color: yellow;} */
+
+        /* 比较id class p */
+        /* #xxx{color: blue;} */
+        /* .span{color: red;}
+        span{color: yellow;} */
+        
+        /* 比较继承的样式与自身样式比较 */
+        /* body{
+            color: skyblue;
+        }
+        span{
+            color: red;
+        } */
+
+        /* 通过特殊值来比较  id:100  class:10  p:1   */
+        /* 以哪个样式为准：把钱加一块，谁多就以谁为准，如果一样多，就近原则 */
+        .father .son  span{ color: red; }  /* 21 */
+        #box .son .span{ color: green; }  /* 120 */
+        .father #item #xxx{ color: blue; }  /* 210 */
+        #box #item #xxx{ color: gold; }  /* 300 */
+        .father .son #xxx{ color: pink; }  /* 120 */
+        /* .... */
+
+        .a{ color: red !important; }
+        #b{ color: yellow; }
+    </style>
+    
+ </head>
+ <body>
+     <div class="a" id="b">
+        HELLO CSS
+     </div>
+     <hr>
+     <div class="father" id="box">
+         <div class="son" id="item">
+             <!-- <span class="span" style="color: red;">这是一个SPAN</span> -->
+             <span class="span" id="xxx">这是一个SPAN</span>
+         </div>
+     </div>
+ </body>
+ </html>

@@ -1,0 +1,159 @@
+<!-- 
+    一个HTML标签就是一个盒子。HTML中所有的盒子都是矩形的。
+
+    一个网站就是一个个盒子堆起来的。一个盒子模型有如下几个部分组成：
+        盒子中内容区域
+        盒子的内填充区域
+        盒子的边框区域
+        盒子的外填充区域
+        盒子的背景区域
+
+    通过6个属性来设置一个盒子：
+        width  表示内容区域的宽度
+        height  表示内容区域的高度
+        margin
+        padding  padding: 50px;  表示四个方向的padding都是50px
+        border
+        background
+        研究盒子模型就是研究上面的6大属性。
+
+    width 和 height：
+        表示盒子内容的宽度和高度。不是指盒子的宽度和高度。
+
+        一个盒子在网页上占据的宽度：
+            width+左右padding+左右border+左右的margin
+        一个盒子在网页上占据的高度：
+            height+上下padding+上下border+上下的margin
+
+        在PC端一般都设置单位为px。
+    
+    border：
+        盒子的边框。通常在CSS中，设置盒子的边框需要设置边框的粗细，边框样式，边框颜色。
+        一个盒子的边框由border-widht, border-style, border-color组成。
+
+        边框也是有四个方向：
+        border-top, border-right, border-bottom, border-left。
+
+        最的最多的就是直接border:1px solid red;  如果一个盒子仅仅有一个边框，那么我们也会设置这一边框。
+
+    padding:
+        内边距，也叫补白，表示盒子内容区域到边框的距离。
+
+        padding也是有四个方向：
+            padding-top
+            padding-right
+            padding-bottom
+            padding-left
+        
+        padding后面的跟的值可以是：
+            1个值： padding:10px  表示这个盒子的上右下左的内边距都是10px。
+            2个值： 第1个值表示上下，第2个值表示左右。
+            3个值： 第1个值表示上，第2个值表示左右，第3个值表示下。
+            4个值： 顺序是上，右，下，左
+
+    margin：
+        外边距，使用margin表示盒子与盒子之间的距离。
+
+        margin也是有四个方向：
+            margin-top
+            margin-right
+            margin-bottom
+            margin-left
+
+        margin后面的跟的值可以是：
+        1个值：  margin:10px  表示这个盒子的上右下左的外边距都是10px。
+        2个值： 第1个值表示上下，第2个值表示左右。
+        3个值： 第1个值表示上，第2个值表示左右，第3个值表示下。
+        4个值： 顺序是上，右，下，左
+
+    很多标签都有默认的margin和padding，不方便写CSS，所以都会直接把默认margin和padding去掉。
+
+    background:
+        用来设置盒子的背景：
+            背景颜色
+            背景图片
+
+        背景颜色： background-color
+            背景颜色会填充一个盒子的内容区域和padding区域，以及边框。
+
+        背景图片：background-image
+            url()函数，表示用来指定一个背景图片的路径的，()里面可以加"",也可以不加。
+            默认情况下，一个盒子的背景图片，会平铺一个盒子，在水平和垂直方向上都会平铺。
+            可以通过一个属性，来指定是否平铺，叫backgroud-repeat
+
+            默认情况下，背景图片的左上角和盒子的padding的左上角是对齐。 
+            可以通过一个属性，来指定背景图片的位置，叫background-position
+
+    总结：
+        1）盒子模型是CSS中一个非常重要的核心。
+        2）只是一个HTML标签，它就是一个盒子。
+        3）学习盒子模型，主要就是研究盒子模型设置6大属性。
+        4）width   height   padding   border   margin  background
+        5）后面会深入学习盒子模型的6大属性
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型初识</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .box{
+            width: 200px;
+            height: 200px;
+            padding: 50px; 
+            /* 通常会使用border复合属性：5px表示border-widht， solid表示border-style， red表示border-color */
+            border: 5px solid red;
+            margin: 50px;
+        }
+        .item1{
+            width: 100px;
+            height: 100px;
+            border-top: 5px solid red;
+            border-right: 5px dotted blue;
+            border-bottom: 5px dashed yellow;
+            border-left: 1px solid pink;
+        }
+        .item2{
+            width: 100px;
+            height: 100px;
+            border: 3px solid red;
+            /* padding: 10px; */
+            /* padding: 10px 20px; */
+            /* padding: 10px 20px 30px; */
+            /* padding:10px 20px 30px 40px; */
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .item3{
+            width: 100px;
+            height: 100px;
+            border: 3px solid gold;
+            /* margin-top: 10px; */
+            /* margin-bottom: 10px; */
+        }
+        .item4{
+            width: 200px;
+            height: 100px;
+            border: 3px solid rgba(255, 0, 0, 1);
+            padding: 20px;
+            /* background-color: gold; */
+            background-image: url("./images/tblogo.png");
+            background-repeat: no-repeat;
+            /* 第1个参数表示x轴的位置，第2个参数表示y轴的位置 */
+            /* background-position: right bottom; */
+            /* background-position: 10px 10px; */
+            background-position: 50% 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="item4">学习盒子的背景</div>
+    <br>
+    <div class="item3">item3</div>
+    <div class="item2">item2</div>
+    <br>
+    <div class="item1">学习border</div>
+    <div class="box">这是一个盒子</div>
+</body>
+</html>
