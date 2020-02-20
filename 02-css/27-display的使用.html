@@ -1,0 +1,42 @@
+<!-- 
+    标签分类：
+        块级标签 ：独占一行，盒子模型上的6大属性都起作用
+        行内标签 ：并排显示，width和height不起作用，padding和margin在垂直方向上也不起作用
+        行内块标签：并排显示，盒子模型上的6大属性都起作用
+
+    display: 本意是显示的意思   可以使用display改变标签的类别。
+        none : 表示此元素不显示
+        block : 以块级的方式显示  变性手术  男人
+        inline : 以行内的方式显示  女人
+        inline-block : 以行内块的方式显示  人妖
+
+    display:none 
+        可以把一个标签隐藏掉，并且在网站上不占空间
+
+    visibility:hidden
+        visibility 本意 可见度
+        也可以让标签隐藏掉，但是它是占据网页空间的
+
+        真实开发中，使用display:none的情况是远远多于visibility:hidden的。
+
+    display:none 经典应用: 讲完定位后再说
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display的使用</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        h1{
+            /* display: none; */
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>这是一个H1标签</h1>
+    <p>这是一个p标签</p>
+</body>
+</html>

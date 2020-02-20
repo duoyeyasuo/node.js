@@ -1,0 +1,92 @@
+<!-- 
+    inline-block：行内块  人妖  并排显示  6大属性都起作用。
+    默认是inline-block的标签：img  input
+
+    img标签默认有一个小bug:
+        vertical-align: middle
+        display:block
+
+    input checkbox时注意：
+        vertical-align: -2px;
+
+    浮动可以让块级标签在同一行并排显示。
+    inline-block天生就可以让元素并排显示，使用浮动实现的，大多数情况下，也可以使用inline-block来实现。
+
+    让块级元素并排显示，目前方案：
+     1）浮动  难  浮动有很多的特性   清除浮动所造成的影响
+     2）行内块  简单  有一个注意的细节 
+     3）flex布局  干死了浮动   CSS3中提出的  有一些兼容问题
+
+     vertical-align:
+        用来设置一个元素的垂直对齐方式。
+        vertical-align的属性值非常多：
+            px  正值  负值 
+            top 顶端对齐 
+            middle xxx 
+            baseline 默认值  基线对齐 
+            bottom 
+            xxx
+            xxx
+            vertical-align作用于一个元素，不是元素中的文本。
+
+            使用场景：
+            1）使用checkbox对齐
+            2）解决img标签的下边距
+            3）使用inline-block进行布局时，也会使用到vertical-align
+
+        让一个男盒子水平居中：使用margin:0 auto。对于一个行内标签来说，不能使用margin:0 auto来使用它水平居中。
+        让一个盒子中的文本水平居中：使用text-align:center
+
+
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>inline-block</title>
+     <style>
+         *{ margin: 0; padding: 0;}
+         /* div{
+             width: 300px;
+             height: 400px;
+             background-color: gold;
+         } */
+         .father{
+             width: 300px;
+             height: 300px;
+             border: 3px solid red;
+         }
+         .son{
+             width: 100px;
+             height: 100px;
+             background-color: gold;
+             margin: 0 auto;
+             text-align: center;
+             /* vertical-align: middle; */
+         }
+         .son span{
+            /* margin: 0 auto; */
+            vertical-align: middle;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="father">
+         <div class="son">
+             <!-- <span>son</span> -->
+             son
+             <span>123</span>
+         </div>
+     </div>
+     <hr>
+     <div>
+         <!-- <img style="vertical-align: middle;" src="./images/code1.png" alt=""> -->
+         <img style="display: block;" src="./images/code1.png" alt="">
+         <h2 style="background-color: skyblue;">这是一个H2标签</h2>
+         <h2 style="background-color: pink;">这是一个H2标签</h2>
+         <input style="vertical-align: -2px;" type="checkbox">同意
+     </div>
+ </body>
+ </html>
