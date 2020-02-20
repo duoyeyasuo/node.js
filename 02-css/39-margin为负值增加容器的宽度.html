@@ -1,0 +1,121 @@
+<!-- 
+    使几个DIV在同一行并排显示，有间隙的情况的处理方案。
+
+    margin可以为负值，来增加一个容器的宽度。
+ -->
+
+  <!-- 实现方式三 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>使用margin负值增加容器的宽度</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         .father{
+             width: 960px;
+             overflow: hidden;
+             margin: 50px auto;
+             border: 1px solid red;
+             font-size: 0px;
+         }
+         .son{
+             font-size: 14px;
+             width: 225px;
+             height: 200px;
+             display: inline-block;
+             *display:inline;
+             *zoom:1;
+             vertical-align: top;
+             margin-right: 20px;
+         }
+         .last{
+             margin-right: 0px;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="father">
+        <div style="background-color: red;" class="son">son1</div>
+        <div style="background-color: yellow;" class="son">son2</div>
+        <div style="background-color: skyblue;" class="son">son3</div>
+        <div style="background-color: gold;" class="son last">son4</div>
+     </div>
+ </body>
+ </html>
+
+ <!-- ====================================================== -->
+
+ <!-- 实现方式二 -->
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>使用margin负值增加容器的宽度</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         .father{
+             width: 960px;
+             overflow: hidden;
+             margin: 50px auto;
+             border: 1px solid red;
+         }
+         .son{
+             width: 225px;
+             height: 200px;
+             float: left;
+             margin-right: 20px;
+         }
+         .wraper{
+             margin-right: -20px;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="father">
+         <div class="wraper">
+            <div style="background-color: red;" class="son">son1</div>
+            <div style="background-color: yellow;" class="son">son2</div>
+            <div style="background-color: skyblue;" class="son">son3</div>
+            <div style="background-color: gold;" class="son">son4</div>
+         </div>
+     </div>
+ </body>
+ </html> -->
+
+<!-- ====================================================== -->
+
+<!-- 实现方式一 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用margin负值增加容器的宽度</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 960px;
+            overflow: hidden;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+        .son{
+            width: 225px;
+            height: 200px;
+            float: left;
+            margin-right: 20px;
+        }
+        .last{
+            margin-right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div style="background-color: red;" class="son">son1</div>
+        <div style="background-color: yellow;" class="son">son2</div>
+        <div style="background-color: skyblue;" class="son">son3</div>
+        <div style="background-color: gold;" class="son last">son4</div>
+    </div>
+</body>
+</html> -->

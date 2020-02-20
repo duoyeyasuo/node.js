@@ -1,0 +1,54 @@
+<!-- 
+    margin可以设置成负值，如margin-left:正值   表示远离left方向  
+    如果margin-left：负值  表示靠近left方向 
+
+    解决1px边框问题：
+        1）可以给son设置一个方向的边框，如就设置border-right，给最后一个盒子设置border-right是0
+        2）可以使用margin为负值  margin-left:-1px   可以让两条边框重叠到一起
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>margin可以为负值</title>
+     <style>
+         .box{
+             width: 150px;
+             border: 1px solid red;
+             margin-left: 10px;
+         }
+         .father{
+             border: 1px solid red;
+             width: 1000px;
+             margin: 50px auto;
+             overflow: hidden; 
+         }
+         .son{
+             height: 200px;
+             width: 248px;
+             border: 1px solid black;
+             /* border-right: 1px solid black; */
+             float: left;
+         }
+         .sec{
+            margin-left: 0px;
+         }
+         .last{
+             /* border-right: 0; */
+         }
+     </style>
+ </head>
+ <body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son sec"></div>
+        <div class="son"></div>
+        <div class="son last"></div>
+    </div>
+
+     <div class="box">
+         这是一个内容
+     </div>
+ </body>
+ </html>
