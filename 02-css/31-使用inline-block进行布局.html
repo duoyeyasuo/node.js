@@ -1,0 +1,41 @@
+<!-- 
+    使用行内块进行布局，让块级元素可以并排显示。
+
+    但是使用inline-block进行布局时，有如下问题：
+        1）盒子中有文本时并没有对齐  解决：vertical-align:top
+        2）盒子与盒子之间有间隙 
+            思考：换行可能造成间隙 
+            解决：
+                A 可以去掉换行  
+                B 给最外层外一个DIV 并设置它font-size是0  此时就去掉了间隙
+                  接着，给里面的div再设置font-size 16px
+           
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inline-block布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div style="vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦</div><div style="vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦</div><div style="vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦</div> -->
+    
+    <div style="font-size: 0;">
+        <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦</div>
+        <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦 啦啦</div>
+        <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;">啦啦 啦啦</div>
+    </div>
+
+    <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;"></div>
+    <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;"></div>
+    <div style="font-size: 16px; vertical-align: top; display: inline-block; width: 100px;height: 200px;border: 1px solid red;"></div>
+</body>
+</html>
+
+
