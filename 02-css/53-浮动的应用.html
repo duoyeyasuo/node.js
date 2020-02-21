@@ -1,0 +1,92 @@
+<!-- 
+    浮动的应用场景：
+        1）页面中的左右结构
+            实现： 
+                父元素  .clearfix
+                    左  float:left
+                    右  float:right
+        2）页面中多列布局
+            实现：
+                父元素     .clearfix
+                    第1列  float:left
+                    第2列  float:left
+                    第3列  float:left
+                    第4列  float:left
+                    ..       
+                    每一列中间的间隙。margin-right  
+                    中间1px边框的问题  margin负值
+                    
+        3）左侧固定宽度，右侧自适应
+            实现：
+                父元素：  当父元素的宽度变化时，那么右侧的宽度也跟着变化
+                    左侧  宽度必须  浮动 
+                    右侧  margin-left
+
+        4）页面中的左中右结构
+            实现 
+                父元素： 不需要清除浮动
+                    左：左浮动
+                    中： text-align:center;  margin:0 auto;
+                    右：右浮动
+
+        初衷：实现字围效果
+        目的：让块级元素并排显示
+
+        flex布局  
+    
+    右浮动的问题:
+        有的浏览器有这个问题，有的没有。还有在IE的低版本浏览器中，浮动也有很多问题。
+        最后个元素右浮动了，但是没有左浮动，最后面右浮动的元素有非常奇怪换行。
+
+        解决：把最后的右浮动放到前面
+
+    作业：总结浮动 *** 
+        浮动的特性
+        浮动的清除
+        浮动的应用
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        /* 初始化样式 */
+        *{margin: 0; padding: 0;}
+        .clearfix:after{
+            content: "";
+            clear: both;
+            overflow: hidden;
+            height: 0;
+            display: block;
+            visibility: hidden;
+        }
+        .clearfix{*zoom:1}  /* 兼容IE浏览器 */
+
+        /* 页面样式 */
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span style="float: right;">2020-02-21</span>
+        <h1>这是一个新闻</h1>
+    </div>
+    <hr>
+    <div style="width: 500px; margin:20px auto; border: 1px solid #ccc; text-align: center;">
+        <a href="" style="float: left; margin-left: 10px;">返回</a>
+        <a href="">首页</a>
+        <a href="" style="float: right; margin-right: 10px;">分享到</a>
+    </div>
+    <hr>
+    <div class="father" style="width: 500px; margin:20px auto; border:1px solid red;">
+        <img src="./images/002.webp" style="display: block; float: left;" width="200" alt="">
+        <p style="margin-left: 200px; background-color: skyblue;">
+            2020年2月11日，在抗“疫”一线连续奋战17天后，樊树锋颅内出血，2月19日12时36分经抢救无效，离开人世，年仅39岁。这名曾经的特警队员，如今的抗击疫情的“勇先锋”、辖区群众的“暖心人”，把生命指针永远定格在春天里。2020年2月11日，在抗“疫”一线连续奋战17天后，樊树锋颅内出血，2月19日12时36分经抢救无效，离开人世，年仅39岁。这名曾经的特警队员，如今的抗击疫情的“勇先锋”、辖区群众的“暖心人”，把生命指针永远定格在春天里。
+        </p>
+    </div>
+</body>
+</html>
+
+
+

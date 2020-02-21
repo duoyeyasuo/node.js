@@ -1,75 +1,38 @@
-<!-- 
-    真实开发中，我们会使用after伪元素来清除浮动：
-        伪类选择器：不存在的一个类  :hover
-        伪元素：页面中不存在的一个元素  
+<!--
+    固定定位：
+        参考点：是浏览器的窗口。
 
-    after伪元素：
-        .father:after  表示在father元素的内部最后添加一个元素
-        创建出来的伪元素默认并不是块级的，clear只能作用块级元素，所以说需要给这个伪元素添加display:block
-        .father:after{
-            content:"hello";   新增加元素中的内容
-            clear: both;   用来清除浮动的
-            display: block;  让伪元素变成块级，默认是inline
-        }
-
-    提炼出一个清除浮动的类：
-        .clearfix:after{
-            content: "";
-            clear: both;
-            display: block;
-        }
-        通常写法：
-        .clearfix:after{
-            display: block;
-            content: "";
-            overflow:hidden;
-            height:0;
-            clear: both;
-            visibility: hidden;
-        }
-        .clearfix{*zoom:1}
+    总结定位：
+        相对定位： 参考点是自身的位置   局部的位置调整/作绝对定位的参考点
+        绝对定位： 手动设置参考点，如果没有参考点就是body   把一个盒子放到另一个盒了的上面/居中效果
+        固定定位： 参考点是浏览器的窗口
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>浮动深入</title>
+    <title>层布局</title>
     <style>
-        /* 初始化样式 */
         *{margin: 0; padding: 0;}
-        .clearfix:after{
-            content: "";
-            clear: both;
-            overflow: hidden;
-            height: 0;
-            display: block;
-            visibility: hidden;
+        html{
+            /* 此处的100%是整个文档的100% */
+            height:100%;
         }
-        .clearfix{*zoom:1}  /* 兼容IE浏览器 */
-
-        /* 页面样式 */
-        .father{
-            width: 500px;
-            border: 3px solid red;
-            margin: 20px auto;
+        body{
+            height:200%;
+            background: linear-gradient(gold, skyblue);
         }
-        .son1, .son2, .son3{
-            width: 120px;
-            float: left;
+        img{
+            position:fixed; 
+            right:0px;
+            top:50%;
+            margin-top:-150px;
         }
-        .son1{ height: 100px; }
-        .son2{ height: 100px; }
-        .son3{ height: 100px; }
     </style>
 </head>
 <body>
-    <div class="father clearfix">
-        <div class="son1" style="background-color: red;">son1</div>
-        <div class="son2" style="background-color: yellow;">son2</div>
-        <div class="son3" style="background-color: blue;">son3</div>
-    </div>
+    <img src="./images/left.png">
 </body>
 </html>
-
 
 

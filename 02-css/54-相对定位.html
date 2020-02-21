@@ -1,0 +1,66 @@
+<!--
+    CSS中的常见的布局方案：
+        流式布局 
+        浮动布局
+        层布局
+
+    层布局：定位  position
+        static 不定位  默认值
+        relative  相对定位
+        absolute  绝对定位 
+        fixed  固定定位  
+
+    不管是什么类型的定位，都需要使用top, left, right, bottom来调整它的偏移量。
+
+    相对定位：relative
+        相对定位是相对于它原本出来的位置。可以在原本的位置基础上进行调整。
+        定位的元素原本的空间不会被后面元素占用。
+        使用top(向下移动), left（向右移动）, right（向左移动）, bottom（向上移动）其中1个或2个设置它的偏移量。
+        最常用的：top left
+
+        相对定位参考点：就是它原本的位置
+
+        相对定位的应用：
+            1） 元素局部位置调整 如导航条某个导航上面的小图标
+            2） 设置input checkbox框  元素局部位置调整
+            3） 作为绝对定位的参考点  绝对定位的参数需要我们设置  position:relative
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层布局</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            height: 300px;
+            border: 3px solid red;
+            margin: 20px auto;
+        }
+        .son1, .son2, .son3{
+            width: 120px;
+        }
+        .son1{height: 100px;}
+        .son2{
+            height: 100px; 
+            position: relative;
+            top: 20px;
+            /* bottom: 20px; */
+            /* left: 20px; */
+        }
+        .son3{height: 100px;}
+    </style>
+</head>
+<body>
+    <input type="checkbox" style="vertical-align: -2px;"> 同意
+    <input type="checkbox" style="position: relative; top: 2px;"> 同意
+    <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <div class="son3" style="background-color: blue;">son3</div>
+    </div>
+</body>
+</html>
+
+
