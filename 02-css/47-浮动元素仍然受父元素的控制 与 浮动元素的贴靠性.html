@@ -1,10 +1,9 @@
 <!-- 
-    浮动元素超出父元素的高度，也会对后面的元素造成影响：
-        当浮动元素超出父元素的高度，后面的元素也会造成影响。
-    解决：
-        在受影响元素上面加上clear:both。
+    浮动元素仍然受父元素的控制 与 浮动元素的贴靠性：
+        当父元素的宽度变小时，浮动的元素也会换行，但是它不可以浮动到父元素的外面。也就是说浮动元素仍然受父元素的控制。
 
-    下午统一讲如何清除浮动所造成的影响。
+    贴靠性：
+        当元素向同一个方向浮动，它们会紧紧在贴在一起，当父元素宽度变小时，老三贴不了老二，它会贴老大，前提是可能贴到老大上面，如果老大没有条件让它贴靠，它会贴父元素。
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,7 @@
         *{margin: 0; padding: 0;}
         .father{
             width: 500px;
-            height: 300px;
+            height: 500px;
             border: 3px solid red;
             margin: 20px auto;
         }
@@ -24,7 +23,7 @@
             width: 120px;
         }
         .son1{height: 100px;}
-        .son2{height: 350px;}
+        .son2{height: 130px;}
         .son3{height: 120px;}
     </style>
 </head>
@@ -34,7 +33,6 @@
         <div class="son2" style="background-color: yellow;">son2</div>
         <div class="son3" style="background-color: blue;">son3</div>
     </div>
-    <p style="clear: both;">这是一个P标签...</p>
 </body>
 </html>
 
