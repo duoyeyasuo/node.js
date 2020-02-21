@@ -1,0 +1,43 @@
+<!-- 
+    如果一个父元素中的子元素都浮动了，都出国了，父元素在没有设置高度的情况下，会塌陷。
+
+    一个浮动的父元素，它的高度不会塌陷：
+        如果一个父元素高度塌陷，可以让它浮动起来，它高度就不塌陷了。
+
+    解决父元素高度塌陷方法：
+        1）加高法   并不好   把高度限定死  往往高度是靠内容撑起来的   如果一个页面中高度是固定死的，也可以使用加高法。
+        2）overflow:hidden 小偏方  最终的高度也是内容撑起的
+        3）让父元素也浮动起来
+        ...
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字围效果</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            /* height: 500px; */
+            /* overflow: hidden; */
+            float: left;
+            border: 2px solid red;
+        }
+        .son1, .son2, .son3{
+            width: 120px;
+            height: 120px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <div class="son3" style="background-color: blue;">son3</div>
+    </div>
+</body>
+</html>
+
+

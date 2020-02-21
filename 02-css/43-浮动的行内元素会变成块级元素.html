@@ -1,0 +1,44 @@
+<!-- 
+    浮动的行内元素会变成块级元素：
+        一个行内元素浮动了，相当于做了一个变性手术，变了块级元素。
+
+    对于一个行内元素，不能设置宽度和高度。但是如果你让它浮动了，那它就变成一块级元素，可以设置宽高。
+
+    对于下面的代码，就显示的比较low了：
+        span{
+            float: left;   // 因为float:left就可以让span变成块级标签
+            display: block;   // 此行代码是多余的
+            width: 80px;
+            height: 80px;
+            background-color: gold;
+        }
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字围效果</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+        span{
+            float: left;
+            display: block;
+            width: 80px;
+            height: 80px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>span</span>
+    </div>
+</body>
+</html>
+
+

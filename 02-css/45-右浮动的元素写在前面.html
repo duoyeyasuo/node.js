@@ -1,0 +1,64 @@
+<!-- 
+    右浮动的元素写在前面：
+        如果盒子中只有右浮动，没有左浮动，效果会有错行的效果。解决：把右浮动的元素写在前面
+        如果一个盒子中只有右浮动，没有左浮动，通常把右浮动的元素写在前面。
+    
+    如果有左浮动，也有右浮动，那么谁写在前面（左浮动的元素或是右浮动的元素）都OK的。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul{
+            width: 400px;
+            height: 400px;
+            border: 3px solid red;
+        }
+        ul li p{
+            /* float: left; */
+        }
+        ul li span{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="">
+                <span>2020-02-21</span>
+                <p>湖北运抵医用防护服151.2万件</p>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>2020-02-21</span>
+                <p>湖北运抵医用防护服151.2万件</p>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>2020-02-21</span>
+                <p>湖北运抵医用防护服151.2万件</p>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>2020-02-21</span>
+                <p>湖北运抵医用防护服151.2万件</p>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>2020-02-21</span>
+                <p>湖北运抵医用防护服151.2万件</p>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>
+
+

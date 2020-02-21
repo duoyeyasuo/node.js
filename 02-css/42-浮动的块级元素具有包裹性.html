@@ -1,0 +1,29 @@
+<!-- 
+    浮动的块级元素具有包裹性：
+        必须是块级元素，并且这个块级元素没有明确的设置尺寸。
+
+    如果一个块级元素的width没有设置，它的宽度就是父元素的宽度的100%。如果此时让它浮动了，它的宽度由内容来决定，尽可能地压缩空间。这就是块级元素浮动所产生的包裹性。
+    里面有多少内容，它的宽度就是多少。
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字围效果</title>
+    <style>
+        *{margin: 0; padding: 0;}
+       div{
+           /* width: 100px;
+           height: 100px; */
+           background-color: gold;
+           float: left;
+       }
+    </style>
+</head>
+<body>
+    <div class="header">网站的头部网站的头部</div>
+</body>
+</html>
+
+

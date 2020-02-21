@@ -1,0 +1,34 @@
+<!-- 
+    浮动的特性之破坏性：
+        破坏了流式布局，可以让块级元素并排显示。
+
+        在CSS3中，提出更好的一种布局方案，叫flex布局。在移动端（手机，平板）开发，可以使用flex来代替浮动布局。
+
+    流式布局：
+        按照标签的特征，进行的默认布局，从上到下，从左到右进行排列，块级元素独占一行，行内元素并排显示。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字围效果</title>
+    <style>
+       div{
+           float: left;
+       }
+    </style>
+</head>
+<body>
+    <div class="header">网站的头部</div>
+    <div class="main">
+        <p>xxx</p>
+        <span>span</span>
+        <span>span</span>
+        <span>span</span>
+        <p>xxx</p>
+    </div>
+    <div class="header">网站的底部</div>
+</body>
+</html>
+
+

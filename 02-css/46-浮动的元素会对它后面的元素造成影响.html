@@ -1,0 +1,81 @@
+<!-- 
+    浮动的元素会对它后面的元素造成影响：
+        让三个DIV浮动，有多种组合方式，如下：
+            只有一个元素浮动的情况下：
+                [右， ， ]
+                [， 右， ]
+                [， ， 右]
+                [左， ， ]
+                [， 左， ]
+                [， ， 左]
+            有两个元素浮动的情况下：
+                [右，右， ]
+                [， 右，右]
+                [右， ，右]
+                [左，左 ，]
+                [， 左，左]
+                [左， ，左]
+                [左，右 ，]
+                [左， ，右]
+                ....
+            三个元素都浮动的情况下：
+                [左，左，左]
+                [左，左，右]
+                [左，右，左]
+                [右，左，左]
+                [右，右，右]
+                [右，右，左]
+                [右，左，右]
+                [左，右，右]
+
+    浮动的理解：
+        一个浮动的元素只会对它后面的元素造成影响，不可能对它前面的元素造成影响。
+        一个右浮动的元素，先向上飘，飘到父元素边界时停止，然后向右飘，飘到父元素的边界就停止了。
+
+    记住几句话：
+        1）浮动的元素只会对它后面的元素造成影响
+        2）如果一个元素没有浮动，这个元素肯定会独占一行
+        3）浮动步骤：先上向  再向左/向右  停止 
+        4）两个浮动的元素会并排显示
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            height: 500px;
+            border: 3px solid red;
+            margin: 20px auto;
+        }
+        .son1, .son2, .son3{
+            width: 120px;
+            height: 120px;
+        }
+        .son1{
+            float: right;
+            /* float: left; */
+        }
+        .son2{
+            /* float: right; */
+            float: left;
+        }
+        .son3{
+            /* float: right; */
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <div class="son3" style="background-color: blue;">son3</div>
+    </div>
+</body>
+</html>
+
+
