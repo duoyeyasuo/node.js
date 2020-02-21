@@ -1,0 +1,65 @@
+<!-- 
+    清除浮动概述：
+        浮动会造成影响，包含对两个方面的影响：
+        1）父元素造成影响：造成父元素的高度塌陷
+        2）对后面的兄弟元素造成影响
+
+    解决对父元素造成的影响：
+        1）加高法  直接给父元素加高度  用的不多
+        2）overflow的小偏方，强制浏览器重新计算父元素的高度
+
+    overflow：本意是用来处理溢出的。
+        hidden 溢出的内容会被隐藏掉，不可见。
+        scroll 溢出的内容 产生滚动条 通过滚动条可到全部的内容
+        visible 默认值  溢出的内容正常显示
+
+    溢出的内容的内容不占见面空间。
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            /* height: 400px; */
+            /* 副作用：强制浏览器计算父元素的高度 */
+            overflow: hidden;
+            border: 3px solid red;
+            margin: 20px auto;
+        }
+        .son1, .son2, .son3{
+            float: left;
+            width: 120px;
+        }
+        .son1{height: 100px;}
+        .son2{height: 100px;}
+        .son3{height: 100px;}
+
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>雷神山医院院长、国家重点研发计划首席科学家王行环教授表示，雷神山医院在短时间内从无到有，边建设、边治病、边培训，创造了中国奇迹。来自全国各地的医护人员和施工单位的劳动者们齐心协力，夜以继日地为雷神山医院工作，克服重重困难，交出了一份让人民满意的答卷。接下来，医院将开足马力收治新冠肺炎患者，并力争让更多患者得到有效治疗，从而早日康复出院。</p>
+    </div>
+    <div class="abc">这是一个新的div</div>
+    <hr>
+    <!-- <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <div class="son3" style="background-color: blue;">son3</div>
+    </div> -->
+</body>
+</html>
+
+
+

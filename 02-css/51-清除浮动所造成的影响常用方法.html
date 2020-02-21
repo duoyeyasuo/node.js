@@ -1,0 +1,70 @@
+<!-- 
+    clear解决父元素高度塌陷问题：
+        前面：
+            父元素的影响：加高法  overflow:hidden
+            兄弟元素影响：clear
+
+        现在：
+            加高法或overflow:hidden都是不专业来清除浮动造成的影响的，专业就一个，就是clear:both。
+        
+        使用clear清除对父元素造成的影响(内墙法)：
+            1) 给父元素添加一个子元素  这个子元素不浮动，添加到最后。
+             <div class="father">
+                <div class="son1" style="background-color: red;">son1</div>
+                <div class="son2" style="background-color: yellow;">son2</div>
+                <div class="son3" style="background-color: blue;">son3</div>
+                <div>hello</div>
+             </div>
+            2) 给这个元素加上clear:both
+                <div class="father">
+                    <div class="son1" style="background-color: red;">son1</div>
+                    <div class="son2" style="background-color: yellow;">son2</div>
+                    <div class="son3" style="background-color: blue;">son3</div>
+                    <div style="clear: both;">hello</div>
+                </div> 
+             
+
+    总结清除浮动所造成影响：
+        1）加高法                简单      只能清除对父元素造成的影响，并且高度是固定死的       
+        2）overflow:hidden      简单       只能清除对父元素造成的影响，不专业，需要注意有时子元素的高度是超出父元素的，超出的部分就会被隐藏掉
+        3）clear:both    可以清除对父元素和兄弟元素造成的影响   如果要清除对父元素所造成的影响，需要多加一个标签（内墙法）
+        4）清除浮动的类   项目中使用最多
+
+    真实开发中，我们会使用after伪元素来清除浮动：
+        伪类选择器：不存在的一个类  :hover
+        伪元素：页面中不存在的一个元素  
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            border: 3px solid red;
+            margin: 20px auto;
+        }
+        .son1, .son2, .son3{
+            width: 120px;
+            float: left;
+        }
+        .son1{ height: 100px; }
+        .son2{ height: 100px; }
+        .son3{ height: 100px; }
+
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <div class="son3" style="background-color: blue;">son3</div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>
+
+
+

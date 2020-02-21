@@ -1,0 +1,59 @@
+<!-- 
+    清除浮动概述：
+        浮动会造成影响，包含对两个方面的影响：
+        1）父元素造成影响：造成父元素的高度塌陷
+        2）对后面的兄弟元素造成影响
+
+    解决对父元素造成的影响：
+        1）加高法  直接给父元素加高度  用的不多
+        2）overflow的小偏方，强制浏览器重新计算父元素的高度
+
+    解决对后面的兄弟元素造成影响：
+        clear 解决对兄弟元素造成影响。 谁受影响了，就在谁的身上加上clear。
+        clear取值：
+            left ：清除左浮动所造成的影响。  代表后面的元素也不受影响。 只能清除左浮动所造成的影响，不能清除右浮动所造成的影响。
+            right : 清除右浮动所造成的影响。只对右浮动有效。
+            both : 清除左右浮动所造成的影响。 开发中，直接使用both就OK。
+            none ： 默认值，表示不清除这种影响。
+
+    注意点：
+        一个浮动的元素只能影响它后面的元素，前面的元素是影响不到的。
+        一个块级元素没有浮动，它肯定会独占一行的。
+        clear只能作用于块级元素，对于行内元素是没有效果。
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动深入</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .father{
+            width: 500px;
+            /* 副作用：强制浏览器计算父元素的高度 */
+            /* overflow: hidden; */
+            height: 500px;
+            border: 3px solid red;
+            margin: 20px auto;
+        }
+        .son1, .son2, .son3{
+            width: 120px;
+        }
+        .son1{height: 100px;}
+        .son2{height: 100px; float: right;}
+        .son3{height: 100px; clear: both;}
+
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son1" style="background-color: red;">son1</div>
+        <div class="son2" style="background-color: yellow;">son2</div>
+        <span class="son3" style="background-color: blue;">son3</span>
+    </div>
+</body>
+</html>
+
+
+
