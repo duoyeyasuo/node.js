@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        .box{
+            padding: 5px 15px;
+            border: 1px solid red;
+            display: inline-block;
+            /* 参考点 position: relative/absolute/fixed;   通常参考点是relative  */
+            position: relative;
+        }
+        .cover-list{
+            position: absolute;
+            border: 1px solid green;
+            background-color: #fff;
+            right: -1px;
+            left: -40px;
+            height: 50px;
+            display: none;
+        }
+        .cover{
+            position: absolute;
+            left: -1px;
+            top: -1px;
+            right: -1px;
+            bottom: 5px;
+            border: 1px solid yellow;
+            border-bottom: 0;
+            display: none;
+        }
+        .box:hover .cover{
+            display: block;
+        }
+        .box:hover .cover-list{
+            display: block;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div class="box">
+        我的订单
+        <div class="cover-list"></div>
+        <div class="cover"></div>
+    </div>
+</body>
+</html>
