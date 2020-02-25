@@ -1,0 +1,251 @@
+/* ============================= 每日推荐 css */
+#recommend{
+    height: 477px;
+}
+.recommend{
+    margin-left: 246px;
+    padding-left: 18px;
+    overflow: hidden;
+}
+.recommend .list li{
+    height: 52px;
+    line-height: 52px;
+    border-bottom: 1px solid #eee;
+}
+.recommend .list i{
+    width: 16px;
+    height: 22px;
+    display: inline-block;
+    background: url("../imgs/hot.png") no-repeat;
+    position: relative;
+    top: 9px;
+    left: 0;
+}
+.recommend .list i.area{ background: url("../imgs/area.png") no-repeat; }
+.recommend .list i.shang{ background: url("../imgs/business.png") no-repeat; }
+.recommend .list span{padding-left: 6px;}
+.recommend .list a{padding: 0 12px;}
+
+/* ========== 轮播图样式 css */
+.recommend .show{
+    width: 690px;
+    height: 318px;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    position: relative;
+}
+.recommend .show .picshop{
+    height: 100%;
+    width: 3000px;
+}
+.recommend .show .picshop li{
+    float: left;
+    width: 689px;
+    height: 100%;
+}
+.recommend .show .btnleft{
+    position: absolute;
+    top: 50%;
+    width: 25px;
+    height: 25px;
+    background: url("../imgs/arrow-t.png") no-repeat;
+    margin-top: -60px;
+    cursor: pointer;
+}
+.recommend .show .btnRight{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    background: url("../imgs/arrow-t.png") no-repeat;
+    background-position: 0 -75px;
+    margin-top: -60px;
+    cursor: pointer;
+}
+
+.recommend>div.fl{
+    width: 690px;
+}
+.recommend>div.fr{
+    width: 198px;
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+.recommend>div.fr>div>img{
+    display: block;
+}
+.recommend>div.fr>div{
+    border-bottom: 1px solid #eee;
+}
+/* ==== 轮播图中每件商品的样式 */
+.single-recomment{position: relative;}
+.single-recomment.fl{padding-top:10px; padding-right:11px;}
+.single-recomment.fr{padding-top:10px; padding-left:11px;}
+.single-recomment>img{}
+.single-recomment>h4{line-height: 20px;}
+.single-recomment>h4>a{font-size:14px;}
+.single-recomment>p{font-size:12px; margin-top:7px;}
+.single-recomment>.price{position: absolute; right:11px; bottom:0; color:#f76120; font-size:30px; font-weight: bold;}
+
+.single-recomment-line{width:1px; background: #eee; height:318px;}
+
+/* ================== 美食区域的样式 */
+.model-title{
+    padding-top: 30px;
+    padding-bottom: 13px;
+    overflow: hidden;
+}
+.model-title>h3{
+    height: 35px;
+    padding-left: 50px;
+    line-height: 30px;
+    position: relative;
+}
+.model-title>h3>i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 43px;
+    height: 35px;
+    background: url("../imgs/nav1.png") no-repeat;
+}
+.model-title>h3>a{
+    font-size: 20px;
+    text-decoration: none;
+}
+.model-title>ul{
+    position: relative;
+    top: 7px;
+}
+.model-title>ul>li{
+    display: inline-block;
+}
+.model-title>ul a{
+    font-size: 14px;
+    border-right: 1px solid #eee;
+    padding: 0 10px;
+}
+.model-title>ul a.all{
+    padding-left: 20px;
+}
+
+.model-content{
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+.model-content:after{
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+.model-end{
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    background-color: #f6f6f6;
+}
+.model-end>a{
+    font-size: 14px;
+    text-decoration: none;
+}
+.model-end span{
+    color: #a5e2f2;
+}
+
+/* 侧边栏导航 css  */
+.side-nav{
+    position: fixed;
+    left: 15px;
+    top: 0px;
+    border: 1px solid #eee;
+    border-bottom: 0;
+    color: #666;
+    z-index: 666;
+}
+.side-nav>li{
+    border-bottom: 1px solid #eee;
+    width: 40px;
+    cursor: pointer;
+}
+.side-nav>li>i{
+    display: block;
+    background: url("../imgs/nav3-gray.png") no-repeat; height: 35px;;
+}
+.side-nav>li>p{
+    text-align: center;
+    padding: 3px 5px 8px;
+    line-height: 18px;
+}
+.side-nav>li.active,.side-nav>li:hover{
+    background: #2BB8AA;
+    color: #fff;
+}
+.side-nav>li.active>i, .side-nav>li:hover>i{
+    background-image: url("../imgs/nav1-white.png");
+}
+
+/* 单个商品的样式 */
+.single-shop{
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 12px 16px 22px 15px;
+}
+.single-shop a{
+    text-decoration: none;
+}
+.single-shop a:hover{
+    text-decoration: none;
+    color: #666;
+}
+.single-shop>h4{
+    margin-top: 17px;
+    font-size: 14px;
+}
+.single-shop>p{
+    margin-top: 12px;
+    color: #999;
+}
+.single-shop>ul.price{
+    color: #999;
+    padding-top: 18px;
+    padding-bottom: 12px;
+    overflow: hidden;
+    border-bottom: 1px dashed #eee;
+}
+.single-shop>ul.price>li>b{
+    font-size: 20px;
+    color: #f76120;
+}
+.single-shop>div.pingjia{
+    text-align: right;
+}
+.single-shop>div.pingjia>i{
+    display: inline-block;
+    width: 60px;
+    height: 12px;
+    background: url("../imgs/pingjia.png") no-repeat;
+    margin-top: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
