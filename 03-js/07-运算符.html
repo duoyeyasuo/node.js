@@ -1,0 +1,182 @@
+<!-- 
+    运算符：
+        算术运算符：
+            +, -, *, /, %, ++, --
+
+            1 + 2   +  有两个操作数  + 是二元运算符，也叫双目运算符
+        赋值运算符：
+            =  赋值运算符  右结合性（从右向左看）
+            +=  -=  *=  /=  %=
+        关系运算符：
+            <  
+            >   
+            <=  
+            >= 
+            ==  
+            === 
+            !=  是 == 的取反操作 
+            !==  是 === 的取反操作
+        逻辑运算符：
+            ||  逻辑或
+            &&  逻辑与
+            !   逻辑非
+        位运算符：了解
+        其它运算符：
+            typeof 运算符  判断一个数据的数据类型
+            ? :   三元素运算符
+            +  字符串拼接运算符
+            delelte
+            instance of
+            in
+            void
+            ... 
+            
+
+    ++, --:
+        1) 在计算机对于+1，-1的操作用的非常多。可以使用++ 和 --进行加1或减1的操作。
+        2) a++   a叫操作数  ++ -- 只有一个操作数  这样的运算符叫一元运算符，也叫单目运算符。
+        3) ++ 可以写在前面，也可以写在后面  a++  ++a 都表示a会在原有的基础上加1
+        4) ++运算符有一个副作用，整体也有一个值， a++  ++a 整体也是有一个值
+        5) ++在后，整体的值是一个旧值，就是没有加1的值
+        6) ++在前，整体的值是一个新值，就是加1的后的值
+        7) -- 道理同++ 
+
+    赋值运算符：
+        1) 有副作用  整体也有一个值
+
+    关系运算符:
+        1) 通过关系运算符得到的是布尔值  true  false
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+     
+    <!-- <script>
+        // ============================ ++运算符
+        /* var a = 1;
+        // a = a+1;  
+        // a++; // a++就是a = a+1;
+        ++a;
+        console.log(a) */
+
+        /* var age = 100;
+        // 把age++整体这个值赋给res
+        var res = age++;  // 整体也有一个值
+        console.log("age:",age)
+        console.log("res:",res) */
+
+        /* var age = 100;
+        var res = ++age;  
+        console.log("age:",age)  // 101
+        console.log("res:",res)  // 101 */
+
+        /* var a = 0; 
+        // a++; // a = a+1;  让a在自身的基础上进行加1操作
+        ++a; // 不官++写在前面还是++写在后面，a的值肯定要加1 
+        console.log(a) */
+
+        /* // ++ -- 有一个副作用  整体也有一个值
+        var a = 0; 
+        // 把a++整体的值赋给r   整体的值是多少呢？看++在前还是++在后
+        // ++在后，整体的值是旧值  ++在前，整体的值是新值
+        // 旧值就是没有+1的值  新值就是加1后的值
+        // r = a++  r的值就是旧值  没有加1的值就是a原来的值  0
+        // r = ++a  a+1后的值 1  r的就是1
+        var r = ++a;
+        console.log(a)
+        console.log(r) */
+
+        /* var a = 0; 
+        // = 赋值运算符 先算后面  a++ 先算a++
+        // a++  就意味着a的值肯定要加1
+        // a++整体的值，是什么，还要看++在前，还是++在后
+        var r = a++;
+        console.log(a)
+        console.log(r) */
+    </script> -->
+
+    <!-- <script>
+        // =================== 赋值运算符
+        // var a = 1;  // =不叫等于符号  在计算机中=叫赋值运算符
+
+
+        // 赋值运算符= 有副作用
+        // 把110赋值给了c  c的值就变了110  但是c=110整体也有一个值，这个值是右值，c=110整体的值是110
+        // 把110赋值给了b  b的值就变成了110  b=110整体也有一个值，也是110
+        // 把110赋值给了a  a的值就是110
+        /* var a = 110;
+        console.log(a, b, c); // 110 110 110 */
+
+        // +=  -=  *=  /=  %=
+        var a = 1;
+        // a = a+10; // 1+10 11  11赋给a  a的值就变成了11
+        // a += 10;  // a = a+10;
+        // a -= 1; // a = a-1;
+        a *= 100;  // a = a*100;
+        console.log(a)
+
+    </script> -->
+
+    <!-- <script>
+        // 关系运算符
+       /*  var a = 1;
+        var b = 2;
+        console.log(a > b); // false */
+
+        // ==  用来判断两个操作是否相等
+        /* var a = 1;
+        var b = 1;
+        console.log(a == b); // true */
+
+        /* var a = 1;
+        var b = "1";
+        // ==  等于 一个运算符两侧操作数的类型要一致
+        // 如果不一致会发生隐式类型转化
+        console.log(a == b); // true  == 比较时不看数据类型 */
+
+        var a = 1;
+        var b = "1";
+        // === 叫绝对等于
+        // === 先看类型  如果类型不致，不会发生类型隐式转化，直接false
+        console.log(a === b); // false  
+    </script> -->
+
+    <!-- <script>
+        // 逻辑运算符
+        /* // &&  只有两者都为true 那么结果才为true
+        console.log(true && true) // true
+        console.log(true && false) // false
+        console.log(false && true) // false
+        console.log(false && false) // false */
+
+        /* // || 只要有一个为真，结果就为真
+        console.log(true || true) // true
+        console.log(true || false) // true
+        console.log(false || true) // true
+        console.log(false || false) // false */
+
+        // ! 如果是真，结果就是假
+        console.log(!true) // false
+        console.log(!false) // true
+    </script> -->
+
+    <script>
+        // 其它运算符 
+        // ？： 三元运算符  三目运算符
+        // true ? "结婚了" : "单身呢"  先看 ? 前面  如果?前面是真  结果就是:前面的值  否则结果就是:后面的值
+        var isMarry = true ? "结婚了" : "单身呢"; 
+        console.log(isMarry) // 结婚了
+
+        // + 字符串拼接运算会
+        var str = "hello";
+        var str2 = " world";
+        var res = str+str2; //字符串拼接
+        console.log(res); // hello world
+    </script>
+ </body>
+ </html>

@@ -30,6 +30,35 @@
         4) 小数如果是0.xxx 那么0可以不写
         5) NaN  Not a Number
         6) JS中不要对小数进行运算  如果想运算，那么先转化成整数
+        7) number数据类型对应的数据有无数个
+
+    字符串型  string：
+        1) 通过单引号或双引号都可以定义字符串
+        2) 常见的转义字符  \   \n 表示换行   \r 表示回车   \t  表示制表符  ...   回车换行
+        3) 双引号中不能嵌套双引号，可以把里面的双此号进行转义，双引号中可以嵌套单引号，单引号中也可以嵌套双引号
+        4) 字符串是由字符组成，可以通过下标来获取某个字符，下标默认是从0开始的
+        6) 如果字符串不加单引号或双引号，JS引擎会把它当成变量
+        7) string数据类型对应的数据有无数个
+
+    布尔型  boolean：
+        1) boolean数据类型对应的数据只有两个  true  false
+        2) JS是区分大小写的  true和TRUE是不一样的
+
+    undefined：
+        1) 声明了一个变量，但是没有赋值，它的值就是undeinfed。
+        2) undefined数据类型对应的数据只有一个undefined
+
+    类型的转化：
+        可以把某一种数据类型转化成另一种数据类型。
+        强制类型转化：手动写代码去转换类型
+            Number  试图把一个非number的数据转化成number
+            String  试图把一个非string的数据转化成string
+            *** Boolean  试图把一个非boolean的数据转化成boolean
+            parseInt 试图把一个数据转成整数
+            parseFloat 试图把一个数据转成小数（浮点数）
+        隐式类型转化：在没有知觉的情况下就进行类型转化。
+            + 叫运算符  两侧的数叫操作数 运算符两侧的操作数的类型要一致，如果不一致，进行隐式类型转化。
+            很多地方都有隐式类型转化，后面遇到一个说一个。
  -->
  <!DOCTYPE html>
  <html lang="en">
@@ -53,7 +82,7 @@
         console.log(typeof a); // undefined
     </script> -->
 
-    <script>
+   <!--  <script>
         // number数据类型
         var age = 66.66;
         console.log(typeof age);
@@ -83,6 +112,118 @@
         var o = 1-.7;
         console.log(u, o) // 0.3 0.30000000000000004
         console.log(u == o) // false  == 比较是否相等
+    </script> -->
+
+   <!--  <script>
+            // 定义字符串类型的数据
+            var name = "wangcai";
+            var address = '北京市';
+            console.log(typeof name); // string
+            console.log(typeof address); // string
+
+            // 使用转义字符
+            var str1 = "\"hello\"";
+            console.log(str1)  // "hello"
+
+            // 外双内单  外单内双
+            var str2 = "'hello'";
+            console.log(str2)  // 'hello'
+            var str3 = '"hello"';
+            console.log(str3)  // "hello"
+
+            // 常用的转义字符
+            var str4 = "hello \n world~";
+            console.log(str4)
+
+            // 通过下标来获取字符串中某个字符
+            var str5 = "hello world";
+            // []里面写下标 就可以获取这个下标对应的字符
+            console.log(str5[0])
+            console.log(str5[9])
+
+            // 如果字符串不加单引号或双引号，JS引擎会把它当成变量
+            // var iphone6 = "xxx";
+            var str6 = iphone6;  // 把iphone6当成一个变量
+            // defined 定义的意思
+            console.log(str6); // iphone6 is not defined
+        </script> -->
+
+   <!--  <script>
+            // 布尔类型 boolean 
+            var isMarray = false; // 未婚
+            var isArray = true; // 同意
+            console.log(typeof isMarray); // boolean
+            console.log(typeof isArray);  // boolean
+        </script> -->
+    
+    <!-- <script>
+        // undefined
+        let u;
+        console.log(typeof u); // undefined
+        console.log(u); // undefined
+    </script> -->
+    
+    <!-- <script>
+        // 类型转化
+
+        // 强制类型转化  在JS中有几个内置的构造器
+        // Number  N是大写  可以其它数据类型转成number类型
+       /*  var a = "123";
+        console.log(Number(a)); // 试图把字符串123转成nubmer的123
+        console.log(typeof Number(a)); // number
+
+        var b = "123abc";
+        console.log(Number(b)); // NaN 如果转化不了，得到NaN
+        console.log(typeof Number(b)); // number
+
+        console.log("---------------")
+        console.log(Number(" ")); // 1个空格转化成了0
+        console.log(Number("")); // 空串转化成了0
+        console.log(Number("      ")); // 多个空格转化成了0
+        console.log(Number(true)); // true转化成了1
+        console.log(Number(false)); // false转化成了0
+        console.log(Number(undefined)); // NaN
+        console.log(Number(null)); // 0 
+        console.log(Number("xxxx")); // NaN */
+
+        // String 可以把非stirng类型的数据转化成string类型
+        /* console.log(String(123));  // 字符串123
+        console.log(String(true));  // "true"
+        console.log(typeof String(true));
+        console.log(typeof String(123));  // string */
+
+        // ***** Boolean 可以把一个非Boolean类型的数据转化成boolean
+        /* console.log(Boolean(123)); // true
+        // 以下5种情况会转化成false，其它情况都转化成true
+        console.log(Boolean(""));  // false
+        console.log(Boolean(0));  // false
+        console.log(Boolean(-0));  // false
+        console.log(Boolean(undefined));  // false
+        console.log(Boolean(null));  // false */
+
+        // parseInt 试图把一个数据转成整数
+        /* console.log(parseInt(3.14)) // 3
+        console.log(parseInt("3.14abc")) // 3
+        console.log(parseInt("abc")) // NaN
+        console.log(parseInt("123abc456")) // 123 */
+
+        // parseFloat 试图把一个数据转成小数（浮点数）
+        /* console.log(parseFloat(3)); // 3
+        console.log(parseFloat("3.14abc")); // 3.14
+        console.log(parseFloat("3.1a234")); // 3.1
+        console.log(parseFloat("abc")); // NaN */
+    </script> -->
+
+    <script>
+        // 隐式类型转化
+        var a = 123;
+        var b = "abc";
+        // + 作用1：进行加法计算    作用2：进行字符串的拼接
+        var c = a + b;  // 123本身是nubmer类型  运算时  number类型的123 就 变成了字符串类型的"123"
+        console.log(c)  // 123abc
+        console.log(typeof c)  // string
+
+    
     </script>
 
  </body>

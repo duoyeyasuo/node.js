@@ -1,0 +1,99 @@
+<!-- 
+    任何的编程语言中，只有三种结构：
+        顺序结构
+        选择结构   条件语句  达到某个条件后，再去执行代码
+        循环结构   循环语句  把某片代码执行多次 
+
+    条件语句：
+        在JS中提供了四类条件语句：
+            if 语句
+            if...else 语句
+            if...else if...else 语句
+            switch 语句
+
+    if 语句:
+        if是js中的关键字  1>2   {}是一个代码块  如果条件满足了  就会执行{}里面的代码
+        if(条件表达式){}
+
+    if...else 语句:
+        if(条件表达式){ }else{ }
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+     
+    <script>
+        /* var isLove = true;
+        // ()里面是true 那么就执行{}里面的内容
+        // 4>1   ()里面要么是ture   要么是false
+        if(isLove){
+            alert('是真爱');
+        }else{
+            alert('是骗子');
+        } */
+
+        // ===============================
+
+        /* var toDoWhat = "明天要玩了";
+        var isOK = false;  // 还没有搞定
+        if(!isOK){
+            toDoWhat = "明天还要好好学习";
+        }
+        document.write(toDoWhat) */
+
+        // ===============================
+
+        // 买菜，买点白菜，土豆，西红柿，如果有鸡蛋的话，再买点鸡蛋，如果有苹果，再买点苹果.... 
+        /* var basket = "白菜，土豆，西红柿";
+        var egg = "";  
+        var apply = "";
+        var isEgg = true;
+        var isApply = false;
+        // "" 会默认隐式转化成false
+        if(isEgg){
+            egg = "，鸡蛋"
+        }
+        if(isApply){
+            apply = "，苹果"
+        }
+        document.write("我今天买了"+basket+egg+apply); */
+
+       // ===============================
+
+       /*  var score = 50;
+        if(score < 60){
+            document.write("挂科了~")
+        }else{
+            document.write("啦啦啦，没有挂科~")
+        } */
+
+         // ===============================
+
+        // 大学第一次考试，得分在60分及以上的就不挂科，得分在60分以下的就挂科了，需要重修。
+        /* var name = "wangcai";
+        var score = 68;
+        var res = "";  // 保存最终的结果
+        if(score>=60){
+            res = "通过了，不需要重修"
+        }else{
+            res = "挂科了，需要重修..."
+        }
+        document.write(name+"同学，得分"+score+", "+res) */
+
+    // ===============================
+
+    // 作业
+    // wangcai同学如果考了
+    // 考了100分，给它买一台手机
+    // 考90分以上，给它买新衣服
+    // 考了80分以上，给它100块零花钱
+    // 如果是80分以下，什么都没有
+    // if...else if...else 语句
+    // switch 语句
+    </script>
+ </body>
+ </html>
