@@ -1,0 +1,89 @@
+<!-- 
+    数据类型：
+        为了更好使用内存空间，采用不同的数据，给定不同的类型，从而达到节省内存空间的目的。
+        如：int c = 110;  double d = 3.1434567890;  char c = 'a';
+
+        C语言是强数据类型编程语言，要使用内存空间，先指定类型。 但是JS是弱数据类型语言。
+        var name = "wangcai"; // name变量的数据类型是string
+        var age = 110; // age变量的数据类型是number
+        var ismarry = false; // ismarry变量的数据类型是boolean
+        var a;  // a变量的数据类型是undefiend
+
+    JS中的数据类型：
+        基本数据类型：
+            数值型 number
+            字符中型  string
+            布尔型  boolean
+            undefined 
+            null 
+        引用数据类型：
+            object
+                array
+                function
+
+    typeof 运算符可以查看一个数据的数据类型。
+
+    数值型 number:
+        1) 不管是小数还是整数，都是number数据类型
+        2) 最大值 Number.MAX_VALUE   最小值 Number.MIN_VALUE
+        3) number有10进制，16进制，8进制
+        4) 小数如果是0.xxx 那么0可以不写
+        5) NaN  Not a Number
+        6) JS中不要对小数进行运算  如果想运算，那么先转化成整数
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信:17001100482 JS全栈开发</title>
+ </head>
+ <body>
+     
+   <!--  <script>
+        var name = "wangcai";
+        console.log(typeof name); // string
+
+        var age = 110;
+        console.log(typeof age); // number
+
+        var isMarry = false;
+        console.log(typeof isMarry); // boolean
+
+        var a; 
+        console.log(typeof a); // undefined
+    </script> -->
+
+    <script>
+        // number数据类型
+        var age = 66.66;
+        console.log(typeof age);
+
+        // 最大值 Number.MAX_VALUE   最小值 Number.MIN_VALUE
+        console.log(Number.MAX_VALUE); // 1.7976931348623157e+308  科学计数法
+        console.log(Number.MIN_VALUE); // 5e-324    科学计数法
+
+        // number有10进制，16进制，8进制
+        var m = 1; // 10进制
+        var n = 012; // 以0打头，表示8进制
+        var z = 0xa; // 以0x打头，表示16进制 0 1 2 3 4 5 6 7 8 9 a b c d e f 
+        // console.log打印出来的都是10进制
+        console.log(m, n, z) // 1 10 10
+
+        var k = .333;
+        console.log(k) // 0.333
+
+        // NaN  Not a Number
+        var p = 1;
+        var q = "abc";
+        var l = p*q;
+        console.log(l) // NaN
+
+        // JS中不要对小数进行运算
+        var u = .3;
+        var o = 1-.7;
+        console.log(u, o) // 0.3 0.30000000000000004
+        console.log(u == o) // false  == 比较是否相等
+    </script>
+
+ </body>
+ </html>

@@ -1,0 +1,49 @@
+<!-- 
+    页面引入JS的三种方式：
+        行内 
+        内部 
+        外部
+
+    行内方式写JS代码：
+        <button onclick="alert('hello js')">点击</button>
+        把JS代码作为开始标签的属性
+
+    内部写法：
+        1）在页面上创建一个script标签，一般把这个标签放到最后面。把JS代码写在script标签中。
+        2）这个script标签可以写多个
+        3）可以放到页面中任何位置，通常放到最后面
+
+    外部写法：
+        先创建一个外部的JS，在HTML中引入外部的JS。通过script标签来引入。
+        如果使用script标签引入外部的JS，引时这个标签中不能再写JS代码了，写了也不会执行
+
+    学习时使用内部写法，项目中使用外部写法+内部写法。
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>页面引入JS的三种方式</title>
+</head>
+
+<body>
+    <!-- button是一个HTML按钮标签 -->
+    <!-- 点击按钮弹出hello js -->
+    <!-- 事件三要素：事件源，事件类型，事件处理程序 -->
+    <!-- 给事件源绑定事件类型 -->
+    <button onclick="alert('hello js')">点击</button>
+
+    <script>
+        alert("这是内部写法")
+    </script>
+    <script>
+        alert("这是内部写法")
+    </script>
+    <script src="./out.js">
+        alert(".....")
+    </script>
+</body>
+
+</html>

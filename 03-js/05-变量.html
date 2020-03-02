@@ -1,0 +1,81 @@
+<!-- 
+    单独定义（声明）变量：
+        一次性声明一个变量
+        var name = "wangcai";  var age = 100;
+
+    重复声明：
+        var name = "xx";  var name = "yy";
+
+    遗漏声明：
+        name = "wangcai";
+
+    全局变量和局部变量：
+        普通话和方言
+        分界点是函数
+        局部变量：只能在函数内部被访问到，函数外部是访问不到的
+        全局变量：在函数内外都可以被访问到
+
+        name比较特殊，后面现说。
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>JS全栈开发 微信：17001100482</title>
+ </head>
+ <body>
+     
+    <script>
+        // 1表示一块内存空间中的值   a表示这块内存空间的一个别
+        // 使用var定义一个变量  变量的名是a  变量的值是1
+        // var是JS中的关键字，是用来定义变量（变量名+变量值）的
+        // =  在计算机中赋值运算符  把后面的值赋给前面变量名
+        // var a = 1; 
+        // 对a的操作就是对a这块内存空间的值的操作
+        // console.log(a)
+
+        // var a = 1;
+        // var b = 2;
+        // +  和小学中的数学中的+意义是一样的
+        // = 有右结合性  +有左结合性
+        // var c = a+b;
+        // console.log(c)
+
+        // 单独定义（声明）变量
+        /* var name = "wangcai";  // "wangcai"是字符串  '' 或 "" 代表字符串
+        var age = 100; // 数字类型  100  110 1 2 
+        var address;  // 先声明一个变量
+        address = "北京市";  // 给变量赋值
+        console.log(name, age, address) */
+
+        // 重复声明变量  JS比较灵活  允许重复声明  写代码时一定要避免
+        /* var name = "wangcai";
+        var name = "xiaoqiang";
+        console.log(name) */
+
+        // 遗漏声明  声明一个变量时不使用var  写代码时一定要避免
+        /* name = "wangcai";
+        console.log(name) */
+
+        // 使用function 可以声明一个函数
+        /* function xx(){
+            // 把一个变量声明到一个函数的内容，那这个变量就是局部变量
+            var myname = "wangcai";
+            console.log("函数内部访问：", myname)
+        }
+        xx();
+        // 在函数内部定义的变量，在函数外部是得不到的
+        console.log(myname) // myname is not defined */
+
+        // 全局变量在函数内外都可以补访问
+        var score = 98;  // 全局变量  score是变量名
+        console.log(score); 
+        // getScore 是函数名
+        function getScore(){
+            console.log("函数内部访问：", score)
+        }
+        // 要想让函数起作用，需要调用，函数名()
+        getScore();
+    </script>
+ </body>
+ </html>
