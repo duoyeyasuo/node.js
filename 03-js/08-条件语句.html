@@ -17,6 +17,17 @@
 
     if...else 语句:
         if(条件表达式){ }else{ }
+
+    switch 语句:
+        switch(变量){
+            case 值1：{ 执行的语句; break; }
+            case 值2：{ 执行的语句; break; }
+            case 值3：{ 执行的语句; break; }
+            default:{ 执行的语句; break; }
+        }
+        注意点：
+            1）break不能省略，如果省略了，没有break的case也会执行。
+            2）在switch语句中通常有default分支，default 里面的break可以不写
  -->
  <!DOCTYPE html>
  <html lang="en">
@@ -26,7 +37,7 @@
  </head>
  <body>
      
-    <script>
+    <!-- <script>
         /* var isLove = true;
         // ()里面是true 那么就执行{}里面的内容
         // 4>1   ()里面要么是ture   要么是false
@@ -84,16 +95,83 @@
         }
         document.write(name+"同学，得分"+score+", "+res) */
 
-    // ===============================
+        // ===============================
 
-    // 作业
-    // wangcai同学如果考了
-    // 考了100分，给它买一台手机
-    // 考90分以上，给它买新衣服
-    // 考了80分以上，给它100块零花钱
-    // 如果是80分以下，什么都没有
-    // if...else if...else 语句
-    // switch 语句
+        // 作业
+        // wangcai同学如果考了
+        // 考了100分，给它买一台手机
+        // 考90分以上，给它买新衣服
+        // 考了80分以上，给它100块零花钱
+        // 如果是80分以下，什么都没有
+        // if...else if...else 语句
+        
+        var name = "wangcai"; // 姓名
+        var score = 88;   // 分数
+        var result = "";  // 最后wangcai可以得到什么东西
+        if(score>=80 && score<90){
+            result = "100块";
+        }else if(score>=90 && score<100){
+            result = "新衣服";
+        }else if(score == 100){
+            result = "手机";
+        }else{
+            result = "什么都没有";
+        }
+        // 通知wangcai
+        document.write(name+"考了"+score+"分，给它买:"+result);
+
+    </script> -->
+
+    <script>
+        // =========== switch语句
+        /* var age = 101;
+        switch(age){
+            case 100:{
+                console.log("wangcai 今年"+100+"岁了");
+                break;
+            }
+            case 101:{
+                console.log("wangcai 今年"+101+"岁了");
+                break;
+            }
+            case 102:{
+                console.log("wangcai 今年"+102+"岁了");
+                break;
+            }
+            default:{
+                console.log("wangcai 今年多少岁了，我们不知道~");
+                break;
+            }
+        } */
+
+        // 根据月份判断现在是什么季节  3 ---> 春季   
+        /* let month = 12;
+        if(month===1 || month===2 || month===3){
+            console.log("现在是："+month+"月，处于春季");
+        }else if(month===4 || month===5 || month===6){
+            console.log("现在是："+month+"月，处于夏季");
+        }else if(month===7 || month===8 || month===9){
+            console.log("现在是："+month+"月，处于秋季");
+        }else{
+            console.log("现在是："+month+"月，处于冬季");
+        } */
+
+        let month = 44;  // let也是定义一个变量  const也是定义一个变量（常量）
+        switch(month){
+            case 1:{ console.log("现在是："+month+"月，处于春季"); break; }
+            case 2:{ console.log("现在是："+month+"月，处于春季"); break; }
+            case 3:{ console.log("现在是："+month+"月，处于春季"); break; }
+            case 4:{ console.log("现在是："+month+"月，处于夏季"); break; }
+            case 5:{ console.log("现在是："+month+"月，处于夏季"); break; }
+            case 6:{ console.log("现在是："+month+"月，处于夏季"); break; }
+            case 7:{ console.log("现在是："+month+"月，处于秋季"); break; }
+            case 8:{ console.log("现在是："+month+"月，处于秋季"); break; }
+            case 9:{ console.log("现在是："+month+"月，处于秋季"); break; }
+            case 10:{ console.log("现在是："+month+"月，处于冬季"); break; }
+            case 11:{ console.log("现在是："+month+"月，处于冬季"); break; }
+            case 12:{ console.log("现在是："+month+"月，处于冬季"); break; }
+            default:{ console.log("现在是："+month+"月，处于XXX季"); }
+        }
     </script>
  </body>
  </html>

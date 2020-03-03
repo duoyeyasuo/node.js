@@ -1,0 +1,189 @@
+<!-- 
+    现实生活中也就三大结构：
+        顺序结构
+        选择结构 
+        循环结构
+
+    循环语句：
+        for 循环
+        while循环
+        do..while循环
+
+    for 循环：
+        格式：
+        for(循环变量初始值; 条件表达式(true/false); 步长){
+            循环体（满足了条件后，执行的代码）
+        }
+        注意细节：
+        1）循环变量初始值 只会执行一次， 条件表达式(true/false)和步长计算会执行N次。
+        2）条件表达式满足必须执行循环体，如果不满足，结束循环。
+
+    双重for循环：
+        for循环中嵌套for循环。
+
+    while循环:
+        while(值是布尔类型的表达式(true/false)){
+            循环体
+        }
+        注意细节：
+        1）()中必须放返回true或false的表达式
+        2）如果不是，会发生隐式类型转化，有种情况转化成false: "", 0, -0, undeifned, null
+        3）如果是true是，就执行循环体中的代码，如果是fasle就不执行循环体中的代码
+        4）如果()里面一直是true,就会出现所谓的死循环
+        5）{}中进行条件判断，如果条件不满足，返回false，循环结束了
+
+    do..while循环:
+        自行研究一下
+
+    像if  for如果后面只有一条语句，{}可以不写，但是你最好写上去。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+</head>
+
+<body>
+
+    <!-- <script>
+        // ========== for循环
+        // 循环变量初始值(只会执行一次); 条件表达式(true/false); 步长
+        // i当作是计数器   只要条件表达式是ture  立即执行循环体
+        // 循环体执行完后，执行i++，i++之后，i的值肯定是1
+        // 然后再骈执行条件表达式  i<100  条件满足  立即执行循环体
+        // ....
+        /* for(let i=0; i<100; i++){
+            document.write((i+1)+"<br />");
+        } */
+
+        // ==========
+
+        // wangcai 一圈是400米  要跑5圈  我想知道你跑了多少米？
+        /* var name = "wangcai";  // 姓名
+        var distance = 0;  // 最终跑了多少米
+        for(var i=1; i<=5; i++){
+            // distance = distance + 400;
+            distance += 400;
+        }
+        document.write(name+"跑了"+(i-1)+"圈，共计"+distance+"米。") */
+
+        // ==========
+
+        // 像if  for如果后面只有一条语句，{}可以不写，但是你最好写上去。
+        /* var isLove = false;
+        if(isLove){
+            console.log("是真爱") 
+        }
+        for(var i=0; i<=5; i++)
+            console.log(i)
+            console.log("*****") */
+
+        // ==========
+        // 使用for循环计算1~100的和
+        /* var sum = 0;
+        for(var i=1; i<=100; i++){
+            sum += i;
+        }
+        console.log(sum) // 5050 */
+        
+    </script> -->
+
+    <!-- <script>
+        // 多重for循环
+        /* 
+            打印出如图形
+            *
+            * *
+            * * *
+        */
+        // i变量可以控制行数
+        /* for(var i=0; i<3; i++){
+            // document.write("这是第"+(i+1)+"行<br/>");
+            // document.write("* <br/>");
+            // 里面的for循环控制每一行有多少个*
+            for(var j=0; j<i+1; j++){
+                document.write("* ")
+            }
+            // 一行结束就来一个换行
+            document.write("<br/>");
+        } */
+
+        // ====================
+
+        /* 
+           打印出如图形
+           * * *
+           * * *
+           * * *
+       */
+        /*  for(var i=0; i<3; i++){
+             for(var j=0; j<3; j++){
+                 document.write("* ")
+             }
+             document.write("<br/>");
+         } */
+
+        // ==================
+
+        // 打印九九乘法表
+        // 在页面上打印  C++
+        /* for(var i=1; i<=9; i++){  // 行数
+            for(var j=1; j<=i; j++){  // 列数
+                document.write(j+"*"+i+"="+i*j+" ");
+            }
+            document.write("<br/>");
+        } */
+
+        // 在控制台中打印
+        var str = "";  // str表示最后的九九乘法表
+        for (var i = 1; i <= 9; i++) {  // 行数
+            for (var j = 1; j <= i; j++) {  // 列数
+                // console.log(j+"*"+i+"="+i*j)
+                str += j+"*"+i+"="+i*j;
+                str += " ";
+            }
+            str += "\n";
+        }
+        console.log(str)
+    </script> -->
+
+    <script>
+        // 死循环
+        /* while(true){
+            // 如果是ture，一直执行循环体，不会停下来
+            // 项目中一定不能出现死循环
+            console.log("....")
+        } */
+
+        // ====================
+       /*  var age=10;
+        while(age<18){
+            console.log("xxxx");
+            age++;
+        } */
+
+        // =======================
+
+        /* var i = 0;
+        var str = "";
+        while(i<8){
+            i++;
+            str += "<li>商品</li>\n"
+        }
+        console.log(str) */
+
+        // =======================
+        var name = "wangcai";
+        var dis = 0;
+        var i=0; 
+        while(i<4){
+            dis += 400;
+            i++;
+        }
+        console.log(dis)
+    </script>
+</body>
+
+</html>

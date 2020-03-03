@@ -1,0 +1,56 @@
+<!-- 
+    跳转语句：
+        break
+        continue
+        return 一般在函数中使用
+        标签跳转  淘汰 没有用  破坏程序的结构 
+
+    break：
+        中断，停止
+        在条件语句中，switch中break也表示终止后面的case。
+        在循环语句中，表示直接跳出for循环。或理解与终止for循环。
+    
+    continue：
+        继续
+        在循环语句中，结束本次循环，继续后面的循环。
+
+    break和continue在其它地方的应用场景，后面遇到了，再说~
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+     
+    <script>
+        // break的使用
+
+        // wangcai  一圈400米  计划跑5圈   跑了两圈后  不想跑了  回宿舍
+        /* var name = "wangcai";
+        var distance = 0;
+        for(var i=0; i<5; i++){
+            if(i==2){
+                // 将要跑第三圈  终止循环
+                break;
+            }
+            distance += 400;
+        }
+        console.log(name+"跑了"+distance+"米") */
+
+        // ==================
+        var name = "wangcai";
+        var distance = 0;
+        for(var i=0; i<5; i++){
+            if(i==2){
+                // 将要跑第三圈  终止每三圈  继续后面的循环
+                continue;
+            }
+            distance += 400;
+        }
+        console.log(name+"跑了"+distance+"米")
+    </script>
+
+ </body>
+ </html>
