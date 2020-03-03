@@ -16,6 +16,7 @@ ECMAScript：
     循环语句
         xxx for 
     函数
+    对象
     数组
     字符串
 DOM：

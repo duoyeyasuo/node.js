@@ -1,0 +1,63 @@
+<!-- 
+    学习JS的MDN文档：https://developer.mozilla.org/zh-CN/
+
+    数组：
+        也是一个容器，是一个特殊的对象，对象是属性（方法）的无序集合。
+        数：数值  组：多个  
+
+    声明数组(对象)：
+        []   []在JS中就表示数组  数组中放很多的数据  字面量
+        new Array()
+        let arr1 = [1,2,3,"hello",true,false,"wangcai"]; // 多一点
+        let arr2 = new Array(1,2,3,"hello",true,false,"wangcai"); // 少一点
+
+    元素和下标：
+        数组中每一个数据，叫元素，每一个元素都有下标，下标是从0开始的。下标也叫索引。
+
+    通过索引访问数组中某一个元素：
+        arr1[0] // 得到数组中第1个元素  1
+
+    数组中很多方法，操作数组：
+        在计算机，看到操作两个字，就想到增删改果。
+        length  查看数组中有多少个元素
+        push  向数组最后面添加一个元素
+        ... 
+        DOM时，用到哪了，查MDN上查，这个方法是什么意思
+        有30多个方法，记不住，
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+     
+    <script>
+        // 使用arr1变量引用后面的数组
+        // let arr1 = [1,2,3,"hello",true,false,"wangcai"]; // 数组
+        // console.log(arr1[0]) // 访问第1个元素  1
+
+        // ========================
+
+        // 通过方法操作数组  数组是特殊的对象（属性和方法）
+        var fruits = ['Apple', 'Banana', "Origin"];
+        // console.log(fruits.length); // 查看数组中有多少个元素   2
+
+        // 遍历  就是把数组中的元素一个个取出来
+        // for(var i=0; i<fruits.length; i++){
+        //     console.log(fruits[i])
+        // }
+
+        // push 在数组的最后面添加一个元素
+        fruits.push("xxx")
+        console.log(fruits);
+
+
+        // ========================
+
+        // let arr2 = new Array(1,2,3,"hello",true,false,"wangcai");
+    </script>
+
+ </body>
+ </html>
