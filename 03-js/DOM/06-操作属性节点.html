@@ -1,0 +1,66 @@
+<!-- 
+    节点类型：元素节点，属性节点，文本节点
+
+    由于属性是们于元素节点中的，所以要想得到属性节点，必须先获取元素节点。
+
+    操作属性节点：
+        DOM0中操作属性节点
+        DOM1中操作属性节点
+
+    DOM0中操作属性节点：
+        通过对象.属性名进行操作，操作主要指获取与赋值。
+            获取：元素节点.属性名   如：oBox.title  就可以获取oBox这个元素节点上面的title属性节点
+            设置：使用新值，赋给属性节点就OK
+        对于自定义属性，使用DOM0操作是无效的。
+
+    DOM1中操作属性节点：
+        获取：getAttrbute();
+        设置：setAttrbute();
+        对于自定义属性，使用DOM1操作是OK。
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+    <!-- abc="666" 叫自定义属性 -->
+    <div id="box" title="xxx" abc="666">box</div>
+    <img src="" alt="xxxx" id="img">
+ </body>
+ <script>
+     /* // ================ 通过DOM0方式获取属性节点
+     let oBox = document.getElementById("box");
+     let oImg = document.getElementById("img");
+    //  console.dir(oBox);  // dir打印对象用的
+    //  console.dir(oBox.title);  // 获取title属性节点
+     console.log(oImg.alt) */
+
+     /* // ================ 通过DOM0方式给属性节点赋值
+     let oImg = document.getElementById("img");
+     let oBox = document.getElementById("box");
+     oImg.alt = "yyyy";
+     oBox.title = "aaaa" */
+
+    /* // ================ 对于自定义属性，使用DOM0操作是无效的
+    let oBox = document.getElementById("box");
+    // console.log(oBox.abc);  // undefined
+    oBox.abc = 888;  // 无效 */
+
+    /* // ================ 通过DOM1方式获取属性节点
+    let oBox = document.getElementById("box");
+    console.log(oBox.getAttribute("title")); //xxx */
+
+    /* // ================ 通过DOM1方式设置属性节点
+    let oBox = document.getElementById("box");
+    oBox.setAttribute("title","666") */
+
+    // ================ 对于自定义属性，使用DOM1操作是有效的
+    let oBox = document.getElementById("box");
+    // alert(oBox.getAttribute("abc"))
+    oBox.setAttribute("abc","888")
+ </script>
+ </html>

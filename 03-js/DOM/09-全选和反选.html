@@ -1,0 +1,77 @@
+<!-- 
+    
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+</head>
+
+<body>
+    <button>全选</button>
+    <button>取消全选</button>
+    <button>反选</button><br>
+    <!-- 当input上面加上 checked="true" 属性节点 框就被选中了 -->
+    <input type="checkbox"> <br>
+    <input type="checkbox"><br>
+    <input type="checkbox"><br>
+    <input type="checkbox"><br>
+    <input type="checkbox"><br>
+    <input type="checkbox"><br>
+</body>
+<script>
+    let btns = document.getElementsByTagName("button");
+    let inputs = document.getElementsByTagName("input");
+
+    // 全选
+    btns[0].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            // DOM0方式设置属性节点  inputs[i]表示每一个input
+            inputs[i].checked = true;
+        }
+    }
+    // 取消全选
+    btns[1].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            inputs[i].checked = false;
+        }
+    }
+    // 反选
+    btns[2].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            // if(inputs[i].checked){
+            //     inputs[i].checked = false;
+            // }else{
+            //     inputs[i].checked = true;
+            // }
+
+            // 经典代码
+            inputs[i].checked= !(inputs[i].checked)
+        }
+    }
+</script>
+
+</html>
+
+<script>
+    let btns = document.getElementsByTagName("button");
+    let inputs = document.getElementsByTagName("input");
+    btns[0].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            inputs[i].checked = true;
+        }
+    }
+    btns[1].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            inputs[i].checked = false;
+        }
+    }
+    btns[2].onclick = function () {
+        for(let i=0; i<inputs.length; i++){
+            inputs[i].checked= !(inputs[i].checked)
+        }
+    }
+</script>

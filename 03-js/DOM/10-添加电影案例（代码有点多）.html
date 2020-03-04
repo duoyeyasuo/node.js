@@ -1,0 +1,224 @@
+<!-- 
+    
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{ margin: 0; padding: 0; }
+         .box{
+             width: 320px;
+             height: 170px;
+             margin: 50px auto;
+             /* border: 1px solid red; */
+         }
+         .box .addBtn{
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 30px;
+            border: 0;
+            outline: none;
+            border-radius: 10px;
+            background-color: skyblue;
+            color: #fff;
+            font-weight: bold;
+         }
+         .box table{
+             border: 1px solid gold;
+             margin: 10px auto;
+             border-collapse: collapse;
+         }
+         .box th, .box td{
+             border: 1px solid gold;
+             width: 80px;
+             padding: 5px 0;
+             text-align: center;
+         }
+         .box th{
+             background-color: skyblue;
+             color: #fff;
+         }
+         /* ============== cover =============== */
+         .cover{
+             /* 让遮罩层隐藏掉 */
+             display: none;
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: rgba(0, 0, 0, .5);
+         }
+         .dialog{
+             /* 默认让dialog 隐藏掉 */
+             display: none;
+             /* 如果没有设置参考点，参考点就body */
+             position: absolute;
+
+             /* 由于 dialog 设置了position: absolute;  此时dialog就可以作为参考点 */
+             top: 50%;
+             left: 50%;
+             width: 400px;
+             height: 260px;
+             background: #fff;
+             margin-top: -130px;
+             margin-left: -200px;
+             border-radius: 5px;
+         }
+         .dialog h3{
+             background-color: skyblue;
+             text-align: center;
+             height: 35px;
+             line-height: 35px;
+         }
+         .dialog div{
+             margin: 20px 0 0 20px;
+         }
+         .dialog input{
+             width: 250px;
+             height: 30px;
+             border-radius: 3px;
+             border: 1px solid #ccc;
+         }
+         .dialog .comBtn{
+             display: block;
+             width: 100px;
+             height: 30px;
+             margin: 15px auto 0;
+         }
+         .dialog span{
+             position: absolute;
+             top: 5px;
+             right: 8px;
+             font-size: 20px;
+             font-weight: bold;
+             cursor: pointer;
+         }
+     </style>
+ </head>
+ <body>
+    <div class="box">
+        <button class="addBtn" id="addBtn">添加电影</button>
+        <table>
+            <thead>
+                <tr>		
+                    <th>电影名称</th>
+                    <th>领衔主演</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AAA</td>
+                    <td>AAA</td>
+                    <!-- href="javascript:;" 用来阻止默认事件的 -->
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>AAA</td>
+                    <td>AAA</td>
+                    <!-- href="javascript:;" 用来阻止默认事件的 -->
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+                <tr>
+                    <td>AAA</td>
+                    <td>AAA</td>
+                    <!-- href="javascript:;" 用来阻止默认事件的 -->
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cover" id="cover"></div>
+    <!-- dialog 弹框 -->
+    <div class="dialog" id="dialog">
+        <h3>添加电影</h3>
+        <div>
+            <label for="moveName">电影名称：</label>
+            <input type="text" id="moveName" placeholder="请输入电影名称">
+        </div>
+        <div>
+            <label for="star">电影主演：</label>
+            <input type="text" id="star" placeholder="请输入电影主演">
+        </div>
+        <button class="comBtn" id="comBtn">完成</button>
+        <span class="close" id="close">X</span>
+    </div>
+ </body>
+ <script>
+     let addBtn = document.getElementById("addBtn"); // 添加电影按钮
+     let cover = document.getElementById("cover"); // 遮罩层
+     let dialog = document.getElementById("dialog"); // 弹出框
+     let close = document.getElementById("close"); // 关闭按钮
+     let comBtn = document.getElementById("comBtn"); // 完成按钮
+     let moveName = document.getElementById("moveName"); // 电影名称
+     let star = document.getElementById("star"); // 电影主演
+     let as = document.getElementsByTagName("a");  // 删除电影
+     let tbody = document.getElementsByTagName("tbody")[0];  // 删除电影
+
+     // 删除电影
+     for(let i=0; i<as.length; i++){
+         as[i].onclick = function(){
+            tbody.removeChild(this.parentElement.parentElement);
+         }
+     }
+
+     // 点击添加电影
+     addBtn.onclick = function(){
+        // 需要让cover，dialog显示  JS操作CSS的行内样式
+        cover.style.display = "block";
+        dialog.style.display = "block";
+     }
+
+     // 点击关闭按钮
+     close.onclick = function(){
+        // 需要让cover，dialog隐藏  JS操作CSS的行内样式
+        cover.style.display = "none";
+        dialog.style.display = "none";
+     }
+
+     // 完成添加电影
+     comBtn.onclick = function(){
+        // moveName.value 得到字符串  字符串中有很多的方法  trim()去除两边的空格
+        let str1 = moveName.value.trim();
+        let str2 = star.value.trim();
+        if(str1 && str2){
+            // 点击了完成，让dialog和cover隐藏掉
+            cover.style.display = "none";
+            dialog.style.display = "none";
+
+            // 创建tr 
+            let tr = document.createElement("tr");
+            tbody.appendChild(tr);
+
+            // 利用for循环一次性创建3个td
+            for(let i=0; i<3; i++){
+                let td = document.createElement("td");
+                tr.appendChild(td)
+                if(i===0){
+                    td.innerHTML = str1;
+                }else if(i==1){
+                    td.innerHTML = str2;
+                }else{
+                    let a = document.createElement("a");
+                    a.href="javascript:;"; // 阻止默认事件的
+                    a.innerHTML = "删除";
+                    a.onclick = function(){
+                        tbody.removeChild(this.parentElement.parentElement)
+                    }
+                    td.appendChild(a);
+                }
+            }
+            moveName.value = "";
+            star.value = "";
+        }else{
+            alert("电影名称或电影主演不能为空~")
+        }
+     }
+ </script>
+ </html>

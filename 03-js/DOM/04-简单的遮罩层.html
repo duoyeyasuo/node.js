@@ -1,0 +1,43 @@
+<!-- 
+    
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         .cover{
+             position: absolute; /* 绝对定位 */
+             /* 遮罩层撑满整个页面 */
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background-color: rgba(0,0,0,.4);
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <button id="btn">登录</button>
+     <!-- <div class="cover"></div> -->
+     <script>
+         // 获取登录的按钮   oBtn  o表示是一个对象  object
+         var oBtn = document.getElementById("btn");
+         oBtn.onclick = function(){
+             // 点击时创建出这招层  oDiv  小驼峰命名法  首字母大写 后面遇到一个单词 首字母大写
+             var oDiv = document.createElement("div");
+             //  console.log(oDiv);
+             // 因为class在JS中是一个关键字，css中class起了一个别名就是className
+             oDiv.className = "cover"; // 给div加上class属性
+             document.body.appendChild(oDiv);
+         }
+     </script>
+ 
+ </body>
+ 
+ </html>
+ 

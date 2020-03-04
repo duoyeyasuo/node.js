@@ -1,0 +1,30 @@
+<!-- 
+    注意：换行回车也是文本节点，这一点需要注意。
+
+    文本节点也是位于元素节点里面的，所以说要想获取文本节点，也是需要获取元素节点。
+
+    操作文本节点：
+        innerHTML  获取文本节点
+        获取：oH1.innerHTML
+        设置：oH1.innerHTML = "xxxx"
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+    <div class="box">
+        <h1>hello DOM</h1>
+    </div>
+ 
+ </body>
+ <script>
+     let oH1 = document.getElementsByTagName("h1")[0];
+     //  alert(oH1.innerHTML) // 获取
+     oH1.innerHTML = "hello JQ";
+ </script>
+ </html>

@@ -1,0 +1,62 @@
+<!-- 
+    在监听器中都有一个this，表示当前的事件源。
+
+    可以使用for循环给多个元素节点注册事件。
+
+    JS可以通过className操作css中的类。
+
+    一刀切。
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{ margin: 0; padding: 0; }
+         ul{ list-style-type: none; }
+         li{
+             width: 50px;
+             height: 50px;
+             line-height: 50px;
+             text-align: center;
+             border: 6px solid skyblue;
+             border-radius: 50%; /* 让边框变圆 */
+             float: left;
+             background-color: #CCC;
+         }
+         li:hover{
+             cursor: pointer;
+         }
+         li.on{
+             background-color: gold;
+             border: 6px solid lawngreen;
+         }
+     </style>
+ </head>
+ <body>
+    <ul>
+        <li class="on">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+ </body>
+ <script>
+ // 利用for循环给每一个li注册点击事件
+ let lis = document.getElementsByTagName("li"); // 伪数组
+ for(let i=0; i<lis.length; i++){
+     lis[i].onclick = function(){
+         // JS操作CSS之操作class类  一刀切  把所有li上面的类都去掉
+         for(let j=0; j<lis.length; j++){
+             lis[j].className = ""; // 把所有li上面的类都去掉
+         }
+         // 给当前选中的li加上这个类
+         //  this 表示当前的li
+         this.className = "on";
+     }
+ }
+ </script>
+ </html>

@@ -1,0 +1,77 @@
+<!-- 
+    
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        list{ list-style-type: none; }
+        .box{ text-align: center; }
+        #list li{
+            width: 80%;
+            border-bottom: 2px solid skyblue;
+            margin: 0 auto;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button id="add">添加一行</button>
+        <input type="text" id="text" placeholder="请输入你要删除的行">
+        <button id="remove">删除</button>
+    </div>
+    <ul id="list">
+
+    </ul>
+
+</body>
+<script>
+    var oAdd = document.getElementById("add");
+    var oRemove = document.getElementById("remove");
+    var oText = document.getElementById("text");
+    var oList = document.getElementById("list");
+    var addNum = 0; // 计数器
+    // 添加操作
+    oAdd.onclick = function(){
+        addNum++;
+        var oLi = document.createElement("li");
+        // 操作文本节点  <li>1</li>
+        oLi.innerHTML = addNum; // 设置文本节点
+        oList.appendChild(oLi);
+    }
+    // 删除操作 
+    oRemove.onclick = function(){
+        // oText.value 通过DOM0的方式获取input框上面的value属性
+        // 当然也可以使用 oText.getAttrbute("value")
+        var val = oText.value;  // val是input框中的数据
+        // alert(typeof val)  // 如果没有写 获取是一个空串
+        // val a 1 2 3 ... 会隐式转化成true   有5种情况会转化成false: 0 -0 "" undefined null
+        if(val){
+            // 判断一下，必须是数字  
+            // 如果是数字 parseInt(val) 和 val是相等的
+            // 如果不是数字 parseInt(val) 就是NaN   
+            if(parseInt(val) == val){
+                // 说明输入的数字
+                if(val>=1 && val <=addNum){
+                    // 说明得到一个正确的数据
+                    // alert(val);
+                    var oLis = oList.getElementsByTagName("li");
+                    oList.removeChild(oLis[val-1])
+                }else{
+                    alert("请输入正确的行数~")
+                }
+            }else{
+                alert("不能输入非数字的字符~")
+            }
+        }else{
+            alert("输入的内容不能为空~")
+        }
+    }
+</script>
+</html>
