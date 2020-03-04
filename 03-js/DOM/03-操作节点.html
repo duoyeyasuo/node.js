@@ -1,0 +1,64 @@
+<!-- 
+    DOM节点分三类：
+        元素节点
+        属性节点
+        文本节点
+
+    操作：增删改查
+
+    操作元素节点：
+        创建：createElment  创建的元素节点，仅仅是创建出来了，并没有挂载到DOM树上。
+        挂载：appendChild 把创建出来的元素挂载到某个标签的最后面的
+             insertBefore 把元素添加到指定元素的前面
+        克隆：cloneNode  cloneNode()只能克隆最外层的标签，叫浅克隆 
+             想把里面的所有的元素都进行克隆，需要深克隆   cloneNode(true)
+        移除：removeChild  删除一个节点  只有父元素才有权力去删除
+
+    操作属性节点：
+
+    操作文本节点：
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+</head>
+
+<body>
+    <button id="btn">操作节点</button>
+    <ul id="list">
+        <li id="html">HTML</li>
+    </ul>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // ============  appendChild
+           /*  let div = document.createElement("div"); // 创建一个div元素节点
+            document.body.appendChild(div); */
+
+            // ===========  insertBefore
+            /* let ul = document.getElementById("list"); // 得到父元素ul
+            let html = document.getElementById("html"); // 得到已存在li元素
+            let newli = document.createElement("li");// 创建出一个li元素节点
+            ul.insertBefore(newli, html); */
+
+            // ============ cloneNode
+            /* let ul = document.getElementById("list"); // 得到父元素ul
+            let newUl = ul.cloneNode(true); // true代表深克隆
+            document.body.appendChild(newUl); */
+
+            // ============ removeChild
+           /*  let ul = document.getElementById("list");
+            let html = document.getElementById("html");
+            // removeChild 必须要传入你要删除的节点
+            // ul.removeChild(); // Failed to execute 'removeChild' on 'Node': 1 argument required, but only 0 present.
+            ul.removeChild(html); */
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,8 +1,82 @@
 <!-- 
-    
+    JS有三个部分组成：
+        ECMAScript 
+        BOM
+        DOM
 
+    认识DOM：
+        Document Object Model
+            Document 文档：HTML文档
+            Object 对象：标签/元素 是对象   HTML文档中的所有标签/元素都是对象  得到它  通过document大对象得到里面的元素对象
+            Model 模型：树模型 想让页面渲染出来，那么标签需要先加载成树模型，浏览器根据这个树模型进行渲染。
+
+        节点：
+            在HTML标签形成一颗树后，上面每个元素叫节点。节点类型有很多。常见有三类：
+            元素节点：整体元素标签
+            文本节点：标签中的文本
+            属性节点：开始标签中的属性是属性节点，但是属性节点不会出现在DOM树
+        
+        DOM操作用来做什么:
+           DOM操作就使用JS控制HTML和CSS，从而达到改变页面效果的目的，提升用户体验。
+
+        ECMAScript:
+            ECMA组织制定标准：
+            ES3, ES5, ES6, ES7, ES8....
+
+        DOM版本：
+            DOM0：各大浏览器厂商制定的一个标准，后来W3C组织成立后，采用DOM0标准。
+            DOM1：W3C组织制定
+            DOM2：W3C组织制定
+            DOM3：W3C组织制定
+
+        DOM0:
+            定义了很多的属性和方法，都是在docuemnt文件对象上面的属性或方法。如下：
+            document.write();  // 向页面中写数据  现在基本上不用了
+            document.body;  // 获取整体网页的主体内容
+            document.forms ; // 获取网页上表单元素
+            ...  
+            结论：DOM0中的很多属性和方法，现在基本上不用了，了解就OK了。
+
+        DOM1：
+            树模型中的节点结构
+                常用的节点：元素节点，属性节点，文本节点  可以通过nodeType 返回值来查看一个节点的类型
+                nodeType的返回值：
+                    1：表示节点是元素节点
+                    2：表示节点是属性节点
+                    3：表示是文本节点 
+            节点与节点之间的关系：
+                parentNode: 父节点  所有浏览器中都可以正确得到父节点，不包含换行 ***
+                firstChild: 第1个孩子节点  在有的浏览器中会把换行也解析成一个节点  不好用
+                    解决：firstElementChild  第1个孩子节点  不包含换行  ***
+                lastChild: 最后1个孩子节点
+                    解决：lastElementChild  不包含换行  ***
+                nextSibling: 下一个兄弟节点  基本不用
+                previousSibling: 上一个兄弟节点 基本不用
+                .... 
+                上面的的节点关系，在项目中使用的不多，因为多少有点兼容性问题。但是一个没有兼容性就是parentNode。
+
+            两个标准方法：
+                getElementById
+                getElementByTagName   返回一个伪数组  可以通过索引来获取某个元素节点
+
+            其它方法：
+                getElementsByClassName  有的浏览器不支持  有兼容性问题 
+                getElementsByName 根据标签中的name属性来获取节点  也有兼容性问题 基本不用
+                H5中提供的新的API  等到讲到H5时，再说 
+
+
+        结论：
+            大家只需要记住：
+                getElementById
+                getElementByTagName
+                parentNode
+                firstElementChild
+                lastElementChild
+
+        先得到节点，至于后面做什么，都是后面的内容。
  -->
  <!DOCTYPE html>
+ <!-- 在html标签的上面，还有一个document对象 -->
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -10,8 +84,57 @@
  </head>
  <body>
      
+    <div class="father" id="father">
+        <div class="son">
+            <h1 id="h1">Hello DOM~</h1>
+        </div>
+    </div>
+    <ul id="list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
     <script>
+        // document 是一个对象，是JS中内置的对象，对象是属性（方法）的无序集合
+        // console.log(document)
 
+        // 得到document中id为father的div
+        // var father = document.getElementById("father");
+        // console.log(typeof father); // object
+        // console.log(father); // object
+
+        // DOM
+        // console.log(document.body)
+
+        // nodeType查看一个节点类型
+        /* var father = document.getElementById("father");  // 得到元素节点
+        console.log(father.nodeType); // 1 */
+        // var h1 = document.getElementById("h1"); // 得到元素节点
+        // console.log(h1.firstChild.nodeType);  // 3
+        // console.log(h1.parentNode);  // parentNode节点关系可以使用。
+
+        // 节点关系
+        // let ul = document.getElementById("list"); // 得到ul元素节点
+        // console.log(ul.firstChild); // 获取第1上孩子  #text
+        // console.log(ul.firstElementChild); // <li>HTML</li>
+
+        // 两个标准方法
+        /* let ul = document.getElementById("list");// 得到ul元素节点
+        let lis = document.getElementsByTagName("li"); // 得到页面上所有的li 
+        // lis是一个伪数组   假数组   长的像数组   但是可以通过索引得到数组中某个元素
+        // console.log(lis); // HTMLCollection(3) [li, li, li]
+        console.log(lis[0]); // <li>HTML</li>
+        console.log(lis[1]); // <li>CSS</li> */
+
+        // 得到某个节点内部的所有的节点元素
+        /* let ul = document.getElementById("list");// 得到ul元素节点
+        let lis = ul.getElementsByTagName("li"); // 得到ul节点里面的所有的li */
+
+        // 其它获取页面上元素的方法
+        /* let father = document.getElementsByClassName("father");
+        console.log(father);
+        console.log(father[0]); */
+        document.
     </script>
 
  </body>
