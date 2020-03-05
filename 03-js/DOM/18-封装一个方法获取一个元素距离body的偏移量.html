@@ -1,0 +1,78 @@
+<!-- 
+    
+    封装一方法 叫offsetBOdy(ele)  返回它距离body的偏移量。
+
+    什么时候使用for循环，什么时候使用while循环：
+        知道循环次数，使用for循环。
+        不知道循环次数时，使用while循环。
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{ margin: 0; padding: 0; }
+         .box{
+             width: 400px;
+             height: 400px;
+             border: 2px solid red;
+         }
+         .son{
+             width: 200px;
+             height: 200px;
+             border: 2px solid skyblue;
+             background-color: gold;
+
+             position: absolute;
+             top: 50%;
+             left:50%;
+             margin-top: -100px;
+             margin-left: -100px;
+         }
+     </style>
+ </head>
+ <body>
+    <div class="box" id="box">
+        <div id="son" class="son">son</div>
+    </div>
+ </body>
+ <script>
+     let clientW = document.documentElement.clientWidth;
+     let clientH = document.documentElement.clientHeight;
+     let box = document.getElementById("box");
+     box.style.position = "absolute";  // 以body作为参考点
+     box.style.top = (clientH-400)/2 + "px";
+     box.style.left = (clientW-400)/2 + "px";
+     // 得到小盒子
+     let son = document.getElementById("son");
+    //  console.log(son.tagName) // DIV
+     //  console.log(son.offsetTop); // 100
+     //  console.log(son.offsetLeft);  //100
+
+     // 获取小盒子距离body的偏移量   封装一个方法  offsetBody
+     function offsetBody(el){
+        let t = el.offsetTop;
+        let l = el.offsetLeft;
+        let parentNode = el.offsetParent; // 获取参考点盒子
+
+        while(parentNode && parentNode.tagName !== "BODY"){
+            t += parentNode.offsetTop;
+            t += parentNode.clientTop;
+            l += parentNode.offsetLeft;
+            l += parentNode.clientLeft;
+            parentNode = parentNode.offsetParent;
+        }
+        // return 666;  返回一个number    
+        // return {top:1,left:1}  返回一个对象  可以把多个值放到对象中
+        return {
+            top:t,
+            left:l
+        }
+     }
+     console.log(offsetBody(son)) // {top: 231, left: 301}
+
+ </script>
+ </html>

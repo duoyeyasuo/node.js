@@ -1,0 +1,106 @@
+<!-- 
+    
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>\
+     <style>
+         *{ margin: 0; padding: 0; }
+         html{
+             /* 是document的100% */
+             height: 100%;
+         }
+         body{
+             height: 300%;
+             background: -webkit-linear-gradient(top,gold,skyblue,pink);
+         }
+         img{
+             display: none;
+             position: fixed;
+             right: 10px;
+             top: 70%;
+             border-radius: 50%;
+             width: 50px;
+             height: 50px;
+         }
+     </style>
+ </head>
+ <body>
+    <img id="nav" src="./imgs/top.jfif" alt="">
+ </body>
+ <script>
+     let htmlDocument = document.documentElement;
+     let nav = document.getElementById("nav");
+     function handle(){
+         let scroH = htmlDocument.scrollTop; // 得到卷去的高度
+         let cliH = htmlDocument.clientHeight; // 得到一屏的高度
+         nav.style.display = scroH >= cliH ? "block" : "none";
+     };
+     window.onscroll = handle;
+     nav.onclick = function(){
+        // 点一次立马把nav隐藏掉
+        nav.style.display = "none";  
+        window.onscroll = null; // 把scroll事件设置为null  就不会走handle逻辑
+        //  htmlDocument.scrollTop = 0;  没有动画效果  立马就回到顶部 
+        let step = 300;
+        let timer = setInterval(function(){
+            let curT = htmlDocument.scrollTop;
+            curT -= step;
+            // 如果加到顶部后，需要关闭定时器
+            if(curT <= 0){
+                clearInterval(timer);  // 清除定时器
+                window.onscroll = handle; // 回到顶部后，重新设置scroll事件
+                return; // 结束程序
+            }
+            // 让htmlDocument.scrollTop慢慢变成0
+            htmlDocument.scrollTop = curT
+        },17);
+     }
+ </script>
+ <!-- <script>
+     let htmlDocment = document.documentElement;  // 得到html文档
+     let nav = document.getElementById("nav");  // 得到回到顶部的图片
+
+     // 判断nav小图标是显示还是隐藏
+     function handle(){
+        let scroH = htmlDocment.scrollTop; // 得到卷去的高度
+        let cliH = htmlDocment.clientHeight; // 得到一屏的高度
+        nav.style.display = scroH >= cliH  ? "block" : "none";
+     }
+     // scroll 事件  当滚动滚动条时，会触发scroll事件
+     window.onscroll = handle;
+
+     // 注册点击事件
+     nav.onclick = function(){
+        // 当点击时 立即把图片隐藏掉
+        nav.style.display = "none";
+        window.onscroll = null; // 必须定时器的累加
+
+        let step = 3;
+        let timer = setInterval(function(){
+            // 目的：让卷去的高度逐渐变小
+            let curT = htmlDocment.scrollTop; // 得到当前的卷去的高度
+            if(curT <= 0){  // 回到顶部
+                clearInterval(timer); // 清除定时器  不用了，一定要清除
+                window.onscroll = handle;
+                return; // 结束程序
+            }
+            curT -= step;
+            htmlDocment.scrollTop = curT;
+        },17);
+     }
+
+
+
+
+    // 定时器
+    /* setInterval(function(){
+        console.log("xxxx")
+    },1000); */  // 1000表示1000毫秒 = 1秒
+ </script> -->
+ </html>
+

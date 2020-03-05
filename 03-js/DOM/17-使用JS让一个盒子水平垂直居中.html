@@ -1,0 +1,63 @@
+<!-- 
+    
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{ margin: 0; padding: 0; }
+         .box{
+             width: 400px;
+             height: 400px;
+             border: 2px solid red;
+         }
+         .son{
+             width: 200px;
+             height: 200px;
+             border: 2px solid skyblue;
+             background-color: gold;
+
+             /* 通过CSS代码设置一个盒子水平垂直居中 */
+             /* 小盒子的参才点是大盒子 */
+             position: absolute;
+             top: 50%;
+             left:50%;
+             margin-top: -100px;
+             margin-left: -100px;
+         }
+     </style>
+ </head>
+ <body>
+    <div class="box" id="box">
+        <div id="son" class="son">son</div>
+    </div>
+ </body>
+ <script>
+     // 让一个盒子水平垂直居中
+     // 得到当前屏幕的宽高
+     let clientW = document.documentElement.clientWidth;
+     let clientH = document.documentElement.clientHeight;
+     // 得到盒子
+     let box = document.getElementById("box");
+     box.style.position = "absolute";  // 以body作为参考点
+     box.style.top = (clientH-400)/2 + "px";
+     box.style.left = (clientW-400)/2 + "px";
+
+     // 获取到box距离body的偏移量
+    //  console.log(box.offsetTop) // 129
+    //  console.log(box.offsetLeft) // 199
+
+    // 得到小盒子
+    let son = document.getElementById("son");
+    // offsetTop offsetLeft 距离参考点的偏移量
+    console.log(son.offsetTop); // 100
+    console.log(son.offsetLeft);  //100
+
+
+     // 想法：封装一方法 叫offsetBOdy(ele)  返回它距离body的偏移量
+ </script>
+ </html>

@@ -1,0 +1,101 @@
+<!-- 
+    图片的懒加载：
+        先加载一屏或二屏的图片，当用户再向下滚动滚动条时，再加载其它的图片，叫图片的懒加载。
+
+    分单张图片的懒加载和多张图片的懒加载：
+        先学习单张图片的懒加载。
+
+    为了让首页面的第1屏尽快显示出来，先加载一屏或二屏的所需要的图片，后面的图片，当用户滚动滚动条时，请新请求。
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         html{
+             height: 100%;
+         }
+         body{
+             height: 300%;
+         }
+         .imgbox{
+             width: 1000px;
+             height: 475px;
+             margin: 1000px auto;
+             background-color: #CCC;
+         }
+         .imgbox img{
+             display: none;
+         }
+     </style>
+ </head>
+ <body>
+    <!-- 做图片的懒加载，需要给图片包一个盒子，一般设置这个盒子的背景是灰色的 -->
+    <div class="imgbox">
+        <!-- ./imgs/01.jpg src不能立马赋值，需要在合适时机进行赋值 -->
+        <!-- data-img="./imgs/01.jpg" 是自定义属性 保存了图片的路径 -->
+        <!-- 在合适的时机，取出data-img的值，赋值给src，完成图片的加载 -->
+        <img src="" data-img="./imgs/01.jpg" alt="">
+    </div>
+ </body>
+ <script>
+    let imgBox = document.querySelector(".imgbox");
+    let img = document.querySelector("img"); 
+
+    // 获取一个元素距离body的偏移量
+    function offsetBody(el){
+        let t = el.offsetTop;
+        let l = el.offsetLeft;
+        let parentNode = el.offsetParent; // 获取参考点盒子
+        while(parentNode && parentNode.tagName !== "BODY"){
+            t += parentNode.offsetTop;
+            t += parentNode.clientTop;
+            l += parentNode.offsetLeft;
+            l += parentNode.clientLeft;
+            parentNode = parentNode.offsetParent;
+        }
+        return {
+            top:t,
+            left:l
+        }
+     }
+    
+    // 实现图片的懒加载
+    function lazyImg(curImg){
+        console.log("....")
+        // getAttribute()  可以获取自定义属性
+        let trueSrc = curImg.getAttribute("data-img");
+        // console.log(trueSrc);
+        curImg.src = trueSrc;
+
+        // 当图片src赋完值，会触发load事件
+        curImg.onload = function(){
+            curImg.style.display = "block";
+        }
+        // 给图片元素对象上添加一个自定义属性是true
+        curImg.isLoad = true;
+    }
+    window.onscroll = function(){
+        let HTML = document.documentElement;
+        let clientH = HTML.clientHeight;// 得到一屏的高度
+        let scrollT = HTML.scrollTop; // 得到卷去的高度
+        let H = scrollT + clientH; // 卷去的高度 + 一屏的高度
+        let imgH = imgBox.offsetHeight + offsetBody(imgBox).top;  // 1475
+        // console.log("卷去的高度 + 一屏的高度:",H)
+        // console.log("图片的相对于body的top偏移量",offsetBody(imgBox).top); // 1000
+        // console.log("图片的clientHeight:",imgBox.offsetHeight) // 475
+        
+        // 判断是否加载过，如果加载过，就直接结束程序
+        /* if(img.isLoad){
+            return
+        } */
+        if(img.isLoad) return;
+        
+        if(H >= imgH){
+            // 图片完全显示出来
+            lazyImg(img);
+        }
+    }
+ </script>
+ </html>
