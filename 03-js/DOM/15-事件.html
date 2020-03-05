@@ -1,0 +1,116 @@
+<!-- 
+    事件流与事件传播：
+        当盒子嵌套时，给里面的盒子注册一个事件，当事件发生时，事件会流向外面的盒子。
+        默认情况下，事件是从内向外传播的，传播方向是：
+            son ==> father ==> body ==> document ==> window   冒泡型传播
+
+    DOM0绑定的事件：
+        都是采用冒泡型传播，不能改变传播方向。
+
+    DOM2绑定的事件：
+        默认情况下，DOM2绑定的事件，也是冒泡型传播，可以通过一个参数，来改变传播方向。
+        son.addEventListener("click",function(){ console.log("son...") },true);
+        根据addEventListener的第三个参数，如果true就是从外向内传播   捕获型传播
+
+    事件对象：
+        抛一问题：点击son时，我想要得到鼠标的位置。？？？？
+                 按了键盘上某个键，如何知道你按了如个键盘？？？？
+
+        当事件发生时，关于当前事件的一些信息，保存在一个对象中，这个对象 叫事件对象。
+
+        如何得到事件对象？
+            监听器的第1个参数就是事件对象。  IE低版本浏览器是通过window.event来获取。
+
+        事件对象中常用的属性和方法：
+            console.log(e.target); // 事件源
+            console.log(e.type); // 事件类型
+            console.log(e.clientX); // 鼠标的x坐标，相对于整体视口来说的
+            console.log(e.clientY); // 鼠标的y坐标，相对于整体视口来说的
+            e.preventDeafult(); // 取消默认事件  a
+            e.stopPropagation(); // 阻止事件冒泡
+            console.log(e.keyCode); // 键码
+
+    事件中的this:
+
+    阻止默认事件：
+
+    动画：
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{ margin: 0; padding: 0; }
+         .father{
+             width: 300px;
+             height: 300px;
+             background-color: gold;
+             margin-top: 50px;
+             margin-left: 50px;
+         }
+         .son{
+             width: 100px;
+             height: 100px;
+             background-color: skyblue;
+         }
+     </style>
+ </head>
+ <body>
+    
+    <div class="father">
+        <div class="son">
+            son
+        </div>
+    </div>
+ 
+ </body>
+ <!-- <script>
+     // ================= 事件流与事件传播
+     let son = document.querySelector(".son");
+     let father = document.querySelector(".father");
+     /* son.onclick = function(){ console.log("son...") };
+     father.onclick = function(){ console.log("father...") };
+     document.body.onclick = function(){ console.log("body...") };
+     document.onclick = function(){ console.log("document...") };
+     window.onclick = function(){ console.log("window...") }; */
+
+    //  DOM2的事件绑定
+    son.addEventListener("click",function(){ console.log("son...") },true);
+    father.addEventListener("click",function(){ console.log("father...") },true);
+    document.body.addEventListener("click",function(){ console.log("body...") },true);
+    document.addEventListener("click",function(){ console.log("document...") },true);
+    window.addEventListener("click",function(){ console.log("window...") },true);
+ </script> -->
+
+<script>
+    // ================= 事件对象
+    let son = document.querySelector(".son");
+    // 监听器是当事件发生时，浏览器JS引擎来调用监听器
+    // ev是形参  调用函数时  实参会向形参赋值
+    /* son.onclick = function(ev){
+        // MouseEvent {isTrusted: true, screenX: 150, screenY: 204, clientX: 100, clientY: 88, …}
+        console.log(ev)
+    } */
+
+   /*  son.addEventListener("click",function(e){
+        // ev  e  event
+        console.log(e)
+    }); */
+
+    // ================== 事件对象常用的属性和方法
+    son.addEventListener("click",function(e){
+        console.log(e.target); // 事件源
+        console.log(e.type); // 事件类型
+        console.log(e.clientX); // 鼠标的x坐标，相对于整体视口来说的
+        console.log(e.clientY); // 鼠标的y坐标，相对于整体视口来说的
+        e.preventDeafult(); // 取消默认事件  a
+        e.stopPropagation(); // 阻止事件冒泡
+        // 只能在键盘事件中得到的
+        console.log(e.keyCode); // 键码
+    });
+</script>
+ </html>
