@@ -1,0 +1,58 @@
+<!-- 
+    绝对定位：
+        需要设置参考点，通过position:relative。
+        position:absulte;
+        设置偏移量。top/left/right/bottom
+
+    offsetTop:
+        获取一个定位的元素相对于参考点上面的距离。
+    offsetLeft：
+        获取一个定位的元素相对于参考点左面的距离。
+    offsetParent：
+        获取一个定位的元素的参考点。
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         .box{
+             width: 500px;
+             height: 500px;
+             border: 2px solid red;
+             /* 如果没有设置参考点，不以body作为参考点 */
+             /* position: relative; */
+         }
+         .item{
+             width: 100px;
+             height: 100px;
+             background-color: gold;
+             /* 绝对定位 */
+             position: absolute;
+             top: 10px;
+             left: 30px;
+            /*  right: 0;
+             bottom: 0; */
+         }
+     </style>
+ </head>
+ <body>
+    
+    <div class="box">
+        <div class="item">
+            item
+        </div>
+    </div>
+ 
+ </body>
+ <script>
+     let item = document.getElementsByClassName("item")[0];
+     console.log(item.offsetTop);
+     console.log(item.offsetLeft);
+     console.log(item.offsetParent);
+
+ </script>
+ </html>

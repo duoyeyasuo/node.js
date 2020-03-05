@@ -1,0 +1,182 @@
+<!-- 
+
+13个容易记混的api（用来操作盒子模型的）：
+    client系列: width, height, top, left 
+    offset系列: width, height, top, left, parent
+    scroll系列: width, height, top, left 
+
+client系列: width, height, top, left:
+    clientWidth:
+        box.clientWidth  获取box的内容区域width+左右padding （可视区域width的大小）
+        document.body.clientWidth  当前页面一屏的宽度
+        document.documentElement.clientWidth  当前页面一屏的宽度
+    clientHeight
+        box.clientHeight 获取box的内容区域height+上下padding （可视区域height的大小）
+        document.body.clientHeight  当前页面一屏的高度
+        document.documentElement.clientHeight  当前页面一屏的高度
+    clientTop:
+        获取盒子上边框的大小
+    clientLeft:
+        获取盒子左边框的大小
+
+    注意细节：
+        1）clientWidth,clientHeight,clientTop,clientLeft只能获取值，不能设置值
+        2）获取的值，是一个数字，并没有单位
+        3）获取的值是一个整数，不是小数，即使是小数，获取时，也给转化成整数
+        4）client系列不官你的内容是否溢出，得到盒子的可视区域
+
+offset系列: width, height, top, left, parent
+    offsetWidth
+        box.offsetWidth  在clientWidth的基础上加了border
+    offsetHeight
+        box.offsetHeight  在clientHeight的基础上加了border
+    offsetTop：
+        获取一个定位的元素相对于参考点上面的距离
+    offsetLeft：
+        获取一个定位的元素相对于参考点左面的距离
+    offsetParent：
+        获取一个定位的元素的参考点
+
+     注意细节：
+        1）offsetWidth,offsetHeight只能获取值，不能设置值
+
+scroll系列: width, height, top, left:
+    scrollWidth:
+        在没有内容溢出的情况下：scrollWidth = clientWidth
+        有内容溢出的情况下：scrollWidth的值约等于真实内容的宽度，不同浏览器中得到的值可能不一样
+        overflow属性会影响scrollWidth。
+        只能获取，不能重新设置。
+
+        document.body.scrollWidth  获取页面真实内容的宽度
+        document.documentElement.scrollWidth  获取页面真实内容的宽度
+
+    scrollHeight:
+        在没有内容溢出的情况下：scrollHeight = clientHeight
+        有内容溢出的情况下：scrollHeight的值约等于真实内容的高度，不同浏览器中得到的值可能不一样
+        overflow属性会影响scrollHeight。
+        只能获取，不能重新设置。
+
+        document.body.scrollHeight  获取页面真实内容的高度
+        document.documentElement.scrollHeight  获取页面真实内容的高度
+
+    scrollTop：
+        特殊：不只可以获取，也可以设置（可读可写）
+        获取垂直滚动条滚动的距离（获取垂直滚动条卷去的高度）
+
+        在谷歌浏览器中，获取页面卷上去的高度：
+            document.documentElement.scrollTop
+
+            scrollTop 最小值是0  最大值scrollHeight-clientHeight
+
+            回到顶部
+    scrollLeft：
+        特殊：不只可以获取，也可以设置（可读可写）
+        获取水平滚动条滚动的距离（获取水平滚动条卷去的距离）  基本上用不到
+
+总结：
+    client系列: width, height, top, left 
+        clientWidth/clientHeight: 获取盒子或页面可视区域的宽高
+        clientTop:获取盒子的上边框的大小
+        clientLeft:获取盒子的左边框的大小
+    offset系列: width, height, top, left, parent
+        offsetWidth/offsetHeight: 获取盒子或页面可视区域的宽高+border
+        offsetTop:获取一个定位元素相对于参考点的上面的距离
+        offsetLeft:获取一个定位元素相对于参考点的左面的距离
+        offsetParent:获取一个定位元素的参考点
+    scroll系列: width, height, top, left 
+        scrollWidth/scrollHeight:获取盒子或页面真实内容的宽度
+        scrollTop:获取页面或盒子向上卷去的高度
+        scrollLeft:获取页面或盒子向左卷去的宽度  基本上用不到
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         html{
+             height: 100%;
+         }
+         body{
+             height: 300%;
+         }
+         .box{
+             width: 100px;
+             height: 100px;
+             border: 5px solid red;
+             padding: 10px;
+             margin: 10px;
+         }
+         .item{
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+             padding: 10px;
+             margin: 10px;
+             /* 溢出的内容隐藏掉 */
+             overflow: hidden;
+         }
+     </style>
+ </head>
+ <body>
+    
+    <div class="box">box</div>
+    <div class="item">
+        一、免去杜伟的中华人民共和国驻乌克兰特命全权大使职务；
+　　    任命范先荣为中华人民共和国驻乌克兰特命全权大使。
+　　    二、免去詹永新的中华人民共和国驻以色列国特命全权大使职务；
+　　    任命杜伟为中华人民共和国驻以色列国特命全权大使。
+        一、免去杜伟的中华人民共和国驻乌克兰特命全权大使职务；
+　　    任命范先荣为中华人民共和国驻乌克兰特命全权大使。
+　　    二、免去詹永新的中华人民共和国驻以色列国特命全权大使职务；
+　　    任命杜伟为中华人民共和国驻以色列国特命全权大使。
+        一、免去杜伟的中华人民共和国驻乌克兰特命全权大使职务；
+　　    任命范先荣为中华人民共和国驻乌克兰特命全权大使。
+　　    二、免去詹永新的中华人民共和国驻以色列国特命全权大使职务；
+　　    任命杜伟为中华人民共和国驻以色列国特命全权大使。
+    </div>
+ </body>
+<!--  <script>
+    // ================client系列: width, height, top, left 
+    let box = document.getElementsByClassName("box")[0];
+    console.log(box.clientWidth);  // 120
+    console.log(box.clientHeight); // 120
+    console.log(box.clientTop);
+    console.log(box.clientLeft);
+    box.clientTop = 100;
+
+    // ============= 获取当面页面一屏的宽度
+    /* console.log(document.body.clientWidth);
+    console.log(document.body.clientHeight);
+    console.log(document.documentElement.clientWidth);
+    console.log(document.documentElement.clientHeight) */
+ </script> -->
+ 
+<!--  <script>
+    //  offset系列: width, height, top, left, parent
+    let box = document.getElementsByClassName("box")[0];
+    console.log(box.offsetWidth) // 130
+    console.log(box.offsetHeight)  // 130
+ </script> -->
+
+<script>
+    // scroll系列: width, height, top, left:
+    let item = document.getElementsByClassName("item")[0];
+    // console.log(item.clientWidth)
+    // console.log(item.clientHeight)
+    // console.log(item.scrollWidth);
+    // console.log(item.scrollHeight);
+
+    // 获取页面上真实内容的宽度
+    // console.log(document.body.scrollHeight)
+    // console.log(document.body.scrollWidth)
+    // console.log(document.documentElement.scrollHeight)
+    // console.log(document.documentElement.scrollWidth)
+
+    // 获取页面卷去的高度
+    // console.log(document.body.scrollTop);  // 不OK
+    console.log(document.documentElement.scrollTop);
+</script>
+ </html>

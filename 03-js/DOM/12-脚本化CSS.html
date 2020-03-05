@@ -1,0 +1,83 @@
+<!-- 
+    CSS写法有三种：
+        行内写法   style属性
+        内部写法   style标签
+        外部定法   out.css   link引入
+
+    脚本化CSS：
+        脚本指JS   使用JS控制CSS
+        JS控制行内样式，就是控制style属性节点
+        JS控制CSS中的类，className
+        获取计算样式
+        13API
+
+    JS控制行内样式：
+        就是控制style属性
+        获取：box.style.backgroundColor  
+            注意：如果一个CSS属性是中划命名的，需要换成小驼峰命名。
+        设置：box.style.backgroundColor = "gold";
+
+        不足：如果需要换的样式非常多，就需要写非常多的box.style.xxx = yy;
+
+    JS控制CSS的类：
+        h1.className = "on";
+
+    获取计算样式:
+        标准浏览器：window.getComputedStyle   window可以不写
+        IE浏览器：元素对象.currentStyle属性
+
+    13API:
+        获取元素节点的尺寸和位置。
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         .on{
+             background-color: gold;
+             color: pink;
+             border: 2px solid red;
+         }
+     </style>
+ </head>
+ <body>
+    <!-- background-color 中划命名法 -->
+    <!-- <h1 id="box" style="background-color: skyblue; color: #fff;">JS控制行内样式</h1> -->
+    
+    <h1 id="box">JS控制行内样式</h1>
+    <button>JS控制CSS类</button>
+ </body>
+<!--  <script>
+    //  ==================== JS控制行内样式
+    // let box = document.querySelector("#box");
+    // console.dir(box);
+    // 获取   backgroundColor是全驼峰命名法
+    // console.log(box.style.backgroundColor); // skyblue
+    
+    // 设置
+    // box.style.backgroundColor = "gold";
+ </script> -->
+
+<!-- <script>
+    // =================JS控制CSS类
+    // let btn = document.querySelector("button"); // 得到button
+    /* let btns = document.querySelectorAll("button"); // 得到所有的button 
+    let h1 = document.querySelector("h1"); // 得到h1
+    btns[0].addEventListener("click",function(){
+        // h1.class="on"  class是JS中是关键
+        h1.className = "on";
+    }); */
+</script> -->
+
+<script>
+    // =============== 获取计算出的样式
+    /* let h1 = document.getElementById("box");
+    let res = getComputedStyle(h1);
+    console.log(res)
+    console.log(res.color) */
+</script>
+ </html>
