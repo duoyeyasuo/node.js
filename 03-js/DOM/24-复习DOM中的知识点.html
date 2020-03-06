@@ -1,0 +1,134 @@
+<!-- 
+    什么是DOM？
+        文档对象  使用JS操作HTML，CSS，从而达到与网页交互的目的。
+
+    选择页面中的元素节点？
+        doucment.getElementById();
+        doucment.getElementsByTagName();
+        doucment.getElementsByClassName();
+        doucment.querySlector();
+        doucment.querySlectorAll();
+        parentNode();
+
+    操作元素节点？
+        createElement()  创建元素节点
+        insertBefore()  appendChild() 插入到DOM树上
+        cloneNoe()  克隆一个节点
+        removeChild() 删除一个元素节点
+
+    操作属性节点？
+        box.title  获取title属性节点
+        box.title = "xxx"  设置title属性节点
+        box.getAttrubute("title");  获取title属性节点
+        box.setAttrubte("title","xxx");  设置title属性节点
+
+    操作文件节点？
+        box.innerHTML  获取文本节点
+        box.innerHTML = "xxx"  设置文本节点
+
+    JS操作CSS行内样式？
+        box.style.color  获取行内color样式
+        box.style.color = "red"  设置行内color样式
+       
+    JS操作CSS类？
+        box.className  获取CSS类
+        box.className = "on"  设置CSS类
+
+    JS操作盒子模型（13个API）？
+        client系列：
+            width, height, top, left
+        offset系列：
+            width, height, top, left, parent
+        scroll系列：
+            width, height, top, left
+
+    事件类型？
+        鼠标事件
+        键盘事件
+        UI事件
+        焦点事件
+        表单事件
+        ... 
+
+    事件绑定？
+        box.onclick = ()=>{};
+        box.addEventListener("click",()=>{})
+
+    事件流与事件传播？
+        冒泡型传播：son ===> father ===> body ===> document ===> window
+        捕获型传播：window ===> document ===> body ===> father ===> son
+
+    事件对象？
+        当事件发生时，相关事件存储在一个对象中，可以通过监听器的第1个参数获取。
+        console.log(e.target); // 事件源
+        console.log(e.type); // 事件类型
+        console.log(e.clientX); // 鼠标的x坐标，相对于整体视口来说的
+        console.log(e.clientY); // 鼠标的y坐标，相对于整体视口来说的
+        e.preventDeafult(); // 取消默认事件  a
+        e.stopPropagation(); // 阻止事件冒泡
+        console.log(e.keyCode); // 键码
+
+    事件中的this？
+        如果是普通函数，this表示事件源
+        如果是箭头函数，this不表示事件
+
+    阻止默认事件？
+        监听器：
+            return false;
+            ev.preventDefault();
+
+    同步任务和异步任务？
+        绝大部分的代码都是同步代码（同步任务）。
+        异步代码：事件绑定，定时器，Ajax，文件的读写操作
+
+    定时器？
+        setTimeout()  clearTimeout()
+        setInterval()  clearInterval()
+
+    案例：
+        1）回到顶部
+        2）让盒子水平垂直居中
+        3）图片的懒加载
+        4）得到一个盒子距离body的偏移量
+        5）Tab选择器
+        6）轮播图
+        7）拖拽
+        8）导航条吸顶
+        9）新闻滚动列表
+        .... 
+
+    真实项目中：很少使用原生DOM操作。使用JQ来操作DOM。
+
+    操作DOM性能非常低的 ==> 数据驱动DOM
+
+    现在主流开发项目：
+        1）使用JQ开发  JQ有点没落  不是现在主流开发项目的方案
+        2）操作数据   数据驱动DOM  Vue  React   
+
+    安排：
+        周一：DOM其它案例打一下  下午把JQ开一头
+        周二，周三：把JQ搞定  写10个左右的JQ案例
+        周四，周五：HTML+CSS+JQ写个页面
+
+    下周和下下周：
+        静态网页（html+css+js）
+        动态网页（jsp, php, asp, node, ajax）
+    
+    vue react 小程序  node的框架  git  less  sass
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+ 
+ 
+ </body>
+ <script>
+ 
+ </script>
+ </html>
