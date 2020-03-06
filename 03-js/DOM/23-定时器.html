@@ -1,0 +1,71 @@
+<!-- 
+    定时器函数，两组：
+        setTimeout()  clearTimeout()
+        setInterval()  clearInterval()
+        都是window对象上的方法。window可以不写。
+
+    JS是单线程的，说的是主线程是单线程，如果遇到一个异步任务，它也会开一个小线程执行异步任务。
+    
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+    <button>清除定时器</button>
+ </body>
+ <script>
+     /* console.log("同步任务1")
+     // 一次性定时器  ()=>{}要被执行的任务  耗时任务
+     // JS规定的，定时器就是一个异步任务
+     // ()=>{}不需要我们去调用 时间到了 JS引擎会帮我们调用
+     setTimeout(()=>{
+        console.log("异步任务")
+     },3000) // 3000毫秒
+     console.log("同步任务2") */
+
+     //  ====================
+
+     /* // 异步任务函数也可以放到外面
+     let sum = ()=>{
+         console.log("异步任务")
+     }
+     setTimeout(sum,3000) // 3000毫秒 */
+
+     //  ====================
+
+     // 定时器是方法（函数），也有返回值，返回定时器的编号
+     // 利用定时器的编号可以清除定时器
+     /* let timer = setTimeout(()=>{console.log("异步任务")},3000)
+     console.log(timer); // 1
+     let timer2 = setTimeout(()=>{console.log("异步任务2")},6000)
+     console.log(timer2); // 2
+     let btn = document.querySelector("button");
+     btn.onclick = function(){
+        let r = clearTimeout(timer);  // 清除定时器，一旦清除了，异步任务就不会执行了
+        console.log(r); // undefined  clearTimeout没有返回值
+        clearTimeout(timer2); // 清除定时器，一旦清除了，异步任务就不会执行了
+     } */
+
+     /* //  ==================== setInterval  clearInterval
+     let timer = setInterval(()=>{
+         console.log("异步任务")
+     },2000);  // 每隔2秒都会执行异步任务
+     let btn = document.querySelector("button");
+     btn.onclick = function(){
+        clearInterval(timer);  
+     }  */
+
+     //  先把同步任务放到主线程中执行了，当同步任务执行完毕后，才会执行异步任务
+     //  setTimeout 后面写了一个0，也不会立即执行，因为它是一个异步任务
+     //  即使写了一个0，至少需要4ms  才会执行异步任务
+     console.log("1");  // 同步任务
+     //  ()=>{ console.log("2") } 异步任务
+     setTimeout(()=>{ console.log("2") }, 0);
+     console.log("3"); // 同步任务
+
+ </script>
+ </html>

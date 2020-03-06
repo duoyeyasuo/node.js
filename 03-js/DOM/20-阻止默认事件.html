@@ -1,0 +1,115 @@
+<!-- 
+    默认事件：
+        有些标签带有默认事件，如：
+            a标签默认可以点击 
+            submit默认可以提交
+            reset点击后清空表单中的内容
+            鼠标右击 出现菜单 
+            F5刷新事件
+            ...
+    当标签有默认事件时，我们再给标签绑定事件，事件发生时，默认的事件和自己写的事件都会触发。
+
+    标准浏览器阻止默认事件:
+        鼠标右击 出现菜单，阻止这个默认事件：
+            DOM0级事件绑定中阻止默认事件：
+                1）在监听器的最后面加上retuan false;
+                2）ev.preventDefault(); // 阻止默认事件
+            DOM2级事件绑定中阻止默认事件：
+                1）ev.preventDefault(); // 阻止默认事件
+
+            自定义鼠标右键菜单
+
+        阻止a标签的默认事件：
+            1）retuan false;
+            2）ev.preventDefault();
+            3）href="javascript:;"
+
+        阻止表单的默认事件：
+            1）retuan false;
+            2）ev.preventDefault();
+
+    IE浏览器：
+        获取事件对象：let ev = window.event; 
+        阻止默认事件：ev.returnValue = false; 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+    <style>
+        ul {
+            display: none;
+            position: absolute;
+            border: 2px solid red;
+            width: 130px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a href="http://www.baidu.com">百度</a> -->
+    <a href="javascript:;">百度</a>
+
+    <!-- 表单 -->
+    <form action="http://www.baidu.com">
+        <!-- 表单项 -->
+        <input type="text">
+        <input type="submit" value="注册">
+    </form>
+
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>DOM</li>
+    </ul>
+</body>
+<script>
+     // contextmenu 表示鼠标右击打事件 事件源是document
+     // DOM0中阻止默认事件：在监听器的最后面加上return false
+    /* document.oncontextmenu = function(ev){ // ev表示事件对象
+       alert("xxx");
+       ev.preventDefault(); // 阻止默认事件
+       // return false; // 阻止默认事件
+    } */
+
+     // DOM2级的事件绑定
+    /* document.addEventListener("contextmenu",function(ev){
+        alert("鼠标右键点击了...");
+        //  ev.preventDefault(); // DOM2级中阻止默认事件
+        // return false;  在DOM2级事件绑定中不能使用return false来阻止默认事件
+    }) */
+
+     // 阻止a标签的默认事件 
+    /*  let a = document.querySelector("a");
+     a.onclick = function(ev){  // DOM0级的事件绑定
+        alert("a标签被点击了");
+
+        // return false; // 方式一
+        // ev.preventDefault(); // 方式二
+     } */
+
+     // 阻止表单的默认事件
+    /* let form = document.querySelector("form");
+    form.onsubmit = function(ev){
+        alert("xxxx")
+       //  return false;
+       ev.preventDefault();
+    } */
+
+    //  自定义右键菜单
+    /* let ul = document.querySelector("ul");
+    document.addEventListener("contextmenu",function(ev){
+        ul.style.display = "block";
+        ul.style.top = ev.clientY + "px";
+        ul.style.left = ev.clientX + "px";
+
+        ev.preventDefault();
+    }) */
+</script>
+
+</html>

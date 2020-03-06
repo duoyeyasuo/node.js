@@ -1,0 +1,72 @@
+<!-- 
+    this:
+        是JS中的重点，也是难点。放JS高级时，讲this原理。
+
+    在监听器中：this表示事件源。
+        如果监听器是箭头函数，那么它里面的this就不表示事件源了，this向上找，在最外面，this表示window。
+
+    函数的三种写法：
+        1）函数声明 
+        2）函数表达式
+        3）箭头函数
+    
+    箭头函数:
+        1）如果一个函数中只有一个形参，那么()可以不写
+        2）如果没有或有多个形参，那么()不能省略
+        3）如果函数体中只有一条语句，那么{}也可以不写
+        4）如果函数体中只有一条return语句，那么reutrn和{}都可以不写
+        5）在箭头函数中没有this
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+ </head>
+ <body>
+    <button id="btn">点击</button>
+ </body>
+ <script>
+    let btn = document.getElementById("btn");
+    // btn.onclick = function(){
+    //     console.log(this); // <button id="btn">点击</button>
+    // }
+    /* btn.onclick = ()=>{
+        // 监听器如果是箭头函数，里面的this不表示事件源
+        console.log(this); // Window
+    } */
+    btn.addEventListener("click",ev=>{
+        console.log(this); // Window 
+    })
+ </script>
+ <script>
+    // 箭头函数
+    // 函数表达式
+    // let f = function(){}
+
+    // 箭头函数
+    // let f = ()=>{}
+
+    // 如果一个函数中只有一个形参，那么()可以不写
+    // let f = function(ev){}
+    // let f = (ev)=>{}
+    // let f = ev=>{}
+
+    // 如果函数体中只有一条语句，那么{}也可以不写
+    /* let f = function(){
+        console.log("xxxx")
+    } */
+    // let f = ()=>{console.log("xxxx")};
+    // let f = ()=>console.log("xxxx");
+    // f();
+
+    // 如果函数体中只有一条return语句，那么reutrn和{}都可以不写
+    // function f(a){
+    //     return a*2;
+    // }
+    // let f = (a)=>{ return a*2 }
+    // let f = a=>a*2
+    // console.log(f(2));
+ </script>
+ </html>
