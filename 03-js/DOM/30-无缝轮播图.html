@@ -1,0 +1,208 @@
+<!-- 
+    实现无缝轮播思路：
+        1）把第1张图片在最后面也放一张
+        2）小圆点的计算器和图片的计数器要分开写了  
+        .... 
+
+    项目中，基本上不会自己手写轮播图，我们都会使用插件。swiper插件。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .box {
+            width: 520px;
+            height: 280px;
+            border: 1px solid red;
+            margin: 100px auto;
+            /* 参考点 */
+            position: relative;
+            /* 超出部分隐藏掉 */
+            overflow: hidden;
+        }
+
+        .box ul {
+            width: 3120px;
+            /* 520*6 */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .box ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            text-align: center;
+            line-height: 20px;
+            color: #999;
+            margin-left: 10px;
+            cursor: pointer;
+            background-color: #333;
+            border-radius: 50%;
+        }
+
+        .box ol li.current {
+            border-color: #f60;
+            color: #f60;
+        }
+
+        .leftBtn,
+        .rightBtn {
+            /* position: absolute;  可以让女标签变成男标签  所以不需要写display:block */
+            position: absolute;
+            width: 40px;
+            height: 100px;
+            background: url("./imgs/index.png") no-repeat 0 0;
+            top: 50%;
+            margin-top: -50px;
+        }
+
+        .leftBtn {
+            left: 0;
+        }
+
+        .rightBtn {
+            right: 0;
+            background-position: -50px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <ul id="ulList">
+            <li><img src="./imgs/s1.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s2.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s3.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s4.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s5.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s1.jpg" width="520" height="280" alt=""></li>
+        </ul>
+        <ol id="olList">
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <a href="javascript:;" class="leftBtn" id="leftBtn"></a>
+        <a href="javascript:;" class="rightBtn" id="rightBtn"></a>
+    </div>
+</body>
+<script src="./lib/animate.js"></script>
+<script>
+    let box = document.getElementById("box");
+    let leftBtn = document.getElementById("leftBtn");
+    let rightBtn = document.getElementById("rightBtn");
+    let ulList = document.getElementById("ulList");
+    let olList = document.getElementById("olList");
+    let timer = null; // 计数器
+    // 小圆点有5个，图片有5张，所以计数器要分开处理
+    let olNum = 0; // 小圆点计数器
+    let ulNum = 0; // 装图片的盒子点计数器
+
+    // 封装的一个move函数
+    function move(){
+        olNum++;
+        ulNum++;
+        if(ulNum>5){
+            // 立即把ulList的left设置成0
+            ulList.style.left = "0px"; /* 核心 */
+            ulNum = 1;
+        }
+        if(olNum > 4){
+            olNum = 0;
+        }
+        for (let i = 0; i < olList.children.length; i++) {
+            olList.children[i].className = "";
+        }
+        olList.children[olNum].className = "current";
+
+        // 处理ul (让ul动起来)
+        let move = ulNum * -520; // 每一次移动一个图片的宽度
+        animate(ulList, move);
+    }
+
+    // 自动轮播
+    function autoMove(){
+        timer = setInterval(move,2000);
+    }
+
+    // 右边的按钮
+    rightBtn.onclick = move;
+
+    // 左边的按钮
+    leftBtn.onclick = function () {
+        olNum--;
+        if (olNum < 0) {
+            olNum = 4; // 重新计数
+        }
+        ulNum--;
+        if (ulNum < 0) {
+            ulNum = 4; // 重新计数
+            ulList.style.left = "-2600px"
+        }
+        // 处理小圆点  一刀切 把所有的ol下面的li上面的类都去掉
+        for (let i = 0; i < olList.children.length; i++) {
+            olList.children[i].className = "";
+        }
+        olList.children[olNum].className = "current";
+        // 处理ul (让ul动起来)
+        let move = ulNum * -520; // 每一次移动一个图片的宽度
+        animate(ulList, move);
+    }
+
+    // 循环给小圆点注册点击事件
+    for (let i = 0; i < olList.children.length; i++) {
+        olList.children[i].onclick = function () {
+            // 处理小圆点
+            for (let i = 0; i < olList.children.length; i++) {
+                olList.children[i].className = "";
+            }
+            // olList.children[i] 是事件源
+            this.className = "current";
+            // alert(i)
+            let move = i * -520;
+            animate(ulList, move);
+
+            // 把当前的i赋给num  更新的num计数器
+            olNum = i;
+            ulNum = i;
+        }
+    }
+
+    // 自动轮播
+    // timer = setInterval(move,2000);
+    autoMove();
+
+    // 鼠标放上去时停止轮播
+    box.onmouseover = function(){
+        clearInterval(timer);
+    }
+
+    // 鼠标离开时继续轮播
+    box.onmouseout = function(){
+        autoMove();
+    }
+</script>
+
+</html>

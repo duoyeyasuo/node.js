@@ -1,0 +1,179 @@
+<!-- 
+    结构：
+        图片列表  ul+li 
+        小圆点索引 ol+li   ol是有序列表
+        左右箭头  a 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .box {
+            width: 520px;
+            height: 280px;
+            border: 1px solid red;
+            margin: 100px auto;
+            /* 参考点 */
+            position: relative;
+        }
+
+        .box ul {
+            width: 2600px;
+            /* 520*5 */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .box ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            text-align: center;
+            line-height: 20px;
+            color: #999;
+            margin-left: 10px;
+            cursor: pointer;
+            background-color: #333;
+            border-radius: 50%;
+        }
+
+        .box ol li.current {
+            border-color: #f60;
+            color: #f60;
+        }
+
+        .leftBtn,
+        .rightBtn {
+            /* position: absolute;  可以让女标签变成男标签  所以不需要写display:block */
+            position: absolute;
+            width: 40px;
+            height: 100px;
+            background: url("./imgs/index.png") no-repeat 0 0;
+            top: 50%;
+            margin-top: -50px;
+        }
+
+        .leftBtn {
+            left: 0;
+        }
+
+        .rightBtn {
+            right: 0;
+            background-position: -50px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <div class="box" id="box">
+        <ul id="ulList">
+            <li><img src="./imgs/s1.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s2.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s3.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s4.jpg" width="520" height="280" alt=""></li>
+            <li><img src="./imgs/s5.jpg" width="520" height="280" alt=""></li>
+        </ul>
+        <ol id="olList">
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <!-- 如果把a标签当成按钮需要阻止默认事件 -->
+        <a href="javascript:;" class="leftBtn" id="leftBtn"></a>
+        <a href="javascript:;" class="rightBtn" id="rightBtn"></a>
+    </div>
+</body>
+<!-- 放在使用animate函数的前面 -->
+<script src="./lib/animate.js"></script>
+<script>
+    // 不推荐   直接写id名就可以获取到
+    /* btn.onclick = function(){
+        alert("xxx")
+    } */
+
+    let leftBtn = document.getElementById("leftBtn");
+    let rightBtn = document.getElementById("rightBtn");
+    let ulList = document.getElementById("ulList");
+    let olList = document.getElementById("olList");
+    let timer = null; // 计数器
+
+    let num = 0; // 计数
+
+    // 右边的按钮
+    rightBtn.onclick = function () {
+        num++;
+        if (num > 4) {
+            num = 0; // 重新计数
+        }
+        // 处理小圆点  一刀切 把所有的ol下面的li上面的类都去掉
+        for (let i = 0; i < olList.children.length; i++) {
+            olList.children[i].className = "";
+        }
+        olList.children[num].className = "current";
+
+        // 处理ul (让ul动起来)
+        let move = num * -520; // 每一次移动一个图片的宽度
+        animate(ulList, move);
+    };
+
+    // 左边的按钮
+    leftBtn.onclick = function () {
+        num--;
+        if (num < 0) {
+            num = 4; // 重新计数
+        }
+        // 处理小圆点  一刀切 把所有的ol下面的li上面的类都去掉
+        for (let i = 0; i < olList.children.length; i++) {
+            olList.children[i].className = "";
+        }
+        olList.children[num].className = "current";
+        // 处理ul (让ul动起来)
+        let move = num * -520; // 每一次移动一个图片的宽度
+        animate(ulList, move);
+    }
+
+    // 循环给小圆点注册点击事件
+    for (let i = 0; i < olList.children.length; i++) {
+        olList.children[i].onclick = function () {
+            // 处理小圆点
+            for (let i = 0; i < olList.children.length; i++) {
+                olList.children[i].className = "";
+            }
+            // olList.children[i] 是事件源
+            this.className = "current";
+            // alert(i)
+            let move = i * -520;
+            animate(ulList, move);
+
+            // 把当前的i赋给num  更新的num计数器
+            num = i;
+        }
+    }
+
+</script>
+
+</html>

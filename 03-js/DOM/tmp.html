@@ -2,18 +2,80 @@
     
 
  -->
- <!DOCTYPE html>
- <html lang="en">
- 
- <head>
-     <meta charset="UTF-8">
-     <title>微信：17001100482 JS全栈开发</title>
- </head>
- <body>
- 
- 
- </body>
- <script>
- 
- </script>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微信：17001100482 JS全栈开发</title>
+    <link rel="stylesheet" href="./lib/swiper.css">
+    <script src="./lib/swiper.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s1.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s2.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s3.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s4.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s5.jpg" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:">
+                    <img src="./imgs/s4.jpg" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</body>
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+    direction: 'horizontal', // 垂直切换选项
+
+    loop: true, // 循环模式选项
+    // 如果需要前进后退按钮
+    //控制左右按钮
+    navigation: {
+        nextEl: '.swiper-button-next',//对应左边按钮类名
+        prevEl: '.swiper-button-prev',//对应右边按钮类名
+    },
+    //自动轮播
+    autoplay: {
+        delay: 3000, //控制时间
+        disableOnInteraction: true,
+        disableOnInteraction: false,
+    },
+    effect: 'coverflow',  //控制翻滚动效
+    pagination: {
+        el: '.swiper-pagination',  //点标记
+        dynamicBullets: true,
+        dynamicMainBullets: 2
+    },
+})        
+</script>
+</html>
