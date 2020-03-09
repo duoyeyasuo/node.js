@@ -1,0 +1,204 @@
+<!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>微信：17001100482 JS全栈开发</title>
+     <style>
+         *{margin: 0; padding: 0;}
+         .box{
+             /* 
+              *   方案一：
+              *       水平：margin:0 auto;
+              *       垂直：position:absolute; 
+              *             top:50%;  
+              *             left:50%;
+              *             margin-top: -150px;
+              *             margin-left: -150px;
+              *             
+              */
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+             /* 水平居中 */
+             margin: 0 auto;
+             /* 垂直居中 */
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             margin-top: -150px;
+             margin-left: -150px;
+         }
+     </style>
+ </head>
+ <body>
+    <div class="box" id="box"></div>
+ </body>
+ <script>
+ </script>
+ </html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+    *{margin: 0; padding: 0;}
+         .box{
+             /* 
+              *   方案二：
+              *       水平：margin:auto;
+              *       垂直：position:absolute;
+              *       
+              *       
+              *       上下margin是auto + top是0 和 bottom是0  实现垂直居中
+              *       上下margin是auto + left是0 和 right是0  实现水平居中
+              */
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+             margin: auto;
+             position: absolute;
+             top: 0;
+             bottom: 0;
+             left: 0;
+             right: 0;
+
+         }
+     </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{margin: 0; padding: 0;}
+        html{
+            height: 100%;
+        }
+         body{
+             height: 100%;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
+         .box{
+             /* 
+              *   方案三：
+              *       flex
+              *      
+              *       水平居中： display: flex; justify-content: center;
+              *       
+              */
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+         }
+         /* flex布局: 也是让块级元素并排显示，说白了，干死了float。使用flex布局，不想再想浮动，和清除浮动。
+        参考：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+
+        容器：如果给一个盒子加上了display:flex，那么这个盒子是一个容器。
+        项目: 容器中直接子元素是项目（儿子）
+        主轴：默认情况下，项目是水平向右进行排列，排列方向就是主轴。
+        交叉轴：和主轴垂直的那个轴，就是交叉轴。
+
+        设置容器有6大属性：
+            justify-content 处理富余空间
+                flex-end: 项目从后向前排列（富余空间在最前面）
+                flex-start: 项目从前向后排列（富余空间在最后面）
+                center: 项目从正中间开始排列（富余空间在两侧）
+                space-between: 富余空间处于项目和项目之间
+                space-around: 富余空间环绕每一个项目
+
+            align-items: 处理项目在交叉轴上的位置
+                center:表示把项目放到交叉轴正中间
+                .... 
+
+        设置项目有6大属性：
+
+        学习flex，仅仅是学习4个概念+12属性。 */
+     </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{margin: 0; padding: 0;}
+         .box{
+             /* 
+              *   方案四：
+              *        定位  position:absolute; top:50%; left:50%;  
+              *        方案一使用margin是负值
+              *        方案四使用transform(变形)：translateX()
+              */
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+             position: absolute;
+             top: 50%;
+             left:50%;
+             /* transfrom属性只能写一个，多个的话，后面的会把前面的覆盖掉 */
+             /* transform: translateX(-150px);
+             transform: translateY(-150px); */
+
+             /* transform是CSS3中新增的一个属性 */
+             transform: translate(-150px, -150px);
+         }
+     </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+         *{margin: 0; padding: 0;}
+         .box{
+             /* 
+              *   方案五： 使用JS
+              */
+             width: 300px;
+             height: 300px;
+             border: 5px solid red;
+         }
+     </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+<script>
+    /* let a = 1;
+    let b = 2;
+    let c = 3;
+    let a = 1, b = 2, c = 3; */
+    /* let box = document.getElementById("box");
+    let docuWidht = document.documentElement.clientWidth; // 一屏的宽度
+    let docuHeight = document.documentElement.clientHeight; // 一屏的高度 */
+
+    // 在一个盒子宽度和高度不知道的情况下，可以使用JS让它水平垂直居中
+    let box =  document.getElementById("box"),
+        boxWidth = box.offsetWidth, // 表示盒子可视区域的宽度+边框
+        boxHeight = box.offsetHeight, // 表示盒子可视区域的高度+边框
+        docuWidht = document.documentElement.clientWidth,
+        docuHeight = document.documentElement.clientHeight;
+
+    box.style.position = "absolute";  // 使用JS操作CSS
+    box.style.top = (docuHeight-boxHeight)/2 + "px";
+    box.style.left = (docuWidht-boxWidth)/2 + "px";
+
+</script>
+</html> -->
