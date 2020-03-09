@@ -1,0 +1,104 @@
+<!-- 
+    原生DOM操作的不足：
+        1）实现一个功能，代码量非常大
+        2）兼容性不好，特别是IE6,7,8  IEDOM操作自成一套体系  兼容性问题
+
+    库，框架，插件：
+        库：工具箱，里面有很多api函数，在页面中可以直接调用它，我们去调用库中函数。
+        框架：毛坯房，项目中很多代码都实现了，我们只需要在合适位置，写上合适代码，等待框架来调用它。
+            JAVA：SSH，SSM...
+            PHP：TP，CI...
+            Python: Django，flask...
+            前端：Vue, React, Ng
+            ... 
+        插件：swipter就是插件  插件就是专门用来实现特定的功能的库
+
+    JQ介绍：
+        jQuery是一个操作DOM的库。
+        官网：https://jquery.com/
+        理念：write less do more   使用很少的代码实现很功能。
+
+        参考文档：http://jquery.cuishifeng.cn/
+
+    版本说明：
+        1.xx.xx
+            现在的项目使用的还是1.xx.xx   使用最多  jquery-1.11.3（我使用最多的）
+            兼容所有的浏览器
+        2.xx.xx
+            不兼容低版本IE浏览器了，提出jQuery Mobile。不给力。
+            Zepto.js  手机端的JQ。
+        3.xx.xx
+            不兼容低版本的IE浏览器。有比较明显的好处。
+            操作DOM的性能是非常非常低。
+            Vue, React诞生了，新的编程思想，虚拟DOM，数据驱动DOM，伟大的思想。
+
+        如果现在写项目要兼容低版本浏览器，还是使用JQ的1.xx.xx版本，因为Vue，React不兼容低版本IE浏览器。
+        之前很多的老项目也是基于JQ开发的，学习使用JQ操作DOM，也是前端开发工程师必备的技术。
+
+        后面会讲JS高级，尝试带着大家去阅读JQ的源码，它的源码有大含金量。
+
+        学习JQ的心态：
+            1）现在不是JQ天下，是Vue和React的天下。
+            2）有的公司还在使用JQ写项目，有的老项目也是使用JQ的写的。
+            3）JQ的源码有大含金量。
+            4）JQ还是操作DOM，还要写大量的案例，只需要把我们讲的写了就OK了。
+
+    JQ比原生DOM操作有哪些优势和不足：
+        优势: 兼容低版本IE浏览器   write less do more  封装了丰富的函数让开发者调用
+        不足：还是操作DOM（还是前面讲的知识点）  JS可以实现的效果JQ不一定能实现，使用JQ实现的效果使用JS一定可以实现
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ的基本使用</title>
+    <script src="jquery1.11.3.js"></script>
+    <script>
+        // window.onload = function(){}  // 入口函数 等待资源加载完后，触发load事件
+        $(function(){
+            // 入口函数  使用$("选择器") 得到的是JQ对象   不是JS对象
+            $("#box").click(()=>{
+                console.log("hello jq too~")
+            })
+        });
+    </script>
+</head>
+<body>
+    <button id="box">点击</button>
+</body>
+<!-- <script src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> -->
+<script>
+    // console.log($("button")[0]) // <button>点击</button>
+    // $("#box")  得到的JQ对象  JQ对象上面有click方法
+    // $("button")[0]  得到的JS对象  JS对象上面没有click方法   onclick....
+    // $("#box").click(function(){
+    //     console.log("hello jq~")
+    // });
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
