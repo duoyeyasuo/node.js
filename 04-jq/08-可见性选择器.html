@@ -1,0 +1,60 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+<body>
+    <button id="box">点击</button>
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+    </ul>
+    <form action="">
+        <input type="text">
+        <!-- 隐藏域  页面是看不到的  是为了传递数据 -->
+        <input type="hidden" value="wangcai">
+    </form>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        $("#box").click(function(){
+            $("ul li:eq(1)").hide();
+        })
+        // $("ul li:visible")  给所有可见的li加上边框
+        $("ul li:visible").css("border","2px solid red");
+
+        // 选中隐藏域
+        alert($("input:hidden").val())
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

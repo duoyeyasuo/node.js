@@ -1,0 +1,71 @@
+<!-- 
+    通过$("选择器") 得到的是一个JQ对象。
+
+    基本选择器：
+        $("p")   表示选中所有的p标签   
+        $("#box")   表示选中id是box的标签   
+        $(".box")   表示选中class是box的标签   
+        $("div.box")   表示选中div并且div中有class是box的标签   交集选择器
+        $("h1,h2,h3")   表示选中h1,h2,h3   分组选择器
+        $("ul li")    表示选中ul里面的li  后代选择器
+        $("*")    表示选中页面中所有的标签  通配符选择器
+        $("body>ol")    表示选中body下第一级的ol  选中儿子
+        $("p+div")    表示选中p后面紧邻的div  +表示选中某个元素后面紧挨着的元素
+        $("p~h3")    表示选中p后面所有的h3  ~表示选中某个元素后面所有的的元素
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+<body>
+    <ol>
+        <li>body的儿子ol</li>
+    </ol>
+    <div>
+        <ol>
+            <li>div的儿子ol</li>
+        </ol>
+    </div>
+    <p>这是一个p标签</p>
+    <!-- <h3>这是一个h3</h3> -->
+    <div>这是标签后面紧挨着的div</div>
+    <div>这是一个div</div>
+    <h1>这是一个h1</h1>
+    <h3>这是一个h3</h3>
+    <h3>这是一个h3</h3>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+       $("body>ol").css("border","3px solid red");
+       $("p+div").css("border","3px solid red");
+       $("p~h3").css("border","3px solid red");
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!-- 
+    属性过滤选择器：
+        [attribute]   h1[title] 选中h1 并且h1中需要包含title属性
+        [attribute=value]  h1[title=hello] 选中h1 并且h1中需要包含title是hello的属性
+        [attribute!=value]  h1[title!=hello] 选中h1 并且h1中没有包含title是hello的属性
+        [attribute^=value]  h1[title^=hello] 选中h1 并且h1中的title属性值以hello 打头
+        [attribute$=value]  h1[title$=hello] 选中h1 并且h1中的title属性值以hello 结束
+        [attribute*=value]  h1[title*=hello] 选中h1 并且h1中的title属性值中包含hello
+        [attrSel1][attrSel2][attrSelN]  h1[title][id] 选中h1 并且h1中有title属性和id属性
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+
+<body>
+    <h1>这是h1标签</h1>
+    <h1 title="hello world" id="xxx">这是h1标签</h1>
+    <h1 title="world">这是h1标签</h1>
+    <h1 title="wangcai hello">这是h1标签</h1>
+    <h1 title="hello">这是h1标签</h1>
+    <h1 title="hello jq">这是h1标签</h1>
+</body>
+<script src="jquery1.11.3.js"></script>
+<script>
+    /* // h1[title] 选中h1 并且h1中需要包含title属性
+    $("h1[title]").css("border","2px solid red") */
+
+    /* // h1[title=hello] 选中h1 并且h1中需要包含title是hello的属性
+    $("h1[title=hello]").css("border","2px solid red") */
+
+    /*  // h1[title!=hello] 选中h1 并且h1中没有包含title是hello的属性
+     $("h1[title!=hello]").css("border","2px solid red") */
+
+    /* // h1[title*=hello] 选中h1 并且h1中的title属性值中包含hello
+    $("h1[title*=hello]").css("border","2px solid red") */
+
+    /*  // h1[title^=hello] 选中h1 并且h1中的title属性值以hello 打头
+     $("h1[title^=hello]").css("border","2px solid red") */
+
+    /* // h1[title$=hello] 选中h1 并且h1中的title属性值以hello 结束
+    $("h1[title$=hello]").css("border","2px solid red") */
+
+    // h1[title][id] 选中h1 并且h1中有title属性和id属性
+    $("h1[title][id]").css("border", "2px solid red")
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!-- 
+    子元素过滤选择器：
+        :nth-of-type(2)  针对的是同类型的标签 选中每家第2个儿子
+        :last-of-type  选中每家最小的女儿
+        :nth-last-of-type(2) 选中每家倒数第2个小的女儿
+        :only-of-type(2) 选中每家唯一的儿子
+        :nth-of-type(2n-1) 和 :nth-of-type(odd) 一样 选中每家排行奇数的儿子  索引从1开始算
+        :nth-of-type(2n) 和 :nth-of-type(even) 一样  选中每家排行偶数的儿子  索引从1开始算
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+
+<body>
+    <section class="family1" style="background-color: pink;">
+        <div>son1</div>
+        <p>daughter1</p>
+        <div>son2</div>
+        <p>daughter2</p>
+    </section>
+    <section class="family2" style="background-color: skyblue;">
+        <div>son1</div>
+        <div>son2</div>
+        <p>daughter1</p>
+        <div>son3</div>
+    </section>
+    <section class="family3" style="background-color: peru;">
+        <div>son1</div>
+        <p>daughter1</p>
+    </section>
+    <section class="family4" style="background-color: steelblue;">
+        <div>son1</div>
+    </section>
+</body>
+<script src="jquery1.11.3.js"></script>
+<script>
+    /* // :nth-of-type(2) 选中每家第2个儿子  :nth-child(2)选中第2个孩子
+    $("section>div:nth-of-type(2)").css("border","2px solid red") */
+
+    /* // :nth-of-type(2) 选中每家第1个女儿
+    // $("section>p:nth-of-type(1)").css("border","2px solid red") */
+
+    /* // :last-of-type 选中每家最后1个女儿
+    $("section>p:last-of-type").css("border","2px solid red") */
+
+    /* // :nth-last-of-type(2) 选中每家倒数第2个小的女儿
+    $("section>p:nth-last-of-type(2)").css("border","2px solid red") */
+
+
+    /* // :only-of-type(2) 选中每家唯一的儿子/女儿
+    // $("section>div:only-of-type").css("border", "2px solid red")
+    $("section>p:only-of-type").css("border", "2px solid red") */
+
+    /* // :nth-of-type(2n-1) 选中每家排行奇数的儿子  索引从1开始算
+    $("section>div:nth-of-type(2n-1)").css("border", "2px solid red") */
+
+    /* // :nth-of-type(2n) 选中每家排行偶数的儿子  索引从1开始算
+    $("section>div:nth-of-type(2n)").css("border", "2px solid red") */
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!-- 
+    内容过滤选择器：
+        :contains(text)  $("li:contains(jQuery)") 选中包含jQuery的li
+        :empty  $("li:empty") 选中内容为空的li  $("li:not(:empty)") 选中内容不为空的li
+        :has(selector)   $("li:has(a)") 选中包含a标签的li
+        :parent  $("li:parent") 匹配含有子元素或者文本的元素
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+<body>
+    <ul>
+        <li>你好，jQuery</li>
+        <li>jQuery so easy~</li>
+        <li><a href="#">jQuery write less do more~</a></li>
+        <li></li>
+    </ul>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        /* // $("li:contains(jQuery)") 选中包含jQuery的li
+        $("li:contains(jQuery)").css("border","2px solid red"); */
+
+        /* // $("li:has(a)") 选中包含a标签的li
+        $("li:has(a)").css("border","2px solid red"); */
+
+        /* // $("li:empty") 选中内容为空的li
+        $("li:empty").css("border","2px solid red"); */
+
+        /* // $("li:not(:empty)") 选中内容不为空的li
+        $("li:not(:empty)").css("border","2px solid red"); */
+
+        // $("li:parent") 匹配含有子元素或者文本的元素
+        $("li:parent").css("border","2px solid red");
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

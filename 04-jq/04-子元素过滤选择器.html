@@ -1,0 +1,95 @@
+<!-- 
+    子元素过滤选择器：
+        :root 选中根标签 就是html标签
+        :nth-child(2) 选中每家第2个孩子 不分是男孩还是女孩 
+        first-child  选中第家第1个孩子  和:nth-child(1) 是一样 
+        last-child  选中每家最后1个孩子
+        :nth-last-child(2)  选中每家倒数第2个孩子  
+        :only-child  选中每家独生子女
+        :nth-child(2n)  和 :nth-child(even) 一样  选中每家排行偶数的孩子  从1开始算
+        :nth-child(2n+1)  和 :nth-child(odd) 一样  选中每家排行奇数的孩子  从1开始算
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+<body>
+    <!-- section是有语义化的div 表示一块 -->
+    <section class="family1" style="background-color: pink;">
+        <div>son1</div>
+        <div>daughter1</div>
+        <div>son2</div>
+        <div>daughter2</div>
+    </section>
+    <section class="family2" style="background-color: skyblue;">
+        <div>son1</div>
+        <div>son2</div>
+        <div>daughter1</div>
+        <div>son3</div>
+    </section>
+    <section class="family3" style="background-color: peru;">
+        <div>son1</div>
+        <div>daughter1</div>
+    </section>
+    <section class="family4" style="background-color: steelblue;">
+        <div>son1</div>
+    </section>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        /* // :root 选中根标签 就是html标签
+        $(":root").css("background","skyblue") */
+
+        /* // :nth-child(2) 选中每家第2个孩子  section>div选中section下面所有的孩子div
+        $("section>div:nth-child(2)").css("border","2px solid blue") */
+
+        /* // first-child :nth-child(1) 选中每家第1个孩子  
+        // $("section>div:nth-child(1)").css("border","2px solid blue")
+        $("section>div:first-child").css("border","2px solid blue") */
+
+        /* // last-child  选中每家最后1个孩子  
+        $("section>div:last-child").css("border","2px solid blue") */
+
+        /* // :nth-last-child(2)  选中每家倒数第2个孩子  
+        $("section>div:nth-last-child(2)").css("border","2px solid blue") */
+
+        /* // :only-child  选中每家独生子女
+        $("section>div:only-child").css("border","2px solid red") */
+
+        /* // :nth-child(2n)  选中每家排行偶数的孩子  从1开始算
+        // $("section>div:nth-child(2n)").css("border","2px solid red")
+        $("section>div:nth-child(even)").css("border","2px solid red")
+ */
+        /* // :nth-child(2n+1)  选中每家排行奇数的孩子  从1开始算
+        // $("section>div:nth-child(2n+1)").css("border","2px solid red")
+        $("section>div:nth-child(odd)").css("border","2px solid red") */
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

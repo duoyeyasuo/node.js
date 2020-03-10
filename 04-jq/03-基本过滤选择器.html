@@ -1,0 +1,82 @@
+<!-- 
+    基本过滤选择器：
+        li:eq(0)  表示选中第1个li  eq里面加上索引  默认是0开始的
+        $("li:first")  表示选中第1个li
+        $("li:last")  表示选中最后1个li
+        $("li:even")  表示选中索引为偶数的li  even是4个字母 偶数  0号索引也是偶数
+        $("li:odd")  表示选中索引为奇数的li
+        $("li:gt(2)")  表示选中索引大于2的li
+        $("li:lt(2)")  表示选中索引小于2的li
+        $(":header")  表示选中所有的标题标签
+        li:not(:eq(1)) 选中除了第2个li之外的所有的li
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+</head>
+
+<body>
+    <div>
+        <div>第1个div</div>
+        <div>第2个div</div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li class="current">7</li>
+            <li>8</li>
+        </ul>
+        <h1>这是一个h1标签</h1>
+        <h2>这是一个h2标签</h2>
+        <h3>这是一个h3标签</h3>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+<script>
+    /* // li:eq(0)  表示选中第1个li  eq里面加上索引  默认是0开始的
+    $("li:eq(0)").css("border","2px solid red") */
+
+    /* // $("li:first")  表示选中第1个li
+    $("li:first").css("border","2px solid red") */
+
+    /* // $("li:last")  表示选中最后1个li
+    $("li:last").css("border","2px solid red") */
+
+    /* // $("li:even")  表示选中索引为偶数的li 
+    $("li:even").css("border","2px solid red") */
+
+    /* // $("li:odd")  表示选中索引为奇数的li 
+    $("li:odd").css("border","2px solid red") */
+
+    /*  // $("li:gt(2)")  表示选中索引大于2的li
+     $("li:gt(2)").css("border","2px solid red") */
+
+    /* // $("li:lt(2)")  表示选中索引小于2的li
+    $("li:lt(2)").css("border", "2px solid red") */
+
+    /* // $(":header")  表示选中所有的标题标签
+    $(":header").css("border", "2px solid red") */
+
+    /* // $("div") 表示选中页面中所有的div
+    $("div").css("border", "2px solid red") */
+
+    /* // $("div:first") 选中最外层的第1个div
+    $("div:first").css("border", "2px solid red") */
+
+    /* // $("div:eq(0)") 选中最外层的第1个div
+    $("div:eq(0)").css("border", "2px solid red") */
+
+    /* // $("div:eq(1)") 选中里面的第1个div
+    $("div:eq(1)").css("border", "2px solid red") */
+
+    // li:not(:eq(1)) 选中除了第2个li之外的所有的li
+    $("li:not(:eq(1))").css("border", "2px solid red")
+</script>
+
+</html>
