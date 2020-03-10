@@ -1,0 +1,85 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        .wraper{
+            width: 131px;
+            height: 311px;
+            /* 1）固定定位  2）参考点 */
+            position: fixed;
+            top: 50%;
+            /* right: 0; */
+            right: -131px;
+            margin-top: -156px;
+        }
+        .wraper span{
+            width: 29px;
+            height: 117px;
+            background: url("./imgs/qqL.jpg") no-repeat;
+            position: absolute;
+            top: 50%;
+            margin-top: -58px;
+            left: -29px;
+            cursor: pointer;
+        }
+        .wraper span.on{
+            background-image: url("./imgs/qqLOpen.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <img src="./imgs/qq.jpg">
+        <span></span>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        let flag = true; // 标志是隐藏还是显示
+        $("span").click(function(){
+            if(flag){
+                // 处于隐藏   .parent()代表父元素  animate() 万能动画  500毫秒
+                $(this).parent().animate({right:0},500);
+                $(this).attr("class", "on")
+                flag = false; 
+            }else{
+                // 处于显示
+                $(this).parent().animate({right:-131},500);
+                $(this).attr("class", "")
+                flag = true;
+            }
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        #shoufengqin{
+            width: 1200px;
+            height: 300px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #shoufengqin ul{
+            width: 3000px;
+        }
+        #shoufengqin ul li{
+            /* 图片比较大，li只能装图片的一部分 */
+            width: 200px;
+            float: left;
+            list-style-type: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="shoufengqin">
+        <ul>
+            <li><img src="./imgs/shoufengqin/01.jpg" alt=""></li>
+            <li><img src="./imgs/shoufengqin/02.jpg" alt=""></li>
+            <li><img src="./imgs/shoufengqin/03.jpg" alt=""></li>
+            <li><img src="./imgs/shoufengqin/04.jpg" alt=""></li>
+            <li><img src="./imgs/shoufengqin/05.jpg" alt=""></li>
+            <li><img src="./imgs/shoufengqin/06.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        $("li").mouseover(function(){
+            $(this).stop().animate({width:500},500).siblings().stop().animate({width:140},500);
+        }).mouseout(function(){
+            // this表示当前的li  目标是让所有的li全部变成200
+            $("li").stop().animate({width:200},500)
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        html{ height: 100%; }
+        body{ height: 300%; }
+        .ad{
+            width: 150px;
+            height: 250px;
+            position: fixed;
+            top: 50%;
+            margin-top: -125px;
+            border: 1px solid red;
+        }
+        .ad_left{
+            background-color: gold;
+            left: 5px;
+        }
+        .ad_right{
+            right: 5px;
+            background-color: skyblue;
+        }
+        span{
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 20px;
+            background-color: #FFF;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad ad_left">
+        <a href=""></a>
+        <span style="top: 0; right: 0;">X</span>
+    </div>
+    <div class="ad ad_right">
+        <a href=""></a>
+        <span>X</span>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        $("span").click(function(){
+            $(this).parent().hide(500);
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
