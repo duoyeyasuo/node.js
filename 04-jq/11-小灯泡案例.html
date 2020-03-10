@@ -1,0 +1,79 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            margin: 10px 10px;
+            border: 3px solid black;
+            background-color: gray;
+            line-height: 50px;
+            border-radius: 50%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        // JQ中，不需要循环注册事件
+        // 给每一个li注册点击事件，不需要使用for
+        /* $("li").click(function(){
+            // 监听器中的this代表事件源  是原生的JS对象
+            // $(this)  就可以把原生JS对象转化成JQ对象 就可以使用JQ提供方法
+            // console.log($(this))
+
+            // $(this).css("background","gold")  css方法返回还是JQ对象  链式写法
+            $(this).css("background","gold").siblings().css("background","gray")
+        }) */
+
+        $("li").click(function(){
+            $(this).css("background","gold").siblings().css("background","gray");
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

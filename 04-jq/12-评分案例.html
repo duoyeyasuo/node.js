@@ -1,0 +1,106 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .wraper{
+            width: 150px;
+            margin: 50px auto;
+        }
+        .wraper ul{
+            list-style: none;
+        }
+        .wraper ul li{
+            width: 27px;
+            height: 27px;
+            float: left;
+            background: url("./imgs/start.gif") left top;
+            cursor: pointer;
+        }
+        .wraper ul li.on{
+            background-position: left bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <ul>
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p>你当前的评分是：<span>1</span></p>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        /* // .click  返回值还是当前的JQ对象   链式写法
+        $("li").click(function(){
+            let li_index = $(this).index();
+            $("span").html(li_index+1)
+        }).mouseover(function(){
+            // console.log(this)   原生事件源（原生JS对象）
+            // $(this) // JQ对象  
+            // console.log($(this).index()); // index表示每一个li的索引
+            let li_index = $(this).index();  // 每一个li的索引
+
+            $(`li:lt(${li_index+1})`).attr("class","on")
+            $(`li:gt(${li_index})`).attr("class","")
+        }).mouseout(function(){
+            let li_index = parseInt($("span").html())-1;
+            $(`li:lt(${li_index+1})`).attr("class","on")
+            $(`li:gt(${li_index})`).attr("class","")
+        }) */
+
+        $("li").click(function(){
+            let li_index = $(this).index();
+            $("span").html(li_index+1)
+        }).mouseover(function(){
+            let li_index = $(this).index();  
+            $(`li:lt(${li_index+1})`).attr("class","on")
+            $(`li:gt(${li_index})`).attr("class","")
+        }).mouseout(function(){
+            let li_index = parseInt($("span").html())-1;
+            $(`li:lt(${li_index+1})`).attr("class","on")
+            $(`li:gt(${li_index})`).attr("class","")
+        })
+
+        /* let username = "wangcai";
+        // ES6中的模板字符串
+        let xx = `它的名字是${username}`;
+        // let xx = "它的名字是"+usernmae */
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
