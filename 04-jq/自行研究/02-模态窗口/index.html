@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模态窗口</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	.content{
+		display:block;
+		margin:50px auto;
+	}
+	.login{
+		margin:20px;
+		color:blue;
+		cursor:pointer;
+	}
+	.win-bottom{
+		width:100%;
+		height:100%;
+		background-color:black;
+		position:fixed;
+		left:0;
+		top:0;
+		z-index:1000;
+		display:none;
+	}
+	.win{
+		width:530px;
+		height:373px;
+		position:fixed;
+		left:50%;
+		top:50%;
+		z-index:1001;
+		border:1px solid #ccc;
+		margin-left:-265px;
+		margin-top:-186px;
+		display:none;
+	}
+	.win-top{
+		width:530px;
+		height:46px;
+		border-bottom:1px solid #ccc;
+		background:url(images/win-title.jpg);
+	}
+	.win-top span{
+		position:absolute;
+		top:10px;
+		right:10px;
+		cursor:pointer;
+		font-size:24px;
+		color:#cccccc;
+	}
+	.win-main{
+		width:530px;
+		height:326px;
+		background:url(images/win-main.jpg);
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script>
+	$(function(){
+		var $win = $('.win');
+		var $win_bottom = $('.win-bottom');
+
+		$('.login').click(function(event) {
+			$win.fadeIn(500);
+			$win_bottom.fadeTo(500, 0.5);
+		});
+
+		$win.find('span').click(function(event) {
+			$win.fadeOut(500);
+			$win_bottom.fadeOut(500);
+		});
+	});
+	</script>
+</head>
+<body>
+	<span class="login">登录</span>
+	<img src="images/bg.jpg" class="content">
+
+
+	<div class="win">
+		<div class="win-top"><span>&times;</span></div>
+		<div class="win-main"></div>
+	</div>
+	<div class="win-bottom"></div>
+</body>
+</html>

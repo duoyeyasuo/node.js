@@ -1,0 +1,157 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        body{
+            background-color: #87ceeb;
+        }
+        img{
+            /* 解决img下面的小白边 */
+            display: block;
+        }
+        .nav{
+            width: 752px;
+            height: 270px;
+            padding-top: 10px;
+            padding-left: 10px;
+            border: 1px solid gold;
+            margin: 100px auto;
+        }
+        .nav li{
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            list-style-type: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav li p{
+            width: 100%;
+            height: 25px;
+            position: absolute;
+            left: 0;
+            bottom: -25px;
+            background-color: #000;
+            opacity: .5;
+            /* display: none; */
+        }
+        .nav li span{
+            position: absolute;
+            left: 0;
+            bottom: -25px;
+            color: #fff;
+            font-size: 14px;
+            background: url("./imgs/nav/bg.png") no-repeat 0 0;
+            padding-left: 26px;
+            /* background-color: #000; */
+            /* opacity: .5;  span中的内容也半透明 */
+            /* opacity: .5; */
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <img src="./imgs/nav/01.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/02.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/03.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/04.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/05.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/06.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/07.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+        <li>
+            <img src="./imgs/nav/08.JPG" alt="">
+            <p></p>
+            <span>百度一下，会死吗？</span>
+        </li>
+    </ul>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        // $(".nav span").each(function(index,el){
+        //     // console.log(el) // el是JS对象
+        //     $(el).css("display","none")
+        // })
+        // $(".nav p").each(function(index,el){
+        //     $(el).css("display","none")
+        // })
+
+        // 换小图片  each 循环遍历
+        $(".nav span").each(function(index,el){
+            // console.log(`0 ${-24*index}px`);
+            // 设置span背景图上的位置
+            $(el).css("background-position","0 -"+24*index+"px")
+            // $("el").css("background-position",`0 ${-24*index}px`)
+        })
+
+        $(".nav li").mouseover(function(){
+            $(this).children("span,p").stop().animate({bottom:0},500)
+        }).mouseout(function(){
+            $(this).children("span,p").stop().animate({bottom:-25},500)
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

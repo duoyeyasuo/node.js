@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>左右移动的焦点图</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	#slider{
+		width:400px;
+		height:307px;
+		border: 5px solid #ccc;
+		margin:100px auto;
+		position:relative;
+	}
+	#slider div{
+		width:400px;
+		height:307px;
+		position:relative;
+		overflow:hidden;
+	}
+	#slider ul{
+		width:3000px;
+		list-style-type:none;
+		position:absolute;
+		left:0px;
+		top:0;
+	}
+	#slider ul li{
+		float:left;
+	}
+	#slider ol{
+		position:absolute;
+		left:135px;
+		bottom:-30px;
+		list-style-type:none;
+	}
+	#slider ol li{
+		float:left;
+		width:13px;
+		height:13px;
+		background-image:url(images/72/00.png);
+		margin-right:10px;
+		cursor:pointer;
+	}
+	#slider ol li.active{
+		background-position:left bottom;
+	}
+	#slider span{
+		width:52px;
+		height:52px;
+		background:url(images/72/arr.png) left top;
+		position:absolute;
+		left:-21px;
+		top:50%;
+		margin-top:-26px;
+		cursor:pointer;
+	}
+	#slider span.right-btn{
+		background-position:right top;
+		right:-21px;
+		left:auto;
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script>
+	$(function(){
+		var index = 0;
+		var $slider_ol_li = $('#slider ol li');
+		var $slider_ul    = $('#slider ul');
+
+		$slider_ol_li.mouseenter(function(event) {
+			// 角标的工作
+			$(this).addClass('active').siblings().removeClass();
+
+			// 图片的工作
+			index = $(this).index();
+			$slider_ul.stop().animate({left:'-'+400*index+'px'}, 1000);
+		});
+
+		// 向后按钮
+		$('#slider .right-btn').click(function(event) {
+			index++;
+			if(index>=$slider_ol_li.length){
+				index = 0;
+			}
+
+			// 角标
+			$slider_ol_li.eq(index).addClass('active').siblings().removeClass();
+			// 
+			$slider_ul.stop().animate({left:'-'+400*index+'px'}, 1000);
+		});
+
+		// 向前按钮
+		$('#slider .left-btn').click(function(event) {
+			index--;
+			if(index<0){
+				index = $slider_ol_li.length-1;
+			}
+
+			// 角标
+			$slider_ol_li.eq(index).addClass('active').siblings().removeClass();
+			// 
+			$slider_ul.stop().animate({left:'-'+400*index+'px'}, 1000);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="slider">
+		<div>
+			<ul>
+				<li><img src="images/72/01.jpg" alt="" /></li>
+				<li><img src="images/72/02.jpg" alt="" /></li>
+				<li><img src="images/72/03.jpg" alt="" /></li>
+				<li><img src="images/72/04.jpg" alt="" /></li>
+				<li><img src="images/72/05.jpg" alt="" /></li>
+				<li><img src="images/72/06.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<ol>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+		<span class="left-btn"></span>
+		<span class="right-btn"></span>
+	</div>
+</body>
+</html>

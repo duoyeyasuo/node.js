@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .slider {
+            width: 490px;
+            height: 170px;
+            border: 1px solid red;
+            padding: 5px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slider div {
+            width: 490px;
+            height: 170px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slider ol {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .slider ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #fff;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .slider ol li.active {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <div>
+            <ul>
+                <li><img src="./imgs/71/01.jpg" alt=""></li>
+                <li><img src="./imgs/71/02.jpg" alt=""></li>
+                <li><img src="./imgs/71/03.jpg" alt=""></li>
+                <li><img src="./imgs/71/04.jpg" alt=""></li>
+                <li><img src="./imgs/71/05.jpg" alt=""></li>
+            </ul>
+        </div>
+        <ol>
+            <li class="active">1</li class="active">
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+    <script src="./jquery1.11.3.js"></script>
+    <script>
+        let index = 0;  // 全局的
+        let timer = null;
+
+        let slider_ol_li = $(".slider ol li");
+        let slider_ul = $(".slider ul")
+
+        // 鼠标移入ol下的li下切换
+        slider_ol_li.mouseenter(function () {
+            index = $(this).index();
+            // console.log(index)
+            moveTop();
+        })
+
+        // 自动轮播 
+        autoMove();
+
+        // 鼠标放到slider时，停止轮播
+        $(".slider").mouseenter(function () {
+            clearInterval(timer)
+        }).mouseleave(function () {
+            autoMove();
+        })
+
+        function moveTop() {
+            // 处理ol 下的 li
+            slider_ol_li.eq(index).addClass("active").siblings().removeClass("active")
+
+            // 处理ul
+            slider_ul.stop().animate({ top: -170 * index }, 1000)
+        }
+
+        // 封装自动轮播的函数
+        function autoMove() {
+            // 自动轮播 
+            clearInterval(timer)
+            timer = setInterval(function () {
+                index++;
+                if (index >= slider_ol_li.length) index = 0;
+                moveTop();
+            }, 2000)
+        }
+    </script>
+</body>
+
+</html>

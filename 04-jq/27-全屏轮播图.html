@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .slider {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider ul {
+            width: 400%;
+            height: 380px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slider ul li {
+            width: 25%;
+            float: left;
+            height: 380px;
+        }
+
+        .slider span {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .slider .left-btn {
+            margin-left: -600px;
+        }
+
+        .slider .right-btn {
+            margin-left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul>
+            <li style="background-color: red;"></li>
+            <li style="background-color: green;"></li>
+            <li style="background-color: blue;"></li>
+            <li style="background-color: gold;"></li>
+        </ul>
+        <span class="left-btn">&lt;</span>
+        <span class="right-btn">&gt;</span>
+    </div>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        let index = 0;
+        let timer = null;
+        let slider_ul = $(".slider ul")
+        let slider_ul_li = $(".slider ul li")
+        let slider_span = $(".slider span")
+
+        // 右边的按钮
+        $(".slider .right-btn").click(function () {
+            index++;
+            if (index >= slider_ul_li.length) index = 0;
+            slider_ul.stop().animate({ left: "-" + index + "00%" }, 1000)
+        })
+
+        // 左边的按钮
+        $(".slider .left-btn").click(function () {
+            index--;
+            if (index < 0) index = slider_ul_li.length - 1;
+            slider_ul.stop().animate({ left: "-" + index + "00%" }, 1000)
+        })
+
+        // 自动轮播
+        autoMove();
+
+        $(".slider").mouseenter(function () {
+            clearInterval(timer)
+            // 显示按钮
+            slider_span.fadeIn(300)
+        }).mouseleave(function () {
+            autoMove();
+            // 隐藏按钮
+            slider_span.fadeOut(300)
+        })
+
+        // 自动轮播函数
+        function autoMove() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                index++;
+                if (index >= slider_ul_li.length) index = 0;
+                slider_ul.stop().animate({ left: "-" + index + "00%" }, 1000)
+            }, 2000)
+        }
+    </script>
+</body>
+
+</html>

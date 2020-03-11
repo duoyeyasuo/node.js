@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>吸顶条</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	div{
+		width:100px;
+		height:100px;
+		border: 1px solid #000;
+		margin:100px;
+	}
+	.box{
+		padding:20px;
+	}
+	.box div{
+		background:green;
+		margin:0;
+		position:static;
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script>
+	$(function(){
+		var $green_box    = $('.box div');
+		var green_box_top = $green_box.offset().top;
+
+		$(window).scroll(function(event) {
+			// 当窗口的滚动坐标值（纵坐标）大于等于绿盒子的文档坐标值的纵坐标的时候，就应该让绿盒子处于固定定位
+			if($(window).scrollTop()>=green_box_top){
+				$green_box.css({position:'fixed', 'top':0});
+			}else{
+				$green_box.css({position:'static'});   //position:static表示标准流
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div class="box">
+		<div></div>
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

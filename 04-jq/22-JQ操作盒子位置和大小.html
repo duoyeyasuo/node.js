@@ -1,0 +1,106 @@
+<!-- 
+    13个API
+
+    位置
+        offset([coordinates])  offsetLeft   offsetTop
+        position()
+        scrollTop([val])  向上卷去距离
+        scrollLeft([val])  向左卷去距离  基本上用不到
+
+    尺寸
+        height([val|fn]): 同width
+        width([val|fn]): 内容的宽度  没有padding 没有边框
+
+        innerHeight()：同innerWidth
+        innerWidth(): width + 左右padding  没有边框
+
+        outerHeight([options]): 同outerWidth
+        outerWidth([options])   
+            默认：width + 左右padding + 左右的border
+            加true: width + 左右padding + 左右的border + 左右的margin
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        html{ height: 100%; }
+        body{ height: 200%; }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+            border: 10px solid red;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+        <p>1</p>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        // console.log($(".box").outerWidth());  // 140
+        // console.log($(".box").outerHeight()); // 140
+
+        /* console.log($(".box").outerWidth(true));  // 160
+        console.log($(".box").outerHeight(true)); // 160 */
+
+        /* console.log($(".box").innerWidth());  // 120  // 包括补白、不包括边框
+        console.log($(".box").innerHeight()); // 120 */
+
+        /* console.log($(".box").width());  // 120  // 包括补白、不包括边框
+        console.log($(".box").height()); // 120 */
+
+        /* // 对于window来说，width  innerWidth  outerWidth 得到的值是一样的
+        console.log($(window).width()); 
+        console.log($(window).height()); 
+        console.log($(window).innerWidth());  
+        console.log($(window).innerHeight()); 
+        console.log($(window).outerWidth());  
+        console.log($(window).outerHeight());  */
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

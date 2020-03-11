@@ -1,0 +1,85 @@
+<!-- 
+    JQ中的事件委托：
+        采用代理的设计模式。
+        本来是给子元素注册点击事件的，但是把点击事件委托给父元素，也就是说给父元素注册点击事件，当点击了子元素，由于事件冒泡，它也会触发父元素的点击事件。
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        ul{ list-style-type: none; }
+        li{
+            height: 40px;
+            line-height: 40px;
+            background-color: skyblue;
+            border: 1px solid gold;
+        }
+        span{
+            float: right;
+            cursor: pointer;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button>添加一个新的li</button>
+    <ul>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+        <li><span>&times;</span></li>
+    </ul>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        $("button").on("click",function(){
+            let li = $("<li><span>&times;</span></li>");
+            $("ul").prepend(li);
+        })
+        // 给已存在的span注册点击事件  新创建li中的span并没有绑定点击事件
+       /*  $("span").on("click",function(){
+            $(this).parent().remove();
+        }) */
+
+        // 事件委托给父元素添加事件  ul是事件源
+        // 当点击span，由于事件冒泡，也会触发ul的点击事件
+        // 给父元素注册点击事件，可以理解成会把事件分配给子元素
+        // 第2个参数span，表示把点击事件分配给span
+        $("ul").on("click","span",function(){
+            // console.log(this); // 之前说this表示事件源  现在this表示你点击了谁  this就是谁
+            $(this).parent().remove();
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

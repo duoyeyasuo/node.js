@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	#gallery{
+		width:960px;
+		margin:100px auto;
+		position:relative;
+	}
+	#gallery .gallery-top{
+		
+	}
+	#gallery .outer, #gallery .mid, #gallery .inner{
+		width:310px;
+		height:466px;
+		overflow:hidden;
+	}
+	#gallery .outer{
+		transform:rotate(120deg);
+		float:left;
+		margin-right:10px;
+	}
+	#gallery .mid{
+		transform:rotate(-60deg);
+	}
+	#gallery .inner{
+		transform:rotate(-60deg);
+		background-image:url(images/1.jpg);
+	}
+	#gallery .outer:nth-of-type(2) .inner{
+		background-image:url(images/2.jpg);
+	}
+	#gallery .outer:nth-of-type(3) .inner{
+		background-image:url(images/3.jpg);
+	}
+	#gallery .gallery-bottom{
+		position:absolute;
+		left:160px;
+		top:276px;
+	}
+	.clearfix:after{
+		content:'';
+		height:0;
+		visibility: hidden;
+		display:block;
+		clear:both;
+	}
+	.clearfix{
+		zoom:1;
+	}
+	</style>
+</head>
+<body>
+	<div id="gallery">
+		<div class="gallery-top clearfix">
+			<div class="outer">
+				<div class="mid">
+					<img src="images/1.jpg" class="inner">
+				</div>
+			</div>
+			<div class="outer">
+				<div class="mid">
+					<img src="images/2.jpg" class="inner">
+				</div>
+			</div>
+			<div class="outer">
+				<div class="mid">
+					<img src="images/3.jpg" class="inner">
+				</div>
+			</div>
+		</div>
+		<div class="gallery-bottom clearfix">
+			<div class="outer">
+				<div class="mid">
+					<img src="images/4.jpg" class="inner">
+				</div>
+			</div>
+			<div class="outer">
+				<div class="mid">
+					<img src="images/5.jpg" class="inner">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

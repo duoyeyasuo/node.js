@@ -1,0 +1,132 @@
+<!-- 
+    原生DOM操作元素节点：
+        createElement
+        insertBefore  
+        appendChild
+        cloneNode 
+        removeChild
+
+    JQ操作元素节点:
+        创建一个元素节点：$("<ul></ul>")
+        替换:
+            replaceWith(content|fn)  已存在的元素.replaceWidth(新创建的元素)
+            replaceAll(selector)    新创建的元素.replaceAll(已存在的元素);
+        删除：
+            empty()     删除某个元素内部的所有的节点
+            remove([expr])   $("ol").remove()  删除整个元素节点
+            detach([expr])
+        包裹
+            wrap(html|ele|fn)  $("ul, ol").wrap(div); // 使用div分别包裹ul 和 ol
+            unwrap()    不包裹
+            wrapAll(html|ele)  $("ul, ol").wrapAll(div); // 使用div整体包裹ul 和 ol
+            wrapInner(html|ele|fn)   $("li").wrapInner(span);  // 使用span标签包裹li标签里面的内容
+        外部插入：
+            after(content|fn)  $(".box").after(h1); // 在已存在的元素后面插入一个新元素
+            before(content|fn)  在已存在的元素前面插入一个新元素
+            insertAfter(content)   和after作用一样  只不过是新元素.insertAfter
+            insertBefore(content)  和before作用一样  只不过是新元素.insertBefore
+        内部插入:
+            append(content|fn)   $(".box").append(h1);  在box内部最后面插入h1
+            appendTo(content)    h1.prepend($(".box"));  和append一样
+            prepend(content|fn)  $(".box").prepend(h1); // 在box内部最前面插入h1
+            prependTo(content)  h1.prependTo($(".box"));  和 prepend一样
+        
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <span>span</span>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol>
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+    </ol> -->
+
+    <div class="box">
+        <input type="text" id="text"> <button id="btn">添加</button> <br>
+        <ul id="list">
+
+        </ul>
+    </div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        // 创建元素节点
+        // let ul = $("<ul><li>xxx</li></ul>");
+        // ul.replaceAll($("ol"))    // 新创建的元素.replaceAll(已存在的元素)
+        // $("ol").replaceWith(ul)   // 已存在的元素.replaceWidth(新创建的元素)
+
+        // 删除整体ol
+        // $("ol").remove();  // 删除整个元素节点
+        // $("ol").empty();  // 删除某个元素内部的所有的节点
+
+        // 包裹  wrapInner
+        // let span = $("<span>123</span>");
+        // $("li").wrapInner(span);  // 使用span标签包裹li标签里面的内容
+
+        // 包裹  wrap  wrapAll
+        // let div = $("<div></div>");
+        // $("ul, ol").wrap(div); // 使用div分别包裹ul 和 ol
+        // $("ul, ol").wrapAll(div); // 使用div整体包裹ul 和 ol
+
+        // 外部插入
+        // let h1 = $("<h1>h1</h1>");
+        // $(".box").after(h1); // 在已存在的元素后面插入一个新元素
+        // h1.insertAfter($(".box")); // 和after作用一样  只不过是新元素.insertAfter
+        // $(".box").before(h1);  // 在已存在的元素前面插入一个新元素
+        // h1.insertBefore($(".box")); // 和before作用一样  只不过是新元素.insertBefore
+
+        // 内部插入
+        // let h1 = $("<h1>h1</h1>");
+        // $(".box").prepend(h1); // 在box内部最前面插入h1
+
+        // 小案例
+        $("#btn").click(function(){
+            let text = $("#text").val();
+            // let li = $("<li>"+text+"</li>")
+            let li = $(`<li>${text}</li>`);
+            $("#list").prepend(li);
+            $("#text").val("");
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

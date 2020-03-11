@@ -1,0 +1,88 @@
+<!-- 
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+		#weibo{
+			width: 600px;
+			padding:10px;
+			border: 1px solid #000;
+			margin:100px auto 0;
+		}
+		#weibo textarea{
+			width: 455px;
+			height: 165px;
+			resize:none;
+			vertical-align: bottom;
+		}
+		#weibo button{
+			width: 40px;
+			height: 24px;
+			vertical-align: bottom;
+		}
+		#weibo ul{
+			margin:20px 20px 20px 90px;
+		}
+		#weibo li{
+			line-height: 24px;
+			list-style-type:none;
+			border-bottom:1px dashed #ccc;
+			word-break:break-all;   /*自动换行*/
+		}
+    </style>
+</head>
+<body>
+    <div id="weibo">
+		新闻内容： 
+		<textarea></textarea>
+		<button>发布</button>
+		<ul>
+			<li>这是一条新闻....</li>
+		</ul>
+	</div>
+</body>
+<script src="jquery1.11.3.js"></script>
+    <script>
+        $("button").click(function(){
+            let text = $("textarea").val();
+            if(text != ""){
+                let li = $(`<li>${text}</li>`);
+                $("ul").prepend(li);
+                $("textarea").val("");
+            }else{
+                alert("内容不能为空，请输入~");
+            }
+        })
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

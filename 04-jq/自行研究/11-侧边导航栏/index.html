@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>侧边导航栏</title>
+	<style>
+	html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img{margin:0;padding:0}
+	ul,ol{list-style-type:none;}
+	body{
+		background-color:#f1f1f1;
+		height:2000px;
+	}
+
+	@font-face {font-family: 'iconfont';
+	    src: url('font/iconfont.eot'); /* IE9*/
+	    src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	    url('font/iconfont.woff') format('woff'), /* chrome、firefox */
+	    url('font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	    url('font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+	}
+	.icon{font-family: 'iconfont';}
+	
+
+	#aside-nav .toTop{
+		display:none;
+	}
+	#aside-nav{
+		width:50px;
+		background-color: #fff;
+		font-size:12px;
+		position:absolute;
+		left:50%;
+		margin-left:580px;
+		top:400px;
+	}
+	#aside-nav li{
+		width:50px;
+		height:50px;
+		line-height:34px;
+		text-align: center;
+		cursor:pointer;
+	}
+	#aside-nav li strong{
+		width:34px;
+		height:34px;
+		padding:8px 0;
+		margin:0 auto;
+		border-top:1px solid #efefef;
+		display:block;
+		font-weight:normal;
+	}
+	#aside-nav li.hover{
+		background:#f40;
+	}
+	#aside-nav li.hover strong{
+		border:0 none;
+	}
+	#aside-nav .lh17{
+		line-height:17px;
+	}
+	#aside-nav a{
+		display:block;
+		width:50px;
+		height:50px;
+	}
+	#aside-nav .haunt{
+		color:#f40;
+	}
+	#aside-nav .haunt strong,#aside-nav .fashion strong,#aside-nav .life strong,#aside-nav .special strong,#aside-nav .economical strong{
+		font-weight:bold;
+	}
+	#aside-nav .fashion{
+		color:#ff3779;
+	}
+	#aside-nav .haunt strong{
+		border:0 none;
+	}
+	#aside-nav .life{
+		color:#8d7afb;
+	}
+	#aside-nav .special{
+		color:#aec413;
+	}
+	#aside-nav .economical{
+		color:#ad846e;
+	}
+	#aside-nav .guess{
+		color:#f40;
+	}
+
+	#aside-nav .haunt.hover{
+		background:url('images/aside-nav/haunt.jpg');
+		color:white;
+	}
+	#aside-nav .fashion.hover{
+		background:url('images/aside-nav/fashion.jpg');
+		color:white;
+	}
+	#aside-nav .fashion.hover strong{
+		border:0 none;
+	}
+	#aside-nav .life.hover{
+		background:url('images/aside-nav/life.jpg');
+		color:white;
+	}
+	#aside-nav .life.hover strong{
+		border:0 none;
+	}
+	#aside-nav .special.hover{
+		background:url('images/aside-nav/special.jpg');
+		color:white;
+	}
+	#aside-nav .special.hover strong{
+		border:0 none;
+	}
+	#aside-nav .economical.hover{
+		background:url('images/aside-nav/economical.jpg');
+		color:white;
+	}
+	#aside-nav .economical.hover strong{
+		border:0 none;
+	}
+	#aside-nav .guess.hover{
+		background:url('images/aside-nav/guess.jpg');
+		color:white;
+	}
+	#aside-nav .guess.hover strong{
+		border:0 none;
+	}
+
+
+
+	#aside-nav .haunt.active{
+		background:url('images/aside-nav/haunt.jpg');
+		color:white;
+	}
+	#aside-nav .fashion.active{
+		background:url('images/aside-nav/fashion.jpg');
+		color:white;
+	}
+	#aside-nav .fashion.active strong{
+		border:0 none;
+	}
+	#aside-nav .life.active{
+		background:url('images/aside-nav/life.jpg');
+		color:white;
+	}
+	#aside-nav .life.active strong{
+		border:0 none;
+	}
+	#aside-nav .special.active{
+		background:url('images/aside-nav/special.jpg');
+		color:white;
+	}
+	#aside-nav .special.active strong{
+		border:0 none;
+	}
+	#aside-nav .economical.active{
+		background:url('images/aside-nav/economical.jpg');
+		color:white;
+	}
+	#aside-nav .economical.active strong{
+		border:0 none;
+	}
+	#aside-nav .guess.active{
+		background:url('images/aside-nav/guess.jpg');
+		color:white;
+	}
+	#aside-nav .guess.active strong{
+		border:0 none;
+	}
+
+	div{
+		width:1190px;
+		height:700px;
+		margin:0 auto;
+	}
+	.haunt-box{
+		background-color: green;
+	}
+	.fashion-box{
+		background-color: orange;
+	}
+	.life-box{
+		background-color: cyan;
+	}
+	.special-box{
+		background-color: blue;
+	}
+	.economical-box{
+		background-color: pink;
+	}
+	.guess-box{
+		background-color: skyblue;
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script>
+	$(function(){
+		var $aside_nav = $('#aside-nav');
+		var $aside_nav_lis = $aside_nav.find('li');
+		var $window    = $(window);
+		var aside_nav_top = $aside_nav.offset().top;
+		var window_height = $window.height();
+		var $toTop        = $aside_nav.find('.toTop')
+
+		$aside_nav_lis.hover(function() {
+			if(!$(this).hasClass('active')){
+				$(this).addClass('hover').css({opacity:0}).animate({opacity:1},300);
+			}
+		}, function() {
+			$(this).removeClass('hover');
+		});
+
+		// $aside_nav_lis.eq(0).click(function(event) {
+		// 	//让用户点击的侧边栏加上active类，它的兄弟都去掉active类
+		// 	$(this).addClass('active').siblings().removeClass('active');
+
+		// 	var haunt_box_top = $('.haunt-box').offset().top;
+		// 	$('html,body').animate({'scrollTop':haunt_box_top}, 500);
+		// });
+		// $aside_nav_lis.eq(1).click(function(event) {
+		// 	$(this).addClass('active').siblings().removeClass('active');
+
+		// 	var fashion_box_top = $('.fashion-box').offset().top;
+		// 	$('html,body').animate({'scrollTop':fashion_box_top}, 500);
+		// });
+
+		// li_tops是侧边栏的li要滚动到的对应的div的文档坐标值的纵坐标
+		// 这个数组通过索引值和侧边栏一一对应
+		var li_tops = [$('.haunt-box').offset().top, $('.fashion-box').offset().top, $('.life-box').offset().top, $('.special-box').offset().top, $('.economical-box').offset().top, $('.guess-box').offset().top];
+
+		$aside_nav_lis.click(function(event) {
+			var index = $(this).index();
+			$('html,body').animate({'scrollTop':li_tops[index]}, 500);
+			$(this).addClass('active').siblings().removeClass('active');
+		});
+
+
+		// 当侧边导航栏达到一定高度的时候，就处于固定定位状态
+		$window.scroll(function(event) {
+			if($window.scrollTop()>=aside_nav_top-35){
+				$aside_nav.css({'position':'fixed', top:35});
+			}else{
+				$aside_nav.css({'position':'absolute', top:400});
+			}
+
+			// 如果网页文档滚出第一屏的时候，应该让返回顶部显示。否则就隐藏
+			if($window.scrollTop()>window_height){
+				$toTop.show();
+			}else{
+				$toTop.hide();
+			}
+
+			$aside_nav_lis.addClass('hover');
+		});
+
+
+
+		$toTop.click(function(event) {
+		 	$('html,body').animate({'scrollTop':0}, 500);
+		});
+	});
+	</script>
+</head>
+<body>
+	
+	<div class="haunt-box">我常逛的</div>
+	<div class="fashion-box">时尚</div>
+	<div class="life-box">品质生活</div>
+	<div class="special-box">特色</div>
+	<div class="economical-box">实惠</div>
+	<div class="guess-box">猜你喜欢</div>
+
+
+	<ul id="aside-nav">
+		<li class="haunt lh17 active">
+			<strong>
+				我常<br>逛的
+			</strong>
+		</li>
+		<li class="fashion">
+			<strong>时尚</strong>
+		</li>
+		<li class="life">
+			<strong>品质</strong>
+		</li>
+		<li class="special">
+			<strong>特色</strong>
+		</li>
+		<li class="economical">
+			<strong>实惠</strong>
+		</li>
+		<li class="guess lh17">
+			<strong>猜你<br>喜欢</strong>
+		</li>
+		<li class="toTop lh17">
+			<strong><span class="icon">&#xe68c;</span><br>顶部</strong>
+		</li>
+		<li>
+			<a href="#"><strong>反馈</strong></a>
+		</li>
+		<li class="lh17">
+			<a href="#"><strong>暴恐<br>举报</strong></a>
+		</li>
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!-- 
+    JQ的入口函数写法：
+        $(document).ready(function(){  })
+        $().ready(function(){  })
+        $(function(){  })  通常我们就使用这种写法
+
+    JQ中的事件绑定：
+        $("button").click(fuction(){ });
+        $("button").bind("click",function(){  })
+        $("button").bind({"click":function(){  }, "mouseover":function(){  }})
+        $("button").one("click",function(){  })  绑定的事件是一次性的
+        $("button").on("click",function(){  })  
+        $("button").on({"click":function(){  }, "mouseover":function(){  }})  项目中使用on会多一点
+
+        off表示解绑事件 
+
+    JQ中的事件对象：
+        $("button").on("click",function(ev){
+            ev.preventDefault(); // 阻止默认事件
+            ev.stopPropagation(); // 阻止事件冒泡
+            return false // 阻止默认事件
+        })
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS全栈开发：17001100482</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="jquery1.11.3.js"></script>
+    <script>
+        /* console.log($("button"))
+        $("button").click(function(){
+            alert("....")
+        }) */
+
+        // $(document) 整个文档   ready是事件
+        // DOM载入完毕就会触发ready事件
+        /* $(document).ready(function () {  // 异步代码（异步任务）
+            // 在ready事件监听器就可以得到DOM元素了
+            $("button").click(function () {
+                alert("....")
+            })
+        }) */
+
+        // 简写
+        /* $().ready(function () {  // 异步代码（异步任务）
+            // 在ready事件监听器就可以得到DOM元素了
+            $("button").click(function () {
+                alert("....")
+            })
+        }) */
+
+        // 还可以进一步简写
+        $(function () {  // JQ中的入口函数，如果把JQ代码放到前面，一般都要写入口函数
+            // 如果不操作DOM元素，也可以不写这个入口函数
+
+            // 事件绑定方式一，用的也是最多的
+            /* $("button").click(function () {
+                alert("....")
+            }) */
+
+            /* // 事件绑定方式二，bind
+            $("button").bind("click",function(){
+                alert("xxxx")
+            }) */
+
+            // bind可以绑定多个事件
+            /* $("button").bind({
+                "mouseover":function(){
+                    console.log("mouseover")
+                },
+                "mouseout":function(){
+                    console.log("mouseout")
+                }
+            }) */
+
+            /* // one绑定事件 一次性
+            $("button").one("click",function(){
+                alert("one绑定事件....")
+            }) */
+
+            /* // on绑定事件 
+            $("button").on("click",function(){
+                alert("on绑定事件....")
+            }) */
+
+            /* // on绑定多个事件 
+            $("button").on({
+                "click": function () {
+                    console.log("click")
+                },
+                "mouseover":function(){
+                    console.log("mouseover")
+                }
+            }) */
+
+            // 事件对象
+            $("button").on("click",function(ev){
+                ev.preventDefault(); // 阻止默认事件
+                ev.stopPropagation(); // 阻止事件冒泡
+                return false // 阻止默认事件
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <button>点击</button>
+</body>
+
+</html>

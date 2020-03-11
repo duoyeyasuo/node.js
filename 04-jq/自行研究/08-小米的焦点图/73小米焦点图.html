@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+*{padding:0;margin:0;border:0}
+.banner{width:992px;height:420px;margin:100px auto;position:relative;overflow:hidden}
+.banner ul{position:relative;z-index:1}
+.banner ul li{width:992px;height:420px;overflow:hidden;position:absolute;left:0;top:0;list-style:none;cursor:pointer}
+.banner ul li.current{z-index:10}
+.banner ol{position:absolute;right:10px;bottom:10px;z-index:2}
+.banner ol li{float:left;width:30px;height:20px;border:1px solid #ccc;font-size:16px;margin-left:5px;line-height:20px;text-align:center;list-style:none;cursor:pointer}
+.banner ol li.current{width:30px;height:20px;line-height:20px;background:#f60}
+.banner a{width:40px;height:70px;background:url(images/73/arr.png) no-repeat left top;position:absolute;left:0;top:50%;margin-top:-35px;z-index:3;display:none;}
+.banner a.next{background-position:right top;right:0;left:auto;}
+</style>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var index=0;
+	var z_index=100;
+	
+	//鼠标移上到脚标的时候
+	$('.banner ol li').mouseenter(function(e) {
+		index=$(this).index();
+
+        //先脚标的工作
+		//$(this).addClass('current').siblings().removeClass('current');
+		pic_display();
+    });
+	
+	//自动播放
+	var timer;
+	/*clearInterval(timer);
+	timer=setInterval(function(){
+		index++;
+		if(index>4){
+			index=0;
+		}
+		
+		pic_display();
+	}, 3000);*/
+	
+	//鼠标移上的时候，停止动画的播放  &&  显示向前和向后的按钮
+	//鼠标离开的时候，继续动画的播放  &&  隐藏向前和向后的按钮
+	$('.banner').mouseenter(function(e) {
+        clearInterval(timer);
+		$('.banner a').stop().fadeTo(500, 1);
+    }).mouseleave(function(e) {
+        clearInterval(timer);
+		timer=setInterval(function(){
+			index++;
+			if(index>4){
+				index=0;
+			}
+			
+			//pic_display();
+			$('.banner ol li').eq(index).trigger('mouseenter').trigger('mouseleave');
+		}, 3000);
+		
+		$('.banner a').stop().fadeTo(500, 0);
+    }).trigger('mouseleave');
+	
+	//向前按钮
+	/*$('.banner .prev').click(function(e) {
+        index--;
+		if(index<0){
+			index=4;
+		}
+		
+		pic_display();
+    });*/
+	$('.banner .prev').click(function(e) {
+        if(index<=0){
+			index=4;
+		}else{
+			index--;
+		}
+		$('.banner ol li').eq(index).trigger('mouseenter');
+		return false;
+    });
+	
+	//向后按钮
+	/*$('.banner .next').click(function(e) {
+        index++;
+		if(index>4){
+			index=0;
+		}
+		
+		pic_display();
+    });*/
+	$('.banner .next').click(function(e) {
+        if(index>=$('.banner ol li').length-1){
+			index=0;
+		}else{
+			index++;
+		}
+		$('.banner ol li').eq(index).trigger('mouseenter');
+		return false;
+    });
+	
+	function pic_display(){
+		z_index++;
+		
+		//让脚标处于当前状态
+		$('.banner ol li').eq(index).addClass('current').siblings().removeClass();
+		
+		//显示当前的图片
+		$('.banner ul li').eq(index).css('z-index', z_index).hide().stop().fadeTo(500, 1);
+		return false;
+	}
+})
+</script>
+</head>
+
+<body>
+<div class="banner">
+  <ul>
+  	<li class="current"><img src="images/73/1.jpg" width="992" height="420"></li>
+  	<li><img src="images/73/2.jpg" width="992" height="420"></li>
+  	<li><img src="images/73/3.jpg" width="992" height="420"></li>
+  	<li><img src="images/73/4.jpg" width="992" height="420"></li>
+  	<li><img src="images/73/5.jpg" width="992" height="420"></li>
+  </ul>
+  <ol>
+  	<li class="current">1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	<li>4</li>
+  	<li>5</li>
+  </ol>
+  <a href="#" class="prev"></a>
+  <a href="#" class="next"></a>
+</div>
+</body>
+</html>
