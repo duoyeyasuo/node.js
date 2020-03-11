@@ -1,6 +1,8 @@
 @charset "utf-8"; 
-html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
+/* 告诉浏览器 CSS文件使用的编码是utf-8 */
 
+/* 页面的重置样式 start */
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
 body {
     color: #3C3C3C;
     -webkit-font-smoothing: antialiased;  /*让文字在浏览器中显示得更圆滑*/
@@ -30,7 +32,6 @@ a:hover{
 .anhong{
 	color:#c60000;
 }
-
 /*图标字体*/
 @font-face {font-family: 'icon';
     src: url('font/iconfont.eot'); /* IE9*/
@@ -46,11 +47,133 @@ a:hover{
     url('iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
     url('iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
-
 .icon{
 	font-family:'icon';
 }
 .iconfont{
 	font-family: 'iconfont';
 }
+/* 页面的重置样式 end */
 
+
+/*  top 区域的  start */
+.user-nav-wrapper{
+    width: 100%;
+    height: 35px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+.user-nav-wrapper .user-nav{
+    width: 1190px;  /* 版心 */
+    height: 35px;
+    line-height: 35px;
+    /* background-color: pink; */
+    margin: 0 auto;
+}
+.user-nav-wrapper .user-nav-left{  }
+.user-nav-wrapper .user-nav-left li{
+    float: left;
+    padding: 0 6px;
+}
+.user-nav-wrapper .user-nav-left li a{
+    margin-right: 7px;
+}
+.user-nav-wrapper .user-nav-right{
+    float: right;
+}
+.user-nav-wrapper .user-nav-right li{
+    float: left;
+}
+.user-nav-wrapper .user-nav-inner{
+    padding: 0 6px;
+    /* 目的是让inner压住下面的submenu */
+    position: relative;
+    z-index: 1000;
+}
+.user-nav-wrapper .user-nav-inner a{
+    margin-right: 7px;
+}
+.user-nav-wrapper .user-nav-inner i{
+    font-style: normal;
+}
+
+.user-nav-wrapper .user-nav-right li{
+    position: relative; /* 参考点 */ 
+}
+.user-nav-wrapper .submenu{
+    border: 1px solid #eee;
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 8px 0;
+    /* 绝对定位  需要注意 z-index */
+    position: absolute;
+    left: 0;
+    top: 34px;
+    /* 999没有1000大   1000在前  999在后 */
+    z-index: 999;
+    display: none;
+}
+.user-nav-wrapper .submenu a{
+    padding: 0 5px;
+    line-height: 28px;
+    display: block;
+    /* 文字不换行 */   
+    white-space: nowrap;
+}
+.user-nav-wrapper .submenu a:hover{
+    background-color: #f5f5f5;
+    color: #6c6c6c;
+}
+
+.user-nav-wrapper .active .user-nav-inner{
+    background-color: #fff;
+    /* 加上边框导航盒子在页面上的占据的大小变大 */
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    /* 把之前6px的padding变成5px 保证它在页面上占据的大小不变 */
+    padding: 0 5px;
+}
+.user-nav-wrapper .active .submenu{
+    display: block;
+}
+.user-nav-wrapper .cart{
+	width:307px;
+	height:46px;
+	line-height:46px;
+	border:1px solid #eee;
+	text-align:right;
+	background:#fff;
+}
+.user-nav-wrapper .cart a{
+	display:inline;
+	padding:6px;
+	background-color:#f40;
+	color:white;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	margin-right:6px;
+}
+.user-nav-wrapper .active .user-nav-inner i{
+	color:#f40;
+}
+.user-nav-wrapper .sitemap{
+    /* right是0 left是auto  auto表示尽可能大 */
+	right:0;
+	left:auto;
+}
+/*  top 区域的  end */
+
+/* top_ad 区域的 start */
+.top_ad{
+    width: 100%;
+    height: 45px;
+    position: relative;
+    background-color: #26479c;
+}
+.top_ad img{
+    position: absolute;
+    left: 50%;
+    /* 1190px  */
+    margin-left: -595px;
+}
+/* top_ad 区域的 end */

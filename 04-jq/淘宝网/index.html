@@ -3,14 +3,108 @@
 <head>
 	<meta charset="UTF-8">
 	<title>淘宝网 - 淘！我喜欢</title>
+	<!-- keywords 一般情况下一个上线的网站都有keywords  关键词  有利于SEO -->
 	<meta name="keywords" content="淘宝网">
+	<!-- description 描述 都要加  有利于SEO  -->
 	<meta name="description" content="淘宝网 - 亚洲最大、最安全的网上交易平台，提供各类服饰、美容、家居、数码、话费/点卡充值… 8亿优质特价商品，同时提供担保交易(先收货后付款)、先行赔付、假一赔三、七天无理由退换货、数码免费维修等安全交易保障服务，让你全面安心享受网上购物乐趣！">
+	<!-- 引入首页面的css文件 -->
 	<link type="text/css" rel="stylesheet" href="css/index.css">
-	<link rel="shortcut icon" href="favicon.ico">
+	<!-- shortcut icon  网站的标题前面的小图标 -->
+	<link rel="shortcut icon" href="./images/favicon.ico">
+	<!-- 引入JQ文件 学习时JS文件放到页面最下面 但是多数人还是喜欢放到最前面 -->
 	<script src="js/jquery-1.11.3.min.js"></script>
+	<!-- 引入首页面的JS文件 写JQ代码 实现首页面交互 -->
 	<script src="js/index.js"></script>
 </head>
 <body>
-	
+	<!-- top start -->
+	<div class="user-nav-wrapper">
+		<!-- class名字是用来写css  id名字是用来操作DOM -->
+		<div class="user-nav" id="user-nav">
+			<ul class="user-nav-left">
+				<li><a href="#" class="cheng">亲，请登录</a><a href="#">免费注册</a></li>
+				<li><a href="#">手机逛淘宝</a></li>
+			</ul>
+			<ul class="user-nav-right">
+				<!-- 给第1个li加上active 就意味着 放鼠标放到li上面 -->
+				<li class="menu">
+					<div class="user-nav-inner">
+						<!-- 字体图标：当成文字 -->
+						<a href="#">我的淘宝</a><span class="icon">&#xe62b;</span>
+					</div>
+					<div class="submenu">
+						<a href="#">已买到的宝贝</a>
+						<a href="#">我的足迹</a>
+					</div>
+				</li>
+				<li class="menu">
+					<div class="user-nav-inner">
+						<!-- i标签默念有倾斜的功能 -->
+						<i class="icon tbcheng">&#xe607;</i>
+						<a href="#">购物车<b class="tbcheng">0</b></a><span class="icon">&#xe62b;</span>
+					</div>
+					<div class="submenu cart">
+						您购物车里还没有任何宝贝。<a href="#">查看我的购物车</a>
+					</div>
+				</li>
+				<li class="menu">
+					<div class="user-nav-inner">
+						<a href="#"><i class="icon">&#xe616;</i>收藏夹</a><span class="icon">&#xe62b;</span>
+					</div>
+					<div class="submenu small">
+						<a href="#">收藏的宝贝</a>
+						<a href="#">收藏的店铺</a>
+					</div>
+				</li>
+				<li>
+					<div class="user-nav-inner"><a href="#">商品分类</a></div>
+				</li>
+				<li class="menu">
+					<div class="user-nav-inner"><a href="#">卖家中心</a><span class="icon">&#xe62b;</span></div>
+					<div class="submenu">
+						<a href="#">免费开店</a>
+						<a href="#">已卖出的宝贝</a>
+						<a href="#">出售中的宝贝</a>
+						<a href="#">卖家服务市场</a>
+						<a href="#">卖家培训中心</a>
+					</div>
+				</li>
+				<li class="menu">
+					<div class="user-nav-inner">
+						<a href="#">联系客服</a><span class="icon">&#xe62b;</span>
+					</div>
+					<div class="submenu">
+						<a href="#">消费者客服</a>
+						<a href="#">卖家服务</a>
+					</div>
+				</li>
+				<li class="menu">
+					<div class="user-nav-inner">
+						<i class="icon tbcheng">&#xe64d;</i>
+						<a href="#">网站导航</a>
+						<span class="icon">&#xe62b;</span>
+					</div>
+					<div class="submenu sitemap">
+						<img src="images/test/sitemap.jpg">
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- top end -->
+
+	<!-- ad start -->
+	<div class="top_ad"><img src="./images/top_ad.png" height="45" alt=""></div>
+	<!-- ad end -->
+
+	<!-- logo + 搜索区域  start -->
+	<div class="search-wraper">
+		<div>
+			<div class="search-center">
+
+			</div>
+		</div>
+	</div>
+	<!-- logo + 搜索区域  end -->
 </body>
 </html>
