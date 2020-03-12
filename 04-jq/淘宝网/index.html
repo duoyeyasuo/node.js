@@ -99,32 +99,41 @@
 
 	<!-- logo + 搜索区域  start -->
 	<div class="search-wraper">
-		<div class="search-center">
-			<!-- 如果 box1 上面有 tb 类 让tb-example显示 让tmall-example隐藏 -->
-			<!-- 如果 box1 上面有 tianmao 类 让tb-example隐藏 让tmall-example显示 -->
-			<div class="search-box1 tb" id="search-box">
-				<div class="search-box2">
-					<ul class="search-tab">
-						<li class="baobei on">宝贝</li>
-						<li class="tmall">天猫</li>
-						<li class="dianpu">店铺</li>
-					</ul>
-					<div class="search-box3">
-						<form action="">
-							<input type="text" id="q">
-							<input type="submit" value="搜索" id="search-btn">
-						</form>
-						<span class="baobei">海蓝之家</span>
-						<span class="tmall">清新小短裤 秒变大长腿</span>
-						<span class="dianpu"></span>
-						<em class="iconfont">&#xe66c;</em>
-						<i class="icon">&#xe602;</i>
+		<div>
+			<div class="search-center">
+				<!-- 如果 box1 上面有 tb 类 让tb-example显示 让tmall-example隐藏 -->
+				<!-- 如果 box1 上面有 tianmao 类 让tb-example隐藏 让tmall-example显示 -->
+				<div class="search-box1 tb" id="search-box">
+					<div class="search-box2">
+						<ul class="search-tab">
+							<li class="baobei on">宝贝</li>
+							<li class="tmall">天猫</li>
+							<li class="dianpu">店铺</li>
+						</ul>
+						<div class="search-box3">
+							<form action="">
+								<input type="text" id="q">
+								<input type="submit" value="搜索" id="search-btn">
+							</form>
+							<span class="baobei">海蓝之家</span>
+							<span class="tmall">清新小短裤 秒变大长腿</span>
+							<span class="dianpu"></span>
+							<em class="iconfont">&#xe66c;</em>
+							<i class="icon">&#xe602;</i>
+						</div>
+					</div>
+					<div class="search-gaoji"><a href="#">高级<br>搜索</a></div>
+					<div class="search-example">  
+						<div class="tb-example"><a href="#" class="tbcheng">机械键盘</a><a href="#">连衣裙</a><a href="#" class="tbcheng">时尚女包</a><a href="#">女士凉鞋</a><a href="#">女T恤</a><a href="#" class="tbcheng">雪纺衫</a><a href="#">双肩包</a><a href="#">女士泳衣</a><a href="#">男包</a><a href="#">妈妈装</a><a href="#">行车记录仪</a><a href="#">沙发</a><a href="#" class="more">更多</a></div>
+						<div class="tmall-example"><a href="#">a字裙</a><a href="#" class="anhong">空调</a><a href="#">短裤男</a><a href="#" class="anhong">凉鞋</a><a href="#">台灯</a><a href="#">伞</a><a href="#" class="anhong">蚊帐</a><a href="#">蓝牙耳机</a><a href="#" class="anhong">运动鞋</a><a href="#">女包</a><a href="#">洗衣液</a><a href="#" class="anhong">夏凉被</a><a href="#">大码女装</a><a href="#">文胸</a><a href="#" class="anhong">t恤男</a></div>
 					</div>
 				</div>
-				<div class="search-gaoji"><a href="#">高级<br>搜索</a></div>
-				<div class="search-example">  
-					<div class="tb-example"><a href="#" class="tbcheng">机械键盘</a><a href="#">连衣裙</a><a href="#" class="tbcheng">时尚女包</a><a href="#">女士凉鞋</a><a href="#">女T恤</a><a href="#" class="tbcheng">雪纺衫</a><a href="#">双肩包</a><a href="#">女士泳衣</a><a href="#">男包</a><a href="#">妈妈装</a><a href="#">行车记录仪</a><a href="#">沙发</a><a href="#" class="more">更多</a></div>
-					<div class="tmall-example"><a href="#">a字裙</a><a href="#" class="anhong">空调</a><a href="#">短裤男</a><a href="#" class="anhong">凉鞋</a><a href="#">台灯</a><a href="#">伞</a><a href="#" class="anhong">蚊帐</a><a href="#">蓝牙耳机</a><a href="#" class="anhong">运动鞋</a><a href="#">女包</a><a href="#">洗衣液</a><a href="#" class="anhong">夏凉被</a><a href="#">大码女装</a><a href="#">文胸</a><a href="#" class="anhong">t恤男</a></div>
+	
+				<!-- logo 区域 -->
+				<div class="logo">
+					<!-- logo使用背景图 a标签中写文字是有利于SEO-->
+					<h1><a href="#">淘宝网</a></h1>
+					<h2><a href="#">淘宝网</a></h2>
 				</div>
 			</div>
 		</div>
@@ -133,4 +142,8 @@
 </body>
 </html>
 
-<!--  -->
+<!-- 
+	搜索框吸顶效果思路：
+		先定义好一个类，这个类的作用是让搜索框固定定位。
+		在scroll事件中，检查如果满足某个条件，让给搜索框加上这个类，否则去掉这个类。
+ -->

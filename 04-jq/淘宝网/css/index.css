@@ -190,6 +190,8 @@ a:hover{
     width: 1190px;
     margin: 0 auto;
     height: 100px;
+    /* 参考点 */
+    position: relative;
     /* background-color: gold; */
 }
 .search-wraper .search-box1{
@@ -357,4 +359,145 @@ a:hover{
     top: 12px;
     right: 158px;
 }
+/* ==== 获取焦点时让span隐藏掉 ==== */
+.search-wraper .input_txt .search-box2 .search-box3 span{
+    display: none;
+}
+.search-wraper .input_txt .search-box2 .search-box3 em{
+    display: none;
+}
+
+/* ==== 固定定位相关 ====  */
+.search-wraper .search-fixed{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 35px;
+    background-color: white;
+    padding: 7px 0;
+}
+.search-wraper .search-fixed .search-gaoji{
+    display: none;
+}
+.search-wraper .search-fixed .search-example{
+    display: none;
+}
+.search-wraper .search-fixed .search-tab{
+    width: 75px;
+    height: 34px;
+    border-right: 1px solid #e5e5e5;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 100;
+}
+.search-wraper .search-fixed .search-tab.hover{
+    height: 102px;
+}
+.search-wraper .search-fixed .search-tab li{
+    width: 75px;
+    height: 34px;
+    line-height: 34px;
+    /* 让之前浮动的li 不浮动 */
+    float: none;
+    background-color: #f6f6f6;
+    color: #000;
+    font-weight: normal;
+}
+.search-wraper .search-fixed .search-tab li.on.tmall{
+    background-color: #f6f6f6;
+}
+.search-wraper .search-fixed .search-center{
+    height: 35px;
+}
+.search-wraper .search-fixed .search-box1{
+    height: 35px;
+    margin: 0 auto;
+}
+.search-wraper .search-fixed .search-box2{
+    height: 35px;
+}
+.search-wraper .search-fixed #q{
+    width: 390px;
+    height: 22px;
+    padding: 6px 0px 6px 8px;
+    margin-left: 74px;
+}
+.search-wraper .search-fixed .search-tab li:first-child:after{
+    content: '\e62b';
+    /* 不要把&#xe61a;当成字符串，要当成字体图标 */
+    font-family: icon;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+.search-wraper .search-fixed .search-box3 em{
+    left: 84px;
+}
+.search-wraper .search-fixed .search-box3 .baobei{
+    left: 98px;
+}
+.search-wraper .search-fixed .search-box3 .tmall{
+    left:98px;
+}
+/* ==== 大logo部分 ====  */
+.logo{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+}
+.logo h1{
+    width: 145px;
+    height: 58px;
+    background: url("../images/logo.jpg") no-repeat;
+    text-indent: -9999em;
+    overflow: hidden;
+}
+.logo h1 a{
+    /* 为了可以点击logo */
+    width: 145px;
+    height: 58px;
+    display: block;
+}
+.logo h2{
+    width: 80px;
+    height: 33px;
+    background: url("../images/logo_xiao.png") no-repeat;
+    text-indent: -9999em;
+    overflow: hidden;
+    display: none;
+}
+.logo h1 a{
+    /* 为了可以点击logo */
+    width: 80px;
+    height: 33px;
+    display: block;
+}
+
+/* ==== 固定定位中的logo ====  */
+.search-fixed .logo{
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+.search-fixed .logo h1{
+    width: 145px;
+    height: 58px;
+    background: url("../images/logo.jpg") no-repeat;
+    text-indent: -9999em;
+    overflow: hidden;
+    display: none;
+}
+.search-fixed .logo h2{
+    width: 80px;
+    height: 33px;
+    background: url("../images/logo_xiao.png") no-repeat;
+    text-indent: -9999em;
+    overflow: hidden;
+    display: block;
+}
+.search-center .search-fixed{
+    position: relative;
+}
+
 /* logo + 搜索区域 区域的 end */
