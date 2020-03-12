@@ -177,3 +177,184 @@ a:hover{
     margin-left: -595px;
 }
 /* top_ad 区域的 end */
+
+/* logo + 搜索区域 区域的 start */
+.search-wraper{
+    width: 100%;
+    height: 100px;
+    padding-top: 30px;
+    padding-bottom: 34px;
+    background-color:#fff;
+}
+.search-wraper .search-center{
+    width: 1190px;
+    margin: 0 auto;
+    height: 100px;
+    /* background-color: gold; */
+}
+.search-wraper .search-box1{
+    width: 625px;
+    height: 90px;
+    margin-left: 265px;
+    margin-right: 300px;
+    position: relative;
+    /* background-color: pink; */
+}
+.search-wraper .search-box2{
+    width: 625px;
+    height: 65px;
+    /* background-color: gold; */
+    /* 参考点 */
+    position: relative;
+}
+.search-wraper .search-gaoji{
+    position: absolute;
+    top:26px;
+    right: -30px;
+}
+.search-wraper .search-tab{
+    overflow: hidden;
+}
+.search-wraper .search-tab li{
+    float: left;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color: #f40;
+    cursor: pointer;
+}
+.search-wraper .search-tab li.on{
+    color: #fff;
+    background-color: #f40;
+    font-weight: bold;
+}
+/* li.on.tmall 表示li上面有on 还有tmall */
+.search-wraper .search-tab li.on.tmall{
+    background-color: #c40000;
+}
+
+.search-wraper .search-box3{
+    width: 622px;
+    height: 34px;
+    background-color: #f40;
+    padding: 3px 0 3px 3px;
+    /* 参考点 */
+    position: relative;
+}
+#q{
+    width: 464px;
+    height: 22px;
+    padding: 6px 0px 6px 8px;
+    /* border: 0 none;  去掉input默认的边框 */
+    border: 0 none;
+    /* outline: 0 none; 去掉输入框获取焦点时的边框 */
+    outline: 0 none;
+    float: left;
+}
+#search-btn{
+    float: left;
+    width: 150px;
+    height: 34px;
+    background-color: #f40;
+    border: 0 none;
+    outline: 0 none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+.search-wraper .search-example{
+    width: 625px;
+    height: 25px;
+    line-height: 25px;
+    /* 参考点 */
+    position: relative;
+}
+.search-wraper .search-example a{
+    margin-right: 8px;
+}
+.search-wraper .search-example a.more{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.search-wraper .search-example a.more:after{
+    content: '\e61a';
+    /* 不要把&#xe61a;当成字符串，要当成字体图标 */
+    font-family: iconfont;
+    position: absolute;
+    right: -10px;
+    top: 0;
+}
+.search-wraper .tb-example{
+    width: 625px;
+    height: 25px;
+}
+.search-wraper .tb-example{
+    /* 默认情况下让tb-example显示 */
+    display: block;
+}
+.search-wraper .tmall-example{
+     /* 默认情况下让tmall-example隐藏掉 */
+     display: none;
+}
+/* ============= 如果有tianmao这个类 使用新的一套样式 ====== */
+.search-wraper .tianmao .tb-example{
+    /* 如果有tianmao这个类，让tb-example隐藏 */
+    display: none;
+}
+.search-wraper .tianmao .tmall-example{
+     /* 如果有tianmao这个类，让tmall-example显示 */
+     display: block;
+}
+.search-wraper .tianmao .search-box3{
+    background-color: #c60000;
+}
+.search-wraper .tianmao #search-btn{
+    background-color: #c60000;
+}
+/* ============== end */
+.search-wraper .tb .search-box3 .baobei{
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 26px;
+}
+.search-wraper .tb .search-box3 .tmall{
+    display: none;
+}
+.search-wraper .tianmao .search-box3 .tmall{
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 26px;
+}
+.search-wraper .tianmao .search-box3 .baobei{
+    display: none;
+}
+.search-wraper .dianpu .search-box3 .tmall{
+    display: none;
+}
+.search-wraper .dianpu .search-box3 .baobei{
+    display: none;
+}
+.search-wraper .dianpu .search-box3 .dianpu{
+    display: none;
+}
+.search-wraper .search-box3 em{
+    font-style: normal;
+    position: absolute;
+    top: 12px;
+    left: 10px;
+}
+.search-wraper .search-box3 i{
+    display: none;
+}
+.search-wraper .tb .search-box3 i{
+    display: block;
+    font-style: normal;
+    position: absolute;
+    top: 12px;
+    right: 158px;
+}
+/* logo + 搜索区域 区域的 end */
