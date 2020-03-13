@@ -65,11 +65,15 @@ $(function(){
             // console.log("添加一个可以固定定位的类")
             $search_fixed.addClass("search-fixed");
             search_is_fixed = true;
+
+            $("#qr").hide();
         }else{
             // 移除固定定位的类
             // console.log("移除固定定位的类")
             $search_fixed.removeClass("search-fixed");
             search_is_fixed = false;
+
+            $("#qr").show();
         }
     })
 
@@ -86,5 +90,17 @@ $(function(){
             // 处于固定定位的状态
             $(this).prependTo($(this).parent())
         }
+    })
+    // ============== 点击二维码消失
+    $("#qr span").click(function(){
+        $(this).parent().hide();
+    })
+
+    // ============== 控制主题市场左边导航的二级菜单 
+    $("#market-nav li").mouseenter(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $("#market-nav").mouseleave(function(){
+        $("#market-nav li").removeClass("active");
     })
 });
