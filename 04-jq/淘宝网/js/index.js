@@ -97,10 +97,18 @@ $(function(){
     })
 
     // ============== 控制主题市场左边导航的二级菜单 
-    $("#market-nav li").mouseenter(function(){
+    let $market_nav = $("#market-nav");   // 讲到JS高级时才会说
+    let $market_nav_lis = $market_nav.find("ul li");
+    $market_nav_lis.mouseenter(function(){
         $(this).addClass("active").siblings().removeClass("active");
     })
-    $("#market-nav").mouseleave(function(){
+    $market_nav.mouseleave(function(){
         $("#market-nav li").removeClass("active");
+    })
+
+    // ============== 移入主题市场时左边二给导航的动画效果 
+    $market_nav.mouseenter(function(){
+        $market_nav_lis.children(".market-submenu").css({opacity:0})
+        .stop().animate({opacity:1},1000)
     })
 });
