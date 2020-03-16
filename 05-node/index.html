@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传参时编码与解码</title>
+</head>
+<body>
+    <button id="btn">传参</button>
+</body>
+<script>
+    let btn = document.getElementById("btn");
+
+    btn.onclick = function(){
+        // 得到当前页面的URL 
+        // console.log(window.location.href)  // http://127.0.0.1:5500/index.html
+
+        // 给location.href赋值  完成页面的跳转
+        // window.location.href = "http://www.xxxx.com:80/xxx?name='wangcai'&age=100";
+        // window.open("http://www.xxxx.com:80/xxx?name='wangcai'&age=100")
+
+        // http://www.xxxx.com/xxx?name=%27wangcai%27&age=100
+        // http://www.xxxx.com:80/xxx?name='wangcai'&age=100
+        // 浏览器做了什么：把端口去掉了   把'进行编码
+
+        // window.open("http://www.xxxx.com:80/xxx?name=旺财&age=100")
+        // http://www.xxxx.com/xxx?name=%E6%97%BA%E8%B4%A2&age=100
+        // 浏览器做了什么：把 旺财  编码为 %E6%97%BA%E8%B4%A2
+    }
+
+</script>
+<script>
+
+let str = "http://www.xxxx.com:80/xxx?name=旺财&age=100";
+console.log(encodeURI(str))
+
+let str1 = "http://www.xxxx.com:80/xxx?name=%E6%97%BA%E8%B4%A2&age=100";
+console.log(decodeURI(str1))
+
+
+</script>
+</html>
+
+<!-- http://127.0.0.1:5500/index.html -->
+<!-- file:///C:/Users/Administrator/Desktop/node/index.html -->
