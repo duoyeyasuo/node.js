@@ -3,7 +3,7 @@
         1）这里的res是比原生的res更加强大了  包装了请求相关的信息  
         2）常用属性或方法，如下：
             res.send();  发送各种类型的响应    send方法只能写一个
-            res.sendFiel();   发送文件 
+            res.sendFile();   发送文件 
             res.sendStatus  设置响应的状态码（是程序员写的）
             res.render();  渲染模板使用  ejs   
             res.json()  发送JSON格式的响应（api接口）
