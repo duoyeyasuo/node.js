@@ -1,27 +1,93 @@
-// 在order中可能要写要很多对数据库或文件的操作，就导致了order这个文件非常大
-// 不好维护  对数据库或文件的操作 专门放到其它的文件中 
+let files = require("../models/files")
+/**
+ * 显示首页面
+ */
+exports.showIndex = (req,res)=>{
+    // 当访问/ 把index.ejs返回
+    // path must be absolute or specify root to res.sendFile
+    // let filename = path.join(__dirname, "./views/index.html");
+    // console.log(filename);
+    // sendFile  仅仅是发送一个页面给浏览器
+    // res.sendFile(filename);  // 使用sendFile可以发送一个访问给浏览器
 
-let file = require("../models/file");
-
-// 向外暴露一个函数  控制器
-exports.showIndex = (req,res)=>{  // 渲染首页面
-    // 渲染的话是渲染一个模板   ejs  
-    // 这里的xxx它默认会找views下面的xxx.ejs这个文件
-    res.render("index");  // 可以渲染xxx.ejs这个页面
+    // 上面的方式好使，我们用的更多的是res.render() 渲染一个页面给浏览器
+    // res.render()  render可以把页面和数据进行绑定  把真实数据融合到页面返回给浏览器
+    // views这个文件夹名字是固定死的   使用render它会自动去views下面的找index文件
+    res.render("index"); // 模板引擎可以把页面和数据进行绑定   ejs
 }
 
-// 接收并保存客户端传递过来的数据
-exports.save = (req,res)=>{  
-    // console.log(req.body); // 获取客户端提交过来的数据
-    // 保存数据  
-    file.save(req.body.shoujihao, req.body.cai,function(err){
+/**
+ * 保存订单信息
+ */
+exports.save = (req,res)=>{
+    // 得到客户端提交过来的数据  
+    // console.log(req.body);
+    // 进行保存 保存到文件  fs.wrieFile  对数据的操作，通常也不放控制器中，放在model中
+    files.save(req.body.shoujihao, req.body.cai,function(err){
         if(err){
-            // 谁发起了/save请求  -1这个数据就返回给谁
-            res.send("-1");   // 保存数据失败
+            res.send("-1");
         }else{
-            res.send("1"); // 表示写入数据成功了    
+            res.send("1"); // 成功
         }
     });
 }
 
-// 还可以向外暴露很多东西   exports.xx = xx
+/**
+ * 查看所有的订单
+ */
+exports.allorder = (req,res)=>{
+    files.getAllFilesName(function(arr){
+        // 把模板和数据进行绑定 把数据融合到模板中
+        res.render("allorder",{
+            "all":arr
+        });
+    })
+    
+}
+
+/**
+ * 查看某个用户的订单
+ */
+exports.oneorder = (req,res)=>{
+    // 得到get请求携带的数据
+    let shoujihao = req.params.shoujihao;
+    // console.log(shoujihao)
+
+    // 根据手机号去data中找数据  对是对data的操作  models
+    files.read(shoujihao,function(cai){
+        if(cai == -1){
+            cai = "没有找到~"
+        }
+        res.render("oneorder",{
+            "shoujihao":shoujihao,
+            "cai":cai
+        })
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

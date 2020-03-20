@@ -23,27 +23,33 @@
         <p>你想要吃什么：<input type="text" name="cai"></p>
         <!-- 把输入框中的内容扔给服务器：1）form action   2）ajax 也可以 -->
         <p><input type="button" value="确认" id="btn"></p>
-        <a href="/allorder">查看所有的订单信息</a>
     </div>
 </body>
-<!--  -->
-<!-- <script src="http://localhost:3000/js/jquery1.11.3.js"></script> -->
-<!-- JQ对ajax进行了封装，可以方便我们使用AJAX -->
-<script src="/js/jquery1.11.3.js"></script>
+<!-- 引入jq的路径需要改变一下  暂时可以先不理解 -->
+<script src="/jquery1.11.3.js"></script>
 <script>
+
     $("#btn").click(function(){
+        console.log(".....")
+        // 得到输入框中的数据 
         let shoujihao = $("input[name=shoujihao]").val();
         let cai = $("input[name=cai]").val();
+
+        // 浏览器地址栏   src   href   postman   ajax 
+        // ajax去请求服务器是没有跨域问题？  因为此时前面和后面处于同一个域于
+        // 如果前端页面是通过服务端渲染的，是没有跨域问题
         $.post("/save",{
-            shoujihao,
-            cai
-        },function(data){ // data表示服务器给你响应的数据
-            if(data==1){
-                alert("成功了~")
+            shoujihao:shoujihao, // 第1个shoujihao表示名字  第2个shoujihao表示真实的数据
+            cai:cai
+        },function(data){  // data就是服务器返回的数据  
+            // data可以告诉你请求是否成功 
+            if(data == 1){  // 前后端协商好的标识符
+                alert("成功")
             }else{
-                alert("失败~")
+                alert("失败")
             }
         })
     })
+
 </script>
 </html> 

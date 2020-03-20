@@ -1,34 +1,24 @@
-/* 
-    入口文件，一般叫main.js / app.js / index.js 
-        入口文件不写那么多代码 
-
-    不同的功能交给不同的路由来处理。
-
-    在express中使用ejs，需要把前端的写好的页面放到的views这个目录下面。
-    此时views里面放的叫视图--->暂时就给它当成前端写好的页面。
-
-    一般main.js是入口js，不能放太多的代码，一般一级路由放到main.js
-    
- */
 let express = require("express");
+let bodyParser = require("body-parser");
 let order = require("./controllers/order")
-var bodyParser = require('body-parser') //引入body-parser
-let app = express(); 
+let path = require("path");
 
-// 配置body-parser  直接去官网上copy代码
+let app = express();
+// 配置body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-// 告诉express，我们使用什么样的模板引擎
-app.set("view engine","ejs");
+// 告诉express，此项目我们使用的模块引擎是ejs
+app.set("view engine","ejs"); // 需要把html文件的后缀改成ejs
 
-// 功能一：当有人访问localhost:3000/  
-app.get("/", order.showIndex); // 显示首页面  一级路由
-app.post("/save", order.save);  // 一级路由
+app.get("/", order.showIndex); // 一级路由  显示首页面
+app.post("/save",order.save); // 二级路由 保存订单信息
+app.get("/allorder",order.allorder);  // 查看所有的订单信息
+// /order/000  :shoujihao 表示动态参数  就是get请求给服务器传递的数据
+app.get("/order/:shoujihao", order.oneorder)
 
-// 在express中有一个内置的中间件，可以托管静态资源
-app.use(express.static("public")); // 实现托管静态资源
-
+app.use(express.static("public")); // 托管的是public，访问时不要带public  
 app.listen(3000,()=>{
-    console.log("服务器在3000端口启动了~")
+    console.log("服务器在3000端口运行了~")
 })
+
