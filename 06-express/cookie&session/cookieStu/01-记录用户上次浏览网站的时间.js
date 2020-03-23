@@ -13,7 +13,9 @@ app.get("/",(req,res)=>{
         res.send(`<h1>这是你第一次访问本网站</h1>`)
     }
 
-    res.send("<h1>Hello</h1>")
+    // send = res.writeHead + res.write + res.end 
+    // send = res.writeHead + res.write + res.end 
+    // res.send("<h1>Hello</h1>")
 })
 app.listen(3000,()=>{
     console.log("服务器在3000端口运行了~")
