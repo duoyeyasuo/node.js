@@ -40,11 +40,11 @@
 //   })
 // });
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/xuesheng";
+
 // 写一个model先测试数据是否OK，如果OK，再给控制器
-exports.getStudents = function(callback){
-    var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb://localhost:27017/xuesheng";
-     
+function getStudents(callback){
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) throw err;
         var dbo = db.db("xuesheng");
@@ -56,6 +56,27 @@ exports.getStudents = function(callback){
     });
 }
 
+// 存储一个学生信息
+function save(data,callback){
+    // console.log(data)
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("xuesheng");
+        dbo.collection("hs1024").insertOne(data, function(err, res) {
+            if (err){
+                console.log("插入数据失败了~");
+                callback("-1"); // -1代表插入失败了  
+            };
+            callback("1"); // 1代表插入数据成功了
+            console.log("文档插入成功");
+            db.close();
+        });
+    });
+}
+
+
+exports.getStudents = getStudents;
+exports.save = save;
 
 
 
