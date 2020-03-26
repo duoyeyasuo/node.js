@@ -67,15 +67,49 @@ function updateCatsById(data,callback){
     });
 }
 
+// 根据ID完成删除操作
+function deleteCatsById(id,callback){
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("wc_blog");
+        var whereStr = {"_id":ObjectId(id)};  // 查询条件
+        dbo.collection("cats").deleteOne(whereStr, function(err, obj) {
+            if (err) callback("-1");
+            callback("1")
+            console.log("文档删除成功");
+            db.close();
+        });
+    });
+}
+
+// 根据用户名和密码在数据库中作对比查询
+function findUser(user,callback){
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("wc_blog");
+         var whereStr = user;  // 查询条件
+        dbo.collection("users").find(whereStr).toArray(function(err, result) {
+            if (err) throw err;
+            // console.log(result);
+            callback(result)
+            db.close();
+        });
+    });
+}
+
 // 单元测试
 // getAllCats(); // 单元测试  看一下  能否得到分类的数据
 // getCatsById("5e7b1b28716bc7466cc184d1");
 // updateCatsById({id:"5e7b1b28716bc7466cc184d1",ctitle:"学习类666",csort:11});
+// deleteCatsById("5e7c2a3a1442fd1ae4ed19ed");  
+// findUser({username:"admin",pwd:"admin"});
 
 exports.insertCats = insertCats;
 exports.getAllCats = getAllCats;
 exports.getCatsById = getCatsById;
 exports.updateCatsById = updateCatsById;
+exports.deleteCatsById = deleteCatsById;
+exports.findUser = findUser;
 
 
 

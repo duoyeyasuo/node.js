@@ -58,4 +58,20 @@ router.post('/edit', function (req, res, next) {
         }
     });
 });
+
+// 处理删除请求
+router.get('/delete', function (req, res, next) {
+    // 得到ID，命令M，去数据库删除数据
+    let id = req.query.id;
+    // 命令M根据ID删除对应的分类
+    db.deleteCatsById(id,function(result){
+        if(result == "1"){
+            res.redirect("/admin/cats")
+        }else{
+            return;
+        }
+    })
+});
+
+
 module.exports = router;
