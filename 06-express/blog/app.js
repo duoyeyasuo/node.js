@@ -47,6 +47,9 @@ app.use("/admin/cats",cats);
 // 后台文章管理
 app.use("/admin/posts",article); 
 
+// 给移动端返回json数据
+// app.use("/api/getCats",()=>{res.json()})
+
 // app.use('/users', usersRouter);
 // 当访问一个没有匹配到的页面时，让它走404页面
 app.use("*",(req,res)=>{  // 这个中间件 要放到最下面，如果上面都没有匹配到，会走到下面
