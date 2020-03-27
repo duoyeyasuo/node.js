@@ -26,7 +26,8 @@
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <table class="table table-bordered">
-                                        <tbody><tr>
+                                        <tbody>
+                                            <tr>
                                             <th style="width: 10px">#</th>
                                             <th>标题</th>
                                             <th>状态</th>
@@ -34,6 +35,16 @@
                                             <th>所属分类</th>
                                             <th style="width: 20%">操作</th>
                                         </tr>
+                                        <% data.forEach(function(item, index){ %>
+                                        <tr>
+                                            <td style="width: 10px"><%= index+1 %></td>
+                                            <td><%= item.title %></td>
+                                            <td>已发布</td>
+                                            <td><%= item.time.toLocaleString() %></td>
+                                            <td><%= item.cat %></td>
+                                            <td style="width: 20%"><a href="">编辑</a><a href="">删除</a></th>
+                                        </tr>
+                                        <%  }) %>
                                                                             </tbody></table>
                                 </div><!-- /.box-body -->
                                 <div class="box-footer clearfix">

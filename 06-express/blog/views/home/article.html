@@ -41,8 +41,8 @@
                             <div class="post-snippet mb64">
                                 <img class="mb24" alt="Post Image" src="/img/blog-single.jpg" />
                                 <div class="post-title">
-                                    <span class="label">xxx</span>
-                                    <h4 class="inline-block">xxx</h4>
+                                    <span class="label"><%= data.time.toLocaleString() %></span>
+                                    <h4 class="inline-block"><%= data.title %></h4>
                                 </div>
                                 <ul class="post-meta">
                                     <li>
@@ -62,7 +62,7 @@
                                 </ul>
                                 <hr>
                                 <p>
-                                    xxxx
+                                    <%= data.content %>
                                 </p>
                             </div>
                             <!--end of post snippet-->

@@ -3,6 +3,7 @@ var db = require("../../models/db")
 var router = express.Router();
 
 // 渲染登录页面
+router.use("/login", checkNotLogin);
 router.get('/login', function(req, res, next) {
   res.render("admin/login")
 });
@@ -23,5 +24,24 @@ router.post('/signin', function(req, res, next) {
     }
   });
 });
+
+// 处理退出登录
+router.get('/logout', function(req, res, next) {
+  // 清除session 
+  req.session.isLogin = null;
+  res.redirect("/admin/index")
+});
+
+
+// 判断用户是否已经登录了 
+function checkNotLogin(req, res, next){
+  if(req.session.isLogin){
+    // 表示已经登录，假如你已经处于后台首页面，你再访问登录页面，直接让它跳到后台首页面（原来的页面）
+    res.redirect("/admin/index")
+
+    // back 后面查一下怎么用？？？？
+  }
+  next();
+}
 
 module.exports = router;

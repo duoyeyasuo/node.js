@@ -21,7 +21,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box">
-                            <form action="http://localhost/blog/admin/article.php?a=insert" method="post" enctype="multipart/form-data">
+                            <!-- enctype="multipart/form-data" 用于文件上传的 现在先不用管 -->
+                            <form action="/admin/posts/add" method="post" >
                                 <div class="box-header">
                                     <h3 class="box-title"></h3>
                                     <a href="http://localhost/blog/admin/article.php?a=list" class="btn btn-default pull-right">文章列表</a>
@@ -31,16 +32,15 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="inputCategoryId">文章分类</label>
-                                        <select name="category_id" id="inputCategoryId" class="form-control">
-                                                                    <option value="1">Node.js编程</option>
-                                                                    <option value="2">PHP学习</option>
-                                                                    <option value="3">JavaScript面向对象</option>
-                                                                    <option value="4">React Native移动开发</option>
+                                        <select name="cat" id="inputCategoryId" class="form-control">
+                                                                    <% data.forEach(function(item){   %>
+                                                                        <option value="<%= item.ctitle %>"><%= item.ctitle %></option>
+                                                                    <% }) %>
                                                                 </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputSubject">文章标题</label>
-                                        <input type="text" name="subject" placeholder="标题" id="inputSubject" class="form-control">
+                                        <input type="text" name="ctitle" placeholder="标题" id="inputSubject" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputCover">文章封面</label>
