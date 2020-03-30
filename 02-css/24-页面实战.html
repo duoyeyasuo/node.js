@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动小案例</title>
+    <style>
+        /* 初始化样式 */
+        *{margin: 0; padding: 0;}
+        ul{list-style-type: none;}
+        body{font: normal normal 16px/1.5 "宋体";}
+        h1,h2,h3{font-weight: normal;}
+        a{text-decoration: none; color: #4d4d4d;}
+        .mb33{margin-bottom: 33px;}
+
+        /* 常用样式 */
+        .w960{ width: 960px; margin-left: auto; margin-right: auto;}
+        .fl{float: left;}
+        .fr{float: right;}
+
+        /* 网站logo区域样式=========================== */
+        .logo{
+            background-color: #E65224;
+            height: 73px; /* 108-35 */
+            padding-top: 35px;  /* logo区域的占据空间就变大了 */
+        }
+        .logo ul{
+            overflow: hidden;
+        }
+        .logo ul p{
+            color: #fff;
+        }
+        .logo ul strong{
+            color: #fff;
+        }
+        .logo ul h1 a{
+            display: block;
+            width: 182px;
+            height: 45px;
+            background: url("./images/logo.png") no-repeat;
+            text-indent: -999px;
+        }
+        /* 网站nav区域样式=========================== */
+        .nav{
+            height: 80px;
+            padding-left: 18px;
+            /* 加这个边框除了 边框效果之外，还还有一个作用，盒子模型深入时说 */
+            border: 1px solid rgba(0, 0, 0, 0);
+        }
+        .nav .navwraper{
+            margin-top: 34px;
+        }
+        .nav a{
+            margin-right: 67px;
+        }
+        .nav a.current{color: #e75225;}
+        .nav a:hover{color: #e75225;}
+
+         /* 网站轮播区域样式=========================== */
+         .swiper{
+             width: 960px;
+             height: 450px;
+             background: url("./images/bigAdvimg.png");
+         }
+         .swiper h3{
+             text-indent: -999px;
+         }
+
+        /* 网站安全保障区域样式=========================== */
+        .safe{
+            /* 解决父元素高度的塌陷：1）overflow:hidden  2）加高法 */
+            height: 82px;
+            margin-top: 43px;
+            /* border: 1px solid red; */
+        }
+        .safe div{
+            /* 如果一个盒子里面的所有元素都浮动了，盒子装不也，也会自动换行 */
+            float: left;
+            width: 320px;  /* 960 / 3  =  320   320-82     238 */
+        }
+        .safe img{float: left; margin-right: 16px;}
+        .safe dl{float: left; width: 200px;}
+        .safe dl dt{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .safe dl dd{
+            font-size: 14px;
+            color: #696969;
+            line-height: 28px;
+        }
+
+        /* 主要业务区域样式=========================== */
+        .business{
+            /* border: 1px solid red; */
+            margin-top: 60px;
+        }
+        .business h3{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            /* border: 1px solid red; */
+        }
+        .business ul{
+            margin-top: 50px;
+            height: 310px;
+            /* border: 1px solid red; */
+        }
+        .business ul li{
+            float: left;
+            /* 计算每一个li的宽度  960  20*3  60  900/4  225 */
+            width: 225px;
+            margin-right: 20px;
+        }
+        .business ul li.last{
+            margin-right: 0;
+        }
+        .business ul h4{
+            margin-top: 26px;
+            color: #e75255;
+        }
+        .business p{
+            font-size: 14px; 
+            line-height: 2;
+            color: #9f9f9f;
+        }
+        .business a{
+            display: block;
+            width: 104px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: #4b4b4b;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        /* 关于我们区域样式=========================== */
+        .about{
+            margin-top: 70px;
+            height: 192px;
+            background-image: url("./images/about.jpg");
+            text-align: center;
+            color: #fff;
+        }
+        .about h4{
+            padding-top: 30px;
+        }
+        .about p{
+            font-size: 14px; 
+            width: 548px;
+            margin: 40px auto 0;
+            line-height: 2;
+        }
+        /*  新闻咨询和常见区域样式=========================== */
+       .newsAndProblem{
+           /* border: 1px solid red; */
+           margin-top: 60px;
+           height: 420px;
+       }
+       .newsAndProblem h3{
+           font-size: 24px;
+           font-weight: bold;
+           text-indent: -8px;
+       }
+       .newsAndProblem .news{
+           width: 640px;
+       }
+       .newsAndProblem .news li{
+           width: 295px;
+           float: left;
+       }
+       .newsAndProblem .news p{
+           float: left;
+           width: 200px;
+           /* 实现...的效果 */
+           white-space: nowrap;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+       .newsAndProblem .news span{
+           float: right;
+       }
+       .newsAndProblem .news .first{
+           margin-right: 28px;
+       }
+       .newsAndProblem .news a{
+           line-height: 2.5;
+       }
+       .newsAndProblem .news a:hover{
+           color: #e75225;
+       }
+       .newsAndProblem .problem{
+           width: 320px;
+       }
+       .newsAndProblem .problem li{
+           padding-bottom: 20px;
+           padding-top: 15px;
+           line-height: 3;
+           border-bottom: 1px dashed #ccc;
+       }
+       .newsAndProblem .problem li.last{
+           border-bottom:none;
+       }
+       .newsAndProblem .problem .ask, .newsAndProblem .problem .answer{
+           line-height: 2;
+           background-repeat: no-repeat;
+           width: 240px;
+           padding-left: 40px;
+           background-position: left center;;
+       }
+       .newsAndProblem .problem .ask{
+           background-image: url("./images/q(1).jpg");
+           font-size: 16px;
+       }
+       .newsAndProblem .problem .answer{
+           background-image: url("./images/q2.jpg");
+           color: #646464;
+           font-size: 14px;
+       }
+       /*  合作机构区域样式=========================== */
+       .cooperate{
+          height: 328px;
+          background-color: #f6f6f6;
+       }
+       .cooperate a{
+           display: block;
+           width: 120px;
+           height: 36px;
+           text-indent: -999px;
+           background: url("./images/index_sp.png") no-repeat;
+       }
+       /* 需要单独设置图片的位置 */
+       .cooperate a.jsjj{
+           background-position: 0 0;
+       }
+       .cooperate a.hxjj{
+           background-position: 0 -60px;
+       }
+       .cooperate h3{
+           padding-top: 50px;
+           font-size: 24px;
+       }
+       .cooperate ul{
+           margin-top: 60px;
+           /* height: 100px; */
+       }
+       .cooperate ul li{
+           float: left;
+           margin: 0px 98px 30px 0;
+           width: 100px;
+       }
+       .cooperate ul .last{
+           margin-right: 0;
+       }
+
+       /*  联系我们区域样式=========================== */
+       .contact{
+           background-color: #2c2c2c;
+           height: 180px;
+           color: #a9a9a9;
+           padding-top: 55px;
+       }
+       .contact dl{
+           float: left;
+       }
+       .contact dl dt{font-size: 24px;}
+       .contact dl.last{
+           float: right;
+       }
+       .wb, .wx, .phone, .android{
+           display: inline-block;
+           width: 40px;
+           height: 40px;
+           background: url("./index_sp.png") no-repeat;
+           text-indent: -9999px;
+       }
+       .wb{
+           background-position: -173px -7px;
+       }
+       .wx{
+           background-position: -230px -7px;
+       }
+       .phone{
+           background-position: -288px -7px;
+       }
+       .android{
+           background-position: -345px -7px;
+       }
+       /*  Footer区域样式=========================== */
+       .footer{
+           background-color: #2c2c2c;
+           border-top: 1px solid #424242;
+           color: #666;
+           text-align: center;
+           line-height: 2;
+       }
+    </style>
+</head>
+<body>
+     <!-- 网站整体 start -->
+     <div class="wraper">
+         <!-- 网站的logo start  -->
+        <div class="logo">
+            <ul class="w960">
+                <li class="fl">
+                    <h1>
+                        <a href="">利牛网</a>
+                    </h1>
+                </li>
+                <li class="fr">
+                    <img class="fl" src="./images/phone.png" alt="电话">
+                    <div class="fr">
+                        <p>财富热线</p>
+                        <strong>1234567890</strong>
+                    </div>
+                </li>
+            </ul>
+        </div>
+         <!-- 网站的logo end  -->
+
+         <!-- 网站的导航 star  换行会导致一个小间隙 -->
+         <div class="nav w960">
+             <div class="navwraper">
+                <a href="#" class="current">首页</a><a href="#">关于我们</a><a href="#">行业资讯</a><a href="#">主要业务</a><a href="#">安全保障</a>
+             </div>
+         </div>
+         <!-- 网站的导航 end -->
+
+         <!-- 轮播图 start -->
+         <div class="swiper w960">
+            <div>
+                <h3>轮播图</h3>
+            </div>
+         </div>
+         <!-- 轮播图 end -->
+
+         <!-- 安全保障 start -->
+         <div class="safe w960">
+             <div>
+                 <img src="./images/promise1.png" alt="">
+                 <dl>
+                     <dt>稳定高收益</dt>
+                     <dd>40倍银行活期存款利息100元起投，交易0手续费</dd>
+                 </dl>
+             </div>
+             <div>
+                <img src="./images/promise2.png" alt="">
+                <dl>
+                    <dt>稳定高收益</dt>
+                    <dd>40倍银行活期存款利息100元起投，交易0手续费</dd>
+                </dl>
+            </div>
+            <div>
+                <img src="./images/promise3.png" alt="">
+                <dl>
+                    <dt>稳定高收益</dt>
+                    <dd>40倍银行活期存款利息100元起投，交易0手续费</dd>
+                </dl>
+            </div>
+         </div>
+         <!-- 安全保障 end -->
+
+         <!-- 主要业务 start  -->
+         <div class="business w960">
+            <h3>主要业务/PRODUCTS SERVICES</h3>
+            <ul>
+                <li>
+                    <img src="./images/business1.png" alt="">
+                    <h4>投资业务</h4>
+                    <p>证券投资业务，指银行购买有价证券的活动。</p>
+                    <a href="#">立即咨询</a>
+                </li>
+                <li>
+                    <img src="./images/business2.png" alt="">
+                    <h4>投资业务</h4>
+                    <p>证券投资业务，指银行购买有价证券的活动。</p>
+                    <a href="#">立即咨询</a>
+                </li>
+                <li>
+                    <img src="./images/business3.png" alt="">
+                    <h4>投资业务</h4>
+                    <p>证券投资业务，指银行购买有价证券的活动。</p>
+                    <a href="#">立即咨询</a>
+                </li>
+                <li class="last">
+                    <img src="./images/business4.png" alt="">
+                    <h4>投资业务</h4>
+                    <p>证券投资业务，指银行购买有价证券的活动。</p>
+                    <a href="#">立即咨询</a>
+                </li>
+            </ul>
+         </div>
+         <!-- 主要业务 end  -->
+
+         <!-- 关于我们 start -->
+         <div class="about w960">
+             <div>
+                 <h4>关于我们</h4>
+                 <p>疫情的影响是阶段性的，也是暂时性的。中国是个大国，韧性强、潜力大，回旋余地也大，疫情的影响不会改变我国经济长期向好的基本面。</p>
+             </div>
+         </div>
+         <!-- 关于我们 end -->
+
+         <!-- 新闻咨询和常见 start -->
+         <div class="newsAndProblem w960">
+             <div class="news fl">
+                <h3>新闻咨询 / NEWS</h3>
+                <ul>
+                    <li class="first">
+                        <a href="#"><img src="./images/news1.jpg" width="295" alt=""></a>
+                        <ul>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><img src="./images/news2.jpg" width="295" alt=""></a>
+                        <ul>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                            <li style="list-style-type: disc; color: #ff6537;"><a href=""><p>国资委：疫情影响是阶段性暂时性的 疫情动态</p><span>2020-02-18</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+             </div>
+             <div class="problem fr">
+                <h3>常见问题 / Q&A</h3>
+                <ul>
+                    <li>
+                        <p class="ask" style="padding-bottom: 10px;">个人征集记录要注重哪些？</p>
+                        <p class="answer">个人信息:姓名，证件类型证件号码</p>
+                    </li>
+                    <li>
+                        <p class="ask" style="padding-bottom: 10px;">银行理财产品该怎么选？</p>
+                        <p class="answer">现在各大银行都推出琳琅满目的王景峰产品，我们该如何选择呢？</p>
+                    </li>
+                    <li class="last">
+                        <p class="ask" style="padding-bottom: 10px;">银行理财产品该怎么选？</p>
+                        <p class="answer">现在各大银行都推出琳琅满目的王景峰产品，我们该如何选择呢？</p>
+                    </li>
+                </ul>
+             </div>
+         </div>
+         <!-- 新闻咨询 end -->
+
+         <!-- 合作机构 start -->  
+         <div class="cooperate">
+             <div class="w960">
+                 <h3>合作机构</h3>
+                 <ul>
+                     <li><a class="jsjj" href="">abc</a></li>
+                     <li><a class="hxjj" href="">abc</a></li>
+                     <li><a class="hfjj" href="">abc</a></li>
+                     <li><a class="jsjj"  href="">abc</a></li>
+                     <li class="last"><a href="">abc</a></li>
+                     <li><a class="jsjj"  href="">abc</a></li>
+                     <li><a class="jsjj"  href="">abc</a></li>
+                     <li><a class="jsjj"  href="">abc</a></li>
+                     <li><a class="jsjj"  href="">abc</a></li>
+                     <li class="last"><a href="">abc</a></li>
+                 </ul>
+             </div>
+         </div>
+         <!-- 合作机构 end -->
+
+         <!-- 联系我们 start -->
+         <div class="contact">
+            <div class="w960">
+                <dl class="mb33" style="margin-right: 100px;">
+                    <dt class="mb33">联系我们</dt>
+                    <dd>地址：北京市昌平区沙河镇北京科技经营管理学院</dd>
+                    <dd>邮编：123456</dd>
+                    <dd>邮件：123456789@qq.com</dd>
+                </dl>
+                <dl  style="margin-right: 117px;">
+                    <dt>客服热线</dt>
+                    <dd style="font-size: 30px;">1234567890</dd>
+                    <dd>(工作时间：9:00-20:00)</dd>
+                    <dd>
+                        <a class="wb" href="#">wb</a>
+                        <a class="wx" href="#">wx</a>
+                        <a class="phone" href="#">phone</a>
+                        <a class="android" href="#">android</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="mb33">商家服务</dt>
+                    <dd>商家入驻</dd>
+                    <dd>培训中心</dd>
+                    <dd>广告服务</dd>
+                    <dd>服务市场</dd>
+                </dl>
+                <dl class="last">
+                    <dt class="mb33">帮助中心</dt>
+                    <dd>帮助中心</dd>
+                    <dd>赎回投资</dd>
+                    <dd>新手指引</dd>
+                    <dd>安全保障</dd>
+                </dl>
+            </div>
+         </div>
+         <!-- 联系我们 end -->
+
+         <!-- footer start -->
+         <div class="footer">
+            <p>&copy;2020 www.ccopyright.com 京ICP备09080213号</p>
+            <p>本站使用html和css进行搭建</p>
+         </div>
+         <!-- footer end -->
+    </div>
+    <!-- 网站整体 end -->
+</body>
+</html>
