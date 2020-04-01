@@ -1,0 +1,10 @@
+<script src="./axios.js"></script>
+<script>
+    let p1 = axios.request({
+        url:"./data.json", // 请求服务器的地址
+        method:"get",// 请求方法
+    })
+    p1.then((value)=>{
+        console.log(value)
+    })
+</script>

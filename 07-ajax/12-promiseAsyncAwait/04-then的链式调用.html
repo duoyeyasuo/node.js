@@ -1,0 +1,65 @@
+<script>
+  /*   let p1 = new Promise((resolve, reject) => {
+        reject(100);
+    })
+    let p2 = p1.then((value) => {
+
+    }, (reason) => {
+        throw new Error("xxx")  // 在p1.then中拋一个异常  p2就是失败
+    })
+    p2.then((value)=>{
+        console.log(value)
+    },(reason)=>{
+        console.log("失败"+reason)  // p2失败  肯定走第二个函数
+    }) */
+
+
+  /*   let p1 = new Promise((resolve, reject) => {
+        reject(100);
+    })
+    // Promise.resolve("包包");  表示直接创建一个成功的promise
+    // Promise.reject("没钱");  表示直接创建一个失败的promise
+    // p1是成功  意味着  会走then中的第1个函数
+    let p2 = p1.then((value) => {
+        // 返回一个成功的pormise
+        return Promise.resolve("包包");  // p2就是一个成功的promise
+    }, (reason) => {
+        return Promise.reject("没钱")
+    })
+    p2.then((value)=>{
+        console.log(value)  // p2是成功的，肯定走p2.then中的第1个函数
+    },(reason)=>{
+        console.log(reason) 
+    }) */
+
+
+
+    /* let p1 = new Promise((resolve, reject) => {
+        reject(100);
+    })
+    let p2 = p1.then((value) => {
+        // 排除掉上面说的情况，其它的情况都是让p2变成成功的promise
+        return 666; // 如果上一个then有返回值，会传递到下一个then中
+    }, (reason) => {
+        return -666;
+    })
+    p2.then((value)=>{  
+        console.log("ok"+value)  
+    },(reason)=>{
+        console.log("不 ok"+reason) 
+    }) */
+
+    new Promise((resolve,reject)=>{
+        resolve(a);
+    }).then((value)=>{
+        console.log(`成功：${value}`)
+    },(reason)=>{
+        console.log(`失败：${reason}`)
+    }).then((value)=>{
+        console.log(`成功：${value}`)
+    },(reason)=>{
+        console.log(`失败：${reason}`)
+    })
+
+
+</script>

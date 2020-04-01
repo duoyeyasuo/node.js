@@ -1,0 +1,65 @@
+<!-- <script>
+    // 处于等待状态的pormise
+    // let p = new Promise((resolve,reject)=>{});
+
+    // 直接创建失败的promise
+    Promise.reject("没钱").then((value)=>{
+        // 如果Promise成功了，走第1个函数
+    },(reason)=>{
+        // 如果Promise失败了，走第2个函数
+        console.log(reason)
+    }).then((value)=>{
+        // 上面的then返回的是成功的promise  value是你上面的return返回值
+        console.log(value)
+        throw new Error("xxx")
+    },(reason)=>{
+
+    }).then((value)=>{
+
+    },(reason)=>{
+        console.log("失败了"+reason)
+    });
+</script> -->
+
+<!-- <script>
+    Promise.resolve("包包").then(null,reason=>{
+        console.log(reason)
+    }).then(null,reason=>{
+        console.log(reason)
+    }).then(value=>{
+        console.log("xxx"+value)
+    },reason=>{
+        console.log(reason)
+    })
+</script> -->
+
+<script>
+   /*  Promise.reject("没钱").then(value=>{
+        console.log(value)
+    }).then(null,reason=>{
+        console.log("xxx"+reason)
+    }) */
+
+    Promise.reject("没钱").then(value=>{
+        console.log(value)
+    }).catch(reason=>{  
+        // .catch仅仅是.then(null, reason=>{})一个语法糖 是.then(null, reason=>{})  
+        console.log("xxx"+reason)
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

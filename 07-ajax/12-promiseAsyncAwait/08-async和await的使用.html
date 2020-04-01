@@ -1,0 +1,9 @@
+<script>
+    let p = Promise.reject("没钱"); // 创建一个成功的promise
+    
+    async function f1(){
+       let res = await p;  // await通常是跟上一个promise
+       console.log(res)
+    }
+    console.log(f1());
+</script>
