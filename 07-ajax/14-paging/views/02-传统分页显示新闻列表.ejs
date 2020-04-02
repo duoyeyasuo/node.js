@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传统分页显示新闻列表</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        body{
+            background-color: #ccc;
+        }
+        .wrapper{
+            width: 980px;
+            background-color: #fff;
+            margin: 20px auto;
+        }
+        .wrapper h1{
+            text-align: center;
+            width: 900px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            margin: 0 auto;
+        }
+        .wrapper li{
+            padding: 10px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+        .wrapper li h2{
+
+        }
+        .wrapper li h2 a{
+            color: #000;
+            text-decoration: none;
+        }
+        .wrapper .time, .wrapper .summary{
+            font-size: 12px;
+            color: #666;
+        }
+        .footer{
+            padding: 10px;
+            margin: 0 auto;
+        }
+        .footer p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>新闻列表（传统分页）<script>document.write(new Date().toLocaleString())</script></h1>
+        <ul>
+            <% for(var i=0; i<data.length; i++){ %>
+            <li>
+                <h2><a href=""><%= data[i].title %></a></h2>
+                <p class="time"><%= data[i].time %></p>
+                <p class="summary"><%= data[i].summary %></p>
+            </li>
+            <% } %>
+        </ul>
+        <div class="footer">
+            <p>总共有<%= total %>条新闻，每页显示<%= pagesize %>条，当前是 <%= page %>/<%= size %> 页 <a href="?page=<%= page-1 %>">上一页</a> &nbsp;&nbsp;&nbsp; <a href="?page=<%= +page+1 %>">下一页</a></p>
+        </div>
+    </div>
+</body>
+</html>
