@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>加载更多</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .wrapper {
+            width: 980px;
+            background-color: #fff;
+            margin: 20px auto;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            width: 900px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            margin: 0 auto;
+        }
+
+        .wrapper li {
+            padding: 10px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .wrapper li h2 {}
+
+        .wrapper li h2 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .wrapper .time,
+        .wrapper .summary {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer {
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .footer button {
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>新闻列表（加载更多按钮）</h1>
+        <ul id="box">
+
+        </ul>
+        <div class="footer">
+            <button id="btn">加载更多</button>
+        </div>
+    </div>
+</body>
+<script src="/jquery1.11.3.js"></script>
+<script>
+    function getNews(page) {
+        $("#btn").text("玩命加载中...")
+        load = false; // 不能再发出请求了
+        $.ajax({
+            url: "/news",
+            type: "get",
+            dataType: "json",
+            data: { page },
+            success: function (res) {
+                if (res.length) {
+                    let str = "";
+                    res.forEach(item => {
+                        str += `
+                            <li>
+                                <h2><a href="">${item.title}</a></h2>
+                                <p class="time">${item.time}</p>
+                                <p class="summary">${item.summary}</p>
+                            </li>
+                        `
+                    })
+                    $("ul").append(str)
+                    $("#btn").text("加载更多")
+                    load = true;
+                }else{
+                    $("#btn").text("我是有底线的")
+                }
+            }
+        })
+    }
+    let load = true; // 是否可以发请求
+    let page = 1; // 页数
+    getNews(page++); // page++  最终page的值肯定是加1   page++整体也有一个值   旧值
+
+    $("#btn").on("click", function () {
+        if(load){
+            getNews(page++);
+        }
+    })
+</script>
+
+</html>

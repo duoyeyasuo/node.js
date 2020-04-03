@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html{height: 100%;}
+        body{height: 300%;}
+    </style>
+    <script src="./public/jquery1.11.3.js"></script>
+    <script>
+        $(document).on("scroll",function(){
+            var st = $(window).scrollTop();
+            var ct = $(window).height();
+            var dt = $(document).height();
+            console.log("滚动条滚动的高度:"+st+", 窗口的可视高度:"+ct+", 文档的高度:"+dt)
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -7,9 +7,49 @@ let app = epxress();
 app.use(epxress.static(path.join(__dirname, "public")))
 
 app.get("/", (req, res) => {
-    res.render("03-ajax普通分页.ejs")
+    // res.render("03-ajax普通分页.ejs")
+    // res.render("04-ajax分页之加载更多.ejs")
+    res.render("05-滚动加载.ejs")
 })
 
+// =================== 滚动加载
+app.get("/news",(req, res)=>{
+    for(let i=0; i<1000000000; i++);
+    let pagesize = 8;
+    let page = req.query.page || 1;
+    (page <= 0) && (page = 1);
+    let offset = (parseInt(page) - 1) * pagesize;
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("paging");
+        dbo.collection("news").find().skip(offset).limit(pagesize).toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result)
+            db.close();
+        });
+    });
+})
+
+
+/* // =================== 使用ajax的加载更多
+app.get("/news",(req, res)=>{
+    for(let i=0; i<1000000000; i++);
+    let pagesize = 3;
+    let page = req.query.page || 1;
+    (page <= 0) && (page = 1);
+    let offset = (parseInt(page) - 1) * pagesize;
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("paging");
+        dbo.collection("news").find().skip(offset).limit(pagesize).toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result)
+            db.close();
+        });
+    });
+})
+ */
+/* // =================== 使用ajax的普通分页
 app.get("/news",(req, res)=>{
     let pagesize = 3;
     let page = req.query.page || 1;
@@ -36,7 +76,7 @@ app.get("/news",(req, res)=>{
             db.close();
         });
     });
-})
+}) */
 
 
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>滚动加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .wrapper {
+            width: 980px;
+            background-color: #fff;
+            margin: 20px auto;
+        }
+
+        .wrapper h1 {
+            text-align: center;
+            width: 900px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            margin: 0 auto;
+        }
+
+        .wrapper li {
+            padding: 10px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .wrapper li h2 {}
+
+        .wrapper li h2 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .wrapper .time,
+        .wrapper .summary {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer {
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .footer button {
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>新闻列表（滚动加载）</h1>
+        <ul id="box">
+
+        </ul>
+        <div class="footer">
+            <img width="60" src="" alt="">
+        </div>
+    </div>
+</body>
+<script src="/jquery1.11.3.js"></script>
+<script>
+    function getNews(page) {
+        $(".footer img").attr("src", "/loading.gif")
+        $.ajax({
+            url: "/news",
+            type: "get",
+            dataType: "json",
+            data: { page },
+            success: function (res) {
+                if (res.length) {
+                    let str = "";
+                    res.forEach(item => {
+                        str += `
+                            <li>
+                                <h2><a href="">${item.title}</a></h2>
+                                <p class="time">${item.time}</p>
+                                <p class="summary">${item.summary}</p>
+                            </li>
+                        `
+                    })
+                    $("ul").append(str)
+                }else{
+                    $(".footer").text("没有更多数据了...")
+                }
+            }
+        })
+    }
+    let page = 1;
+    getNews(page);
+
+    $(document).on("scroll", function () {
+        var st = $(window).scrollTop();
+        var ct = $(window).height();
+        var dt = $(document).height();
+
+        if (st + ct == dt) {
+            console.log("到底部了~")
+            getNews(++page);
+        }
+        console.log("滚动条滚动的高度:" + st + ", 窗口的可视高度:" + ct + ", 文档的高度:" + dt)
+    })
+</script>
+
+</html>
