@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem</title>
+    <meta>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-size: 100px;
+        }
+        .title {
+            font-size: 0.75rem;
+        }
+        .pic {
+            width: 3.75rem;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            let fs = document.documentElement.clientWidth * 100 / 750;
+            document.querySelector("html").style.fontSize = fs+"px";
+        }
+    </script>
 </head>
+
 <body>
-    <h1 id="box"></h1>
+    <h1 class="title">沿海港口显示活力韧性</h1>
+    <img class="pic" src="./images/dog.jpg" alt="">
 </body>
-<script>
-    let h1 = document.getElementById("box");
-    h1.innerHTML = document.documentElement.clientWidth; // 得到浏览器屏幕的宽度
-</script>
+
 </html>
 
 
+<!-- 
+    等比缩放：
+        750   fs = 100px
+        375   fs = 50px
+        320   fs = ?
+        414   fs = ?
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ -->
