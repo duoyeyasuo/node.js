@@ -1,0 +1,11 @@
+html {
+  font-size: 50px;
+}
+div {
+  width: 150px;
+  height: 400px;
+  border: 15px solid red;
+}
+img {
+  width: 0.1rem;
+}
