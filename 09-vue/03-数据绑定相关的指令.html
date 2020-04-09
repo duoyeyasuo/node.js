@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-text="name"></h2>
+        <!-- <h2 v-text="age / 2"></h2> -->
+        <!-- <h2 v-text="{{age / 2}}"></h2> -->
+        <!-- <h2 v-text="str"></h2> -->
+        <!-- <h2 v-html="str"></h2> -->
+        <input type="text" v-model="name">
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    name:"wangcai",
+                    age:100,
+                    str:"<strong>xxx</strong>"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .tabLink{
+           width: 300px;
+           border: 1px solid red;
+           display: flex;
+           justify-content: space-around;
+       }
+       .current{
+           font-weight: bold;
+           background-color: skyblue;
+           cursor: pointer;
+       }
+       .tabLink span{
+
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="tabLink">
+            <span :class="{current:currentItem==='html'}">html</span>
+            <span :class="{current:currentItem==='css'}">css</span>
+            <span :class="{current:currentItem==='js'}">js</span>
+        </div>
+        <div class="tabbody">
+            <div v-show="currentItem=='html'">
+                html的内容
+            </div>
+            <div v-show="currentItem=='css'">
+                css的内容
+            </div>
+            <div v-show="currentItem=='js'">
+                js的内容
+            </div>
+        </div>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    // current点击span的时，它是动态的改变的
+                    currentItem:"html"
+                }
+            }
+        })
+        let spans = document.querySelectorAll(".tabLink span");
+        spans.forEach(item=>{
+            item.addEventListener("click",()=>{ vm.currentItem = item.innerHTML })
+        });
+    </script>
+</body>
+</html>

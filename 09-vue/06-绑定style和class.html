@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            color: red;
+        }
+        .red{ color: red; }
+        .green{ color: green;}
+        .bg{ background-color: gold; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 给class绑定一个动态的值 -->
+        <!-- <h1 class="box">这是一个h1标签</h1> -->
+        <!-- <h1 :class="box">这是一个h1标签</h1> -->
+        <!-- <h1 :class="flag ? 'red':'green'">这是一个h1标签</h1> -->
+        <!-- <h1 :class="{green:flag,bg:!flag}">这是一个h1标签</h1> -->
+        <!-- <h1 :class="{green:flag,bg:flag}">这是一个h1标签</h1> -->
+        <!-- <h1 :class="obj">这是一个h1标签</h1> -->
+        <!-- <h1 :class="['green','bg']">这是一个h1标签</h1> -->
+
+        <!-- <h1 class="bg" :class="box">这是一个h1标签</h1> -->
+
+
+        <!-- 行内样式 -->
+        <!-- <h1 style="background-color: red; color: gold;">这是一个h1标签</h1> -->
+        <!-- 此处的 "" 当成script标签 -->
+        <!-- <h1 :style="{width:'100px', backgroundColor:'red'}">这是一个h1标签</h1> -->
+        <h1 :style="obj1">这是一个h1标签</h1>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    box:"box",
+                    flag:true,
+                    obj:{
+                        green:true,
+                        bg:true
+                    },
+                    obj1:{width:'100px', backgroundColor:'red'}
+                }
+            }
+        })
+    </script>
+</body>
+</html>

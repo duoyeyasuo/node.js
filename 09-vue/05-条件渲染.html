@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-show="false"  此时，你可以把""当作<script></script>标签 -->
+        <!-- <p v-show="false">这是一个p标签</p> -->
+        <!-- <p v-show="1+1 == 2">这是一个p标签</p> -->
+        <!-- <p v-show="flas">这是一个p标签</p> -->
+
+        <!-- 在JS中 0 false undefined null -0 都是false -->
+       <!--  <p v-show="0">这是一个p标签</p>
+        <p v-show="false">这是一个p标签</p>
+        <p v-show="null">这是一个p标签</p>
+        <p v-show="123">这是一个p标签</p>
+        <p v-show="'ok'">这是一个p标签</p>
+        <p v-show="score>60">ok</p> -->
+
+        <h2 v-if="score>=90">A+</h2>
+        <hr>
+        <h2 v-else>Not A+</h2>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    imgsrc:"https://www.baidu.com/img/bd_logo1.png",
+                    ahref:"http://www.baidu.com",
+                    score:98
+                }
+            }
+        })
+    </script>
+</body>
+</html>

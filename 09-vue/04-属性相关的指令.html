@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <img src="{{imgsrc}}" alt=""> -->
+        <!-- imgsrc就是一个活的数据 -->
+        <!-- <a v-bind:href="ahref"><img v-bind:src="imgsrc" alt=""></a> -->
+        <a :href="ahref"><img :src="imgsrc" alt=""></a>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    imgsrc:"https://www.baidu.com/img/bd_logo1.png",
+                    ahref:"http://www.baidu.com"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

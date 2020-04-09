@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <!--  <ul>
+            <li v-for="(item,index) in links">
+                第一个参数：{{item}}  
+                第二个参数：{{index}}  
+            </li>
+        </ul> -->
+
+        <!-- <p v-for="(item,index) in moves">
+            电影名：<span>{{item.name}}</span>   电影连接：<a :href="item.link">{{item.name}}</a>
+        </p> -->
+
+       <!--  <p v-for="(value, key, index) in wangcai">
+            值：{{value}}  
+            键：{{key}}  
+            索引：{{index}}  
+        </p> -->
+
+        <ul>
+            <li :class="{red: index%2 == 0}" v-for="(item, index) in num">{{item}}----{{index}}</li>
+        </ul>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    num:10, 
+                    wangcai:{
+                        name:"wangcai666",
+                        age:100,
+                        score:88
+                    },
+                    links:["baidu","google","taobao","jd","qq"],
+                    moves:[
+                        {name:"aaa",link:"www.aaa.com"},
+                        {name:"bbb",link:"www.bbb.com"},
+                        {name:"ccc",link:"www.ccc.com"},
+                        {name:"ddd",link:"www.ddd.com"},
+                        {name:"eee",link:"www.eee.com"},
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

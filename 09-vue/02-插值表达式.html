@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{ }} 小胡子语法/插值表达式 作用：把data中的数据放到模板中 -->
+        <!-- <h2>{{name}}----{{data.age}}</h2>  错了 -->
+        <!-- <h2>{{name}}----{{age}}</h2> 错了 -->
+
+        <h2>{{ name }}</h2>
+        <h2>{{ typeof name }}</h2>
+        <h2>{{ name+"xxx" }}</h2>
+        <h2>{{ name.split("") }}</h2>
+        <h2>{{ name.split("").reverse() }}</h2>
+        <h2>{{ name.split("").reverse().join("") }}</h2>
+        <h2>{{ age/2 }}</h2>
+        <h2>{{ age>18 ? "成年了" : "未成年" }}</h2>
+        {{ age }}
+
+        <!-- <h2>{{ if(age>18){} }}</h2> -->
+        
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    name:"wangcai",
+                    age:100
+                }
+            }
+        })
+    </script>
+</body>
+</html>

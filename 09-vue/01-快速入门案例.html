@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- 模板 新的概念 视图  MVVM -->
+    <div id="app">
+        <h1>双向数据绑定</h1>
+        <input type="text" v-model="name">
+        <h2>{{name}}</h2>
+    </div>
+
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        // vm叫根组件   MVVM 中VM是个整体   vm不需要我们管  vue.js已帮我们实现了
+        // vm代理了data  vm可以直接获取里面的数据
+        let vm = new Vue({   // {} 里面配置很多的配置项
+            el:"#app",
+            data () {   // data是一个函数  必须返回一个对象
+                // data中放数据  Model层  后端的Model层是操作数据库
+                // 前端的Model层是调接口获取数据
+                return {
+                    name:"wangcai"
+                }
+            }
+        })
+    </script>
+
+    <script>
+        /* let obj = {
+            name:"wangcai",
+            eat:function(){
+                console.log("eat...")
+            }
+        } */
+        let obj = {
+            name:"wangcai",
+            // ES6中对象的新的写法（简写方法）
+            eat(){
+                console.log("eat...")
+            }
+        }
+    </script>
+</body>
+</html>
