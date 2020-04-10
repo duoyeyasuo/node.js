@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button id="btn" v-on:click="f1">登录</button> -->
+        <button id="btn" v-on:click="f2(123,$event)">登录</button>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    isShow:true
+                }
+            },
+            methods: {
+                /* f1(a) {
+                    alert(a)
+                }, */
+                f2(msg,e){
+                    alert(msg)
+                    alert(e)
+                }
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

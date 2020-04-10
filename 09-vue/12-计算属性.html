@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{age}}
+        <!-- 在小胡子中放对象 对象前后不加空格就报错了 -->
+        {{ {name:"xxx"} }}
+        <!-- 表示使用计算属性 -->
+        <h1>{{ computedAga }}</h1>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    age:66
+                }
+            },
+            computed: {
+                // computedAga:function(){}   computedAga是函数名
+                // computedAga 就是新的数据
+                computedAga(){
+                    if(this.age > 30){
+                        return "30而立"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

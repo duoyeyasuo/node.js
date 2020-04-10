@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 在视图中拿data中的数据：直接写就OK了 -->
+    <div id="app">
+        <table border="1">
+            <tr>
+                <th>姓名</th>
+                <th v-for="(item,index) in subjects">{{item}}</th>
+                <th>总分</th>
+            </tr>
+            <tr v-for="(item,index) in scores">
+                <td>{{item.name}}</td>
+                <td v-for="(s,idx) in item.score">{{s}}</td>
+                <td>{{getTotalScore(item.score)}}</td>
+            </tr>
+            <tr>
+                <td>平均分</td>
+                <!-- td>{{getYWAvg()}}</td>
+                <td>{{getSSAvg()}}</td>
+                <td>{{getYYAvg()}}</td> -->
+
+                <!-- <td>{{getAvg(0)}}</td>
+                <td>{{getAvg(1)}}</td>
+                <td>{{getAvg(2)}}</td> -->
+
+                <td v-for="(item,index) in subjects.length">{{getAvg(index)}}</td>
+                <td>{{getTotalScoreAvg()}}</td>
+            </tr>
+        </table>
+        <hr>
+        <h2>英语不及格的学生有如下：</h2>  
+        <p v-for="(item,index) in getYYfail">{{item.score[2]}}</p>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    subjects: ["语文", "数学", "英语"],
+                    scores: [
+                        { name: "aaa", score: [50, 84, 70] },
+                        { name: "bbb", score: [51, 80, 75] },
+                        { name: "ccc", score: [50, 83, 40] },
+                        { name: "ddd", score: [51, 86, 70] },
+                        { name: "eee", score: [50, 80, 57] },
+                    ]
+                }
+            },
+            methods: {
+                // 在methods中获取data中的数据，需要通过this.xxx获取
+                // 此处的this就是vm
+                getTotalScore(arr) {
+                    return arr.reduce((prev, next) => prev + next)
+                },
+                getTotalScoreAvg() {
+                    // console.log(this.scores)
+                    let total = 0;
+                    this.scores.forEach(item => {
+                        total += this.getTotalScore(item.score)
+                    })
+                    // console.log(total)
+                    return total / this.scores.length;
+                },
+                getAvg(index) {
+                    let arr = this.scores.map(item => item.score[index])
+                    return this.getTotalScore(arr) / this.scores.length;
+                },
+               /*  getYWAvg() {
+                    // 求语文的平均分
+                    let arr = this.scores.map(item => {
+                        return item.score[0]
+                    })
+                    // console.log(arr); // [50, 51, 50, 51, 50]
+                    return this.getTotalScore(arr) / this.scores.length;
+                },
+                getSSAvg() {
+                    let arr = this.scores.map(item => item.score[1])
+                    return this.getTotalScore(arr) / this.scores.length;
+                },
+                getYYAvg() {
+                    let arr = this.scores.map(item => item.score[2])
+                    return this.getTotalScore(arr) / this.scores.length;
+                } */
+            },
+            computed: {
+                getYYfail(){  // 找到英语不及格的学生
+                    /* scores: [
+                        { name: "aaa", score: [50, 84, 70] },
+                        { name: "bbb", score: [51, 80, 75] },
+                        { name: "ccc", score: [50, 83, 40] },
+                        { name: "ddd", score: [51, 86, 70] },
+                        { name: "eee", score: [50, 80, 57] },
+                    ] */
+
+                    /* let res = this.scores.filter(item=>{
+                        return item.score[2]<60
+                    })
+                    return res */
+
+                    return this.scores.filter(item=> item.score[2]<60)
+                }
+            }
+        })
+    </script>
+</body>
+
+<!-- <script>
+    // 学一个数组中的方法，叫reduce
+    let arr = [3,2,1,4,5];  // 15
+    // reduce有循环的功能
+    // 第1次循环：prev 是3   next 是2
+    // 第2次循环：prev 是5   next 是1
+    // 第3次循环：prev 是6   next 是4
+    // 第4次循环：prev 是10   next 是5
+    let res = arr.reduce(function(prev, next){
+        console.log(prev,next)
+        return prev+next;  // return 5
+    })
+    console.log(res+"-----------") // 15
+</script> -->
+
+<!-- <script>
+    // map可以对数组中的每一项元素进行计算
+
+    // 再学习一个数组中的方法  map
+    let arr = [3,2,1,4,5];
+    // map有循环的功能
+    let res = arr.map(function(item){
+        // console.log(item)
+        return item*2;
+    })
+    console.log(res); // [6, 4, 2, 8, 10]
+</script> -->
+
+<!-- <script>
+    let arr = [1,2,3,4,5,6];
+    // filter也有遍历的功能
+    let res = arr.filter(function(item){
+        console.log(item)
+        return item<4;
+    });
+    console.log(res); // 得到一个新数据
+</script> -->
+
+</html>

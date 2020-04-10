@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label for="">省：</label>
+            <input type="text" v-model:value="province">
+        </div>
+        <div>
+            <label for="">市：</label>
+            <input type="text" v-model:value="city">
+        </div>
+        <div>
+            <label for="">区：</label>
+            <input type="text" v-model:value="country">
+        </div>
+        <div>
+            <label for="">详细地址：</label>
+            <!-- 当在输入框中写了address值 设置address值 -->
+            <input type="text" v-model:value="address">
+        </div>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    province:"",
+                    city:"",
+                    country:""
+                }
+            },
+            computed: {
+                // 当我们获取address时就走get访问器   
+                // 当我们设置address时就走set设置器
+                address:{
+                    get(){
+                        let result = "";
+                        if(this.province){ result += this.province + "省" }
+                        if(this.city){ result += this.city + "市" }
+                        if(this.country){ result += this.country + "区" }
+                        return result;
+                    },  // 河南省郑州市二七区
+                    set(value){
+                        let arr = value.split(/省|市|区/);
+                        // console.log(arr) // ["河南", "郑州", "二七", ""]
+                        if(arr && arr.length>0){
+                            this.province = arr[0]
+                        }
+                        if(arr && arr.length>1){
+                            this.city = arr[1]
+                        }
+                        if(arr && arr.length>3){
+                            this.country = arr[2]
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- @click="f1(123)"  如果要传参一定要加() -->
+        <button id="btn" v-on:click="f1(123)">登录</button>
+        <div class="plane">
+            <h3>标题<span @click="isShow  = !isShow ">{{ isShow ? "收起" : "展开" }}</span></h3>
+            <div v-show="isShow" class="content" style="width:200px; height:200px; background-color: gold;">
+            </div>
+        </div>
+        <button v-for="(item,index) in 5" @click="f2(item)">按钮{{item}}</button>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            alert("原生的事件绑定~")
+        }
+        let vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    isShow:true
+                }
+            },
+            methods: {
+                f1(a) {
+                    // alert("vue中的事件绑定")
+                    alert(a)
+                },
+                f2(b){
+                    alert(b)
+                }
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

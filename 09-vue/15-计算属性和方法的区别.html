@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <p>你的生日是：{{birthday}}</p>
+       <p>你的年龄是：{{coputeAge}}</p>
+       <p>你的年龄是：{{coputeAge}}</p>
+       <p>你的年龄是：{{coputeAge}}</p>
+       <hr>
+       <p>你的生日是：{{birthday}}</p>
+       <p>你的年龄是：{{methodsAge()}}</p>
+       <p>你的年龄是：{{methodsAge()}}</p>
+       <p>你的年龄是：{{methodsAge()}}</p>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    age:18,
+                    birthday:"2010-09-09"
+                }
+            },
+            methods: {
+                f1(){
+                    console.log("f1调用了...")
+                    return this.age+18
+                },
+                methodsAge(){
+                    console.log("函数调用了...")
+                    let d1 = new Date(this.birthday)
+                    let d2 = new Date()
+                    return d2.getFullYear() - d1.getFullYear();
+                }
+            },
+            computed: {
+                // get访问器
+                coputeAge(){
+                    console.log("计算属性调用了...")
+                    let d1 = new Date(this.birthday)
+                    let d2 = new Date()
+                    return d2.getFullYear() - d1.getFullYear();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form action="">
+            <!-- 双向绑定 -->
+            <p><label for="">姓名</label><input type="text" v-model="info.name"></p>
+            <p>性别：
+                <input type="radio" v-model="info.sex" value="男" v-model="info.name" name="sex"> 男
+                <input type="radio" v-model="info.sex" value="女" v-model="info.name" name="sex"> 女
+            </p>
+            <p><input type="checkbox" v-model="info.isagree">同意</p>
+            <p>兴趣爱好：
+                <input type="checkbox" value="book" v-model="info.favoriate" > 看书
+                <input type="checkbox" value="sleep" v-model="info.favoriate" > 睡觉
+                <input type="checkbox" value="coding" v-model="info.favoriate" > 打代码
+            </p>
+        </form>
+        <hr>
+        <p>你的信息是：</p>
+        {{info}}
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                    info:{
+                        name:"",
+                        sex:"男",
+                        isagree:false,
+                        favoriate:["sleep"]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

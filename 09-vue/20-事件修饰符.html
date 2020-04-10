@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a id="btn" href="http://www.baidu.com" @click="f1($event)">登录</a>
+        <a id="btn" href="javascript:void(0)" @click="f1">登录</a>
+        <a id="btn" href="javascript:void(0)" @click.prevent="f1">登录</a>
+        <a id="btn" href="http://www.baidu.com" @click.prevent>登录</a>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                }
+            },
+            methods: {
+                f1(e) {
+                    e.preventDefault();
+                    alert(1)
+                },
+            }
+        })
+        
+    </script>
+</body>
+
+</html>
