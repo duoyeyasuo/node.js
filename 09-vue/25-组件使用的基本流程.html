@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div></div>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        // 定义一个组件对象
+        let myhead = {   // 把组件对象抽离出来了
+            template:"<div>我是头部</div>"
+        }
+        let vm = new Vue({ 
+            el:"#app",
+            data () {  
+                return {
+                }
+            },
+            components: {
+                div:myhead
+            }
+        })
+    </script>
+</body>
+</html>

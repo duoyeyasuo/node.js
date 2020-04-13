@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-header></my-header>
+        <my-header></my-header>
+    </div>
+    <hr>
+    <div id="app2">
+        <my-header></my-header>
+        <my-header></my-header>
+    </div>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        // 全局注册 表示你可以把这个组件扔到任何一个vm实例中
+        // my-header 表示组件的名字   {}组件对象  一个组件可以当成一个对象
+        Vue.component("my-header",{
+            // 子组件中通过template指定子组件对应的模板（视图）
+            template:"<div>这是全局定义的一个组件</div>"
+        })
+        // vm也就是一个根组件  在一个根组件中可以放N个子组件
+        let vm = new Vue({ 
+            // 根组件中通过el指定根组件对应的模板（视图）
+            el:"#app",
+            data () {  
+                return {
+                }
+            }
+        })
+
+        let vm2 = new Vue({
+             el:"#app2",
+        })
+    </script>
+</body>
+</html>
