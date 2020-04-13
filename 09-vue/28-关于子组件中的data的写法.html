@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-head></my-head>
+    </div>
+    <template id="test">
+        <div>
+            <h1>{{msg}}</h1>
+        </div>
+    </template>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let MyHead = {
+            template: "#test",
+            // data(){
+            //     return{
+            //         msg:"hello world~"
+            //     }
+            // }
+            // data:()=>{
+            //     return{
+            //         msg:"hello world~"
+            //     }
+            // }
+            data:()=>({ msg:"hello world~" })
+        }
+        let vm = new Vue({
+            el: "#app",
+            components: {
+                MyHead
+            }
+        })
+    </script>
+</body>
+
+</html>

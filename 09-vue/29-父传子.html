@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            父组件的视图
+            {{dataFahter}}
+        </h1>
+        <hr>
+        <Son :xxx="dataFahter"></Son>
+    </div>
+    <template id="test">
+        <div>
+            <h2 @click="show">子组件的视图</h2>
+            {{yyy}}
+        </div>
+    </template>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let Son = {
+            template: "#test",
+            data () {
+                return {
+                    yyy:this.xxx
+                }
+            },
+            props: {
+                // xxx表示接收的数据   String表示接收数据的类型
+                // xxx:Number
+                xxx:{
+                    type:String,
+                    // default:"你好xxx"
+                    required:true
+                }
+            },
+            methods: {
+                show(){
+                    this.yyy = "修改数据了..."
+                    console.log(this.xxx)
+                }
+            }
+        }
+        let vm = new Vue({
+            el: "#app",
+            data () {
+                return {
+                    dataFahter:"data father"
+                }
+            },
+            components: {
+                Son
+            }
+        })
+    </script>
+</body>
+
+</html>

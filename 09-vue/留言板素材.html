@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+
+	<style>
+		body,ul,li,h1,h2,h3,h4,ol{margin:0;padding:0;}
+		body{
+			    background: url(body_bg.png) repeat-x scroll 0 0 #f0eef5;
+			    /*color: #7d8b8d;*/
+			    font-family: Verdana,Arial,Helvetica,sans-serif;
+			    font-size: 14px;
+			    line-height: 25px;
+			    min-height: 101%;
+			    color:#333;
+		}
+		div{box-sizing: border-box;}
+		h1,h2,h3,h4,h5{font-weight: normal;font-size: 16px;}
+		p{line-height: 1;}
+		ul,li,ol{list-style: none;}
+		.w{width: 1200px;margin:0px auto;padding-top:20px;}
+		header{
+			background: url(title-yellow.png) no-repeat center 21px;
+		    height: 314px;
+		    clear: both;
+		    width: 1200px;
+		    margin: 0 auto;
+		    position: relative;
+		}
+
+		.main{
+			width: 890px;
+			background-color: #fff;
+			border:1px solid #dedede;
+			padding:0 20px;
+		}
+
+		footer{height:80px;margin:30px 0px;text-align: center;}
+		.clear:after{
+			content:"";
+			display: block;
+			height: 0;
+			width: 0;
+			clear:both;
+		}
+		.fl{float: left;}
+		.fr{float:right;}
+		.lastmsg{
+			border:1px solid #ddd;
+			width: 290px;
+			margin-left: 20px;
+
+		}
+		.lastmsg h3{
+			background-color: #169fe6;
+		    border: 1px solid #169fe6;
+		    color: #fff;
+		    font-size: 18px;
+		    font-weight: normal;
+		    padding: 10px 20px
+		}
+		.lastmsg ul{
+			border: 1px solid #dedede;
+    		border-top: none;
+		}
+		.lastmsg li{
+			line-height: 2;
+		    border-bottom: 1px solid #e9e9e9;
+		    padding: 15px 10px 15px 20px;
+		    font-size: 14px;
+		    color: #777;
+		}
+		article{margin-top:30px;}
+		article p{line-height: 1.5; text-indent: 2em;}
+		.title{color:#333;font-size:18px;line-height: 1.5;text-align:center;}
+		
+
+		.showmsg li{
+			position: relative;
+			border-bottom: 1px solid #EEE;
+			padding:10px;
+			padding-top:30px;
+   
+			    
+		}
+		.showmsg .local{
+			position: absolute;
+			top:-1px;
+		}
+		.msg{
+			border-radius: 8px;
+			    max-width: 80%;
+			    padding: 8px;
+			    color: #3c763d;
+			    background-color: #dff0d8;
+			    border-color: #d6e9c6;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<header>
+		头部
+	</header>
+
+	<div class="w clear">
+		<div class="main fl">
+			<article>
+				<h3 class="title">文章标题</h3>
+
+				<p>文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题</p>
+			</article>
+			<div class="showmsg">
+				<h3>留言区</h3>
+				
+				<ul>
+					<li>
+						<div class="msg">
+							<h3>标题内容</h3>
+							<p>内容</p>
+						</div>
+					</li>
+					<li>
+						<span class="local">1楼</span>
+						<div class="msg">
+						<h3>标题内容</h3>
+						<p>内容</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h3>添加留言</h3>
+				<form action="">
+					<p><label for="">标题</label> <input type="text"></p>
+					<p><label for="">内容</label>  <textarea name="" id="" cols="90" rows="6"></textarea> </p>
+
+					<p style="text-align:center"><button>提交</button></p>
+
+				</form>
+			</div>
+		</div>
+		<div class="lastmsg fr">
+			<h3>最新留言</h3>
+			<ol>
+				<li>留言1</li>
+				<li>留言1</li>
+				<li>留言1</li>
+			</ol>
+		</div>
+	</div>
+
+	<footer class="w">
+		底部
+	</footer>
+</body>
+</html>

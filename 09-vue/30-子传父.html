@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>下面的数据是从根组件中获取的</h1>
+        <ol>
+            <li v-for="item in todo">{{item}}</li>
+        </ol>
+        <hr>
+        <!-- button是事件源  给button添加一个点击事件 当点击了button click事件就被触发了 -->
+        <!-- <button onclick="f1"></button> -->
+        <!-- @click是vue中用来绑定事件的 button也是事件源 当点击了button click事件就触发了 -->
+        <!-- <button @click="f1"></button> -->
+        <!-- 给Son上面绑定一个叫submitmsg的事件  当这个事件发生时 会调用addmsg监听器 -->
+        <Son @submitmsg="addmsg"></Son>
+    </div>
+    <template id="test">
+        <div>
+            <h2>子组件，我们希望把子组件中的数据传递父组件</h2>
+            <input type="text" v-model="txt"> <button @click="add">添加</button>
+            <p>在子组件中的数据如下：</p>
+        </div>
+    </template>
+    <script src="./vue2.6.11.js"></script>
+    <script>
+        let Son = {
+            template: "#test",
+            data () {
+                return {
+                    txt:""
+                }
+            },
+            methods: {
+                add(){
+                    // 在add中，可以手动的触发submitmsg自定义事件
+                    this.$emit("submitmsg",this.txt)
+                    this.txt = ""
+                }
+            }
+        }
+        let vm = new Vue({
+            el: "#app",
+            data () {
+                return {
+                    todo:[
+                        "今天学习了vue组件，它是vue.js中的核心",
+                        "明天把vue.js中的其它内容结束，后天开始学习路由",
+                        "大后天我们就开始学习vue中的脚手架，学完后，就可以开始简单项目了"
+                    ]
+                }
+            },
+            methods: {
+                // 当submitmsg事件发生了，就调用addmsg函数
+                addmsg(value){
+                    // alert(value)  // 在父组件中得到子组件中的数据
+                    this.todo.push(value)
+                    // alert("submitms事件发生了~")
+                }
+            },
+            components: {
+                Son
+            }
+        })
+    </script>
+</body>
+
+</html>
