@@ -14,6 +14,9 @@
         <button @click="gotoPost">贴子列表</button>
         <button @click="gotoProfile">个人中心</button>
         <button @click="gotoLogin">登录页面</button>
+        <button @click="gotoNext">下一步</button>
+        <button @click="gotoPrev">上一步</button>
+
         <router-view></router-view>
     </div>
     <script>
@@ -48,7 +51,19 @@
                     this.$router.push({name:"myxxx",params:{userid:"001"}})
                 },
                 gotoLogin(){
-                    this.$router.push("/login")
+                    // this.$router.push("/login")
+
+                    // 得到你是从哪个路由边来的
+                    // console.log(this.$route.fullPath)
+
+                    // replace 使用/login路由 替代你是从哪来的那个路由
+                    this.$router.replace({path:"/login",query:{from:this.$route.fullPath}});
+                },
+                gotoNext(){
+                    this.$router.go(1)
+                },
+                gotoPrev(){
+                    this.$router.go(-1)
                 },
             },
             components: {

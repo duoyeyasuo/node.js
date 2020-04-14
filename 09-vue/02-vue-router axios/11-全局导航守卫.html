@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+       <router-link to="/index">主页</router-link>
+       <router-link to="/account">我的账户</router-link>
+       <router-link to="/order">我的订单</router-link>
+       <router-link to="/login">登录</router-link>
+       <router-view></router-view>
+    </div>
+<script>
+    let index = { template:"<h1>首页</h1>" }
+    let account = { template:"<h1>我的账户</h1>" }
+    let order = { template:"<h1>我的订单</h1>" }
+    let login = { template:"<h1>登录</h1>" }
+
+    let router = new VueRouter({
+        routes:[
+            { path:"/",  redirect:"/index" },
+            { path:"/index",  component:index, name:"index" },
+            { path:"/account",  component:account, name:"account" },
+            { path:"/order",  component:order, name:"order" },
+            { path:"/login",  component:login, name:"login" }
+        ]
+    })
+
+    let logined = true; // 是否登录
+    // 全局导航守卫  当路径发生改变会走全局导航守卫
+    router.beforeEach((to, from, next) => {
+        // console.log(".....")
+        // next()   表示按照正常的顺序走下去
+        // next("/")  直接奔到首页
+        // next(false)  和 不写next，效果一样，不会任何跳转
+        let authRoutes = ['account','order']; // 需要登录后才能访问
+        // console.log(to.name)
+        if(authRoutes.indexOf(to.name) >= 0){  // 没有找到返回-1  找到返回索引
+            // 有一个标识 叫logined  如果logined是true是表示登录了
+            if(!logined){
+                // 表示没有登录
+                next("/login");
+            }else{
+                // 表示登录
+                next() 
+            }
+        }else if(to.name == "login"){
+            if(logined){  // 已登录了，再访问登录就直接跳转到首页
+                next("/");
+            }else{
+                // 没有登录，正常走到/login
+                next()
+            }
+        }else{
+            // 其它情况按正常流程走
+            next()
+        }
+        
+    })
+
+    router.afterEach( (to,from) => {
+        
+    })
+    let vm = new Vue({
+        el:"#app",
+        data () {
+            return {
+                
+            }
+        },
+        components: {
+            index,
+            account,
+            order,
+            login
+        },
+        router
+    })
+</script>
+</body>
+</html>
