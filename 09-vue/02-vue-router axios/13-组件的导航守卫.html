@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/index">主页</router-link>
+        <router-link to="/account/wangcai">wangcai账户</router-link>
+        <router-link to="/account/xiaoqiang">xiaoqiang账户</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let index = { template: "<h1>首页</h1>" }
+        let account = { 
+            template: "<h1>我的账户</h1>",
+            data () {
+                return {
+                    username:"xxxx"
+                }
+            },
+            // 当前页面被进入之前调用
+            beforeRouteEnter:function(to,from,next){
+                // console.log("to:",to)
+                // console.log("from:",from)
+                // next()
+
+                // 在beforeRouteEnter这个钩子中得不到当前组件中的数据的
+                // console.log(this.username); // undefined
+
+                // vm表示vue实例  vm表示当前这个组件是实例  不是根组件的实例
+                next(vm=>{
+                    console.log(vm.username)
+                })
+            },
+            // 当前页面被复用了，参数改变了，会调用这个函数
+            beforeRouteUpdate:function(to,from,next){
+                console.log("beforeRouteUpdate")
+                console.log("to:",to)
+                console.log("from:",from)
+                next();
+            },
+            // 当前页面即将离开了，会调用这个。
+            beforeRouteLeave:function(to,from,next){
+                let flag = window.confirm("你确定要离开吗？")
+                if(flag){
+                    next();
+                }
+            },
+        }
+
+        let logined = false; // 没有登录
+
+        let router = new VueRouter({
+            routes:[
+                {path:"/index",component:index,name:"index"},
+                {path:"/account/:userid",component:account,name:"account"},
+            ]
+        });
+
+        let vm = new Vue({
+            el: "#app",
+            components: {
+                index,
+                account
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

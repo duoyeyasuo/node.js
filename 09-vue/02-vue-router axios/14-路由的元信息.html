@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/index">主页</router-link>
+        <router-link to="/profile">个人中心</router-link>
+        <router-link to="/login">登录</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let index = { template: "<h1>首页</h1>" }
+        let profile = { template: "<h1>个人中心</h1>" }
+        let login = { template: "<h1>登录</h1>" }
+
+        let logined = false; // 没有登录
+
+        let router = new VueRouter({
+            routes:[
+                {path:"/index",component:index,name:"index"},
+                {path:"/profile",component:profile,meta:{needlogin:true}},
+                {path:"/login",component:login,name:"login"},
+            ]
+        });
+
+        router.beforeEach((to, from, next) => {
+            if(!logined && to.meta.needlogin){
+                // 没有登录
+                next("/login")
+            }else{
+                next()
+            }
+        })
+
+        let vm = new Vue({
+            el: "#app",
+            components: {
+                index,
+                profile,
+                login
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

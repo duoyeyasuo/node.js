@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <button id="btn">ajax请求</button>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // let url = "https://api.jisuapi.com/shouji/query?appkey=d9b2fdaafcf7afba&shouji=13456755448";  // 接口地址
+            // let url = "http://localhost:3000/wc";  // 接口地址
+            let url = "https://m.mi.com/v1/home/page";  // 小米接口地址
+            axios.get(url).then(value=>{
+                console.log(value)
+            }).catch(reason=>{
+                console.log(reason)
+            })
+        }
+    </script>
+</body>
+</html>

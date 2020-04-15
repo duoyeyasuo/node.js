@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/index">主页</router-link>
+        <router-link to="/account">我的账户</router-link>
+        <router-link to="/order">我的订单</router-link>
+        <router-link to="/login">登录</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let index = { template: "<h1>首页</h1>" }
+        let account = { template: "<h1>我的账户</h1>" }
+        let order = { template: "<h1>我的订单</h1>" }
+        let login = { template: "<h1>登录</h1>" }
+
+        let logined = false; // 没有登录
+
+        let router = new VueRouter({
+            routes:[
+                {path:"/index",component:index,name:"index"},
+                {path:"/account",component:account,name:"account"},
+                {path:"/order",component:order,name:"order"},
+                {
+                    path:"/login",
+                    component:login,
+                    name:"login",
+                    beforeEnter(to, from, next){
+                        if(logined){
+                            next("/index")
+                        }else{
+                            next()
+                        }
+                    }
+                },
+            ]
+        });
+
+        let vm = new Vue({
+            el: "#app",
+            components: {
+                index,
+                account,
+                order,
+                login
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

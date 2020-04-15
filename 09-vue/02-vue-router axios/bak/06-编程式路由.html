@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue2.6.11.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="gotoPost">贴子列表</button>
+        <button @click="gotoProfile">个人中心</button>
+        <button @click="gotoLogin">登录页面</button>
+        <button @click="gotoNext">下一步</button>
+        <button @click="gotoPrev">上一步</button>
+
+        <router-view></router-view>
+    </div>
+    <script>
+        let post = {template:"<h1>贴子列表</h1>"} 
+        let profile = {template:"<h1>个人中心---{{$route.params.userid}}</h1>"} 
+        let login = {template:"<h1>登录页面</h1>"} 
+
+        let router = new VueRouter({
+           routes:[
+               {path:"/post",component:post},
+               {path:"/profile/:userid",component:profile, name:"myxxx"},
+               {path:"/login",component:login}
+           ]
+        })
+        let vm = new Vue({
+            el: "#app",
+            methods: {
+                gotoPost(){
+                    this.$router.push("/post")
+                },
+                gotoProfile(){
+                    // this.$router.push("/profile")
+
+                    // push后面跟上一个对象，表示可以传递参数
+                    // 传到了匹配的组件里面了
+                    // 如果使用了path数据还必须放到路径中，下面的的写法获取不到数据
+                    // this.$router.push({path:"/profile",params:{userid:"001"}}) // 不ok
+                    // this.$router.push({path:"/profile/001"}) // ok
+
+                    // 如果push里面写的是name  name也是需要在规则中配置好的
+                    // 此时的参数就通过params传递
+                    this.$router.push({name:"myxxx",params:{userid:"001"}})
+                },
+                gotoLogin(){
+                    // this.$router.push("/login")
+
+                    // 得到你是从哪个路由边来的
+                    // console.log(this.$route.fullPath)
+
+                    // replace 使用/login路由 替代你是从哪来的那个路由
+                    this.$router.replace({path:"/login",query:{from:this.$route.fullPath}});
+                },
+                gotoNext(){
+                    this.$router.go(1)
+                },
+                gotoPrev(){
+                    this.$router.go(-1)
+                },
+            },
+            components: {
+                post,
+                profile,
+                login
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>
