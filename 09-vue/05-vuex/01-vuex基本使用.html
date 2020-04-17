@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue2.6.11.js"></script>
+    <script src="./vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>根组件---{{this.$store.state.counter}}</h1>
+        <hr>
+        <add-counter></add-counter>
+        <hr>
+        <sub-counter></sub-counter>
+    </div>
+    <template id="addcounter">
+        <div>
+            <p>我是addcounter组件</p>
+            <p>在addcounter组件中使用仓库中的数据:{{this.$store.state.counter}}</p>
+            <button @click="add()">加1</button>
+        </div>
+    </template>
+    <template id="subcounter">
+        <div>
+            <p>我是subcounter组件</p>
+            <p>在subcounter组件中使用仓库中的数据:{{this.$store.state.counter}}</p>
+            <button @click="sub()">减1</button>
+        </div>
+    </template>
+<script>
+    let store = new Vuex.Store({
+        state:{counter:0}, // state表示状态  把共享的数据放到state中  理解成vue中的data
+        mutations: {
+            add(state){
+                state.counter++;
+            },
+            sub(state){
+                state.counter--;
+            }
+        }, // 修改状态的唯一途径
+        actions: {}, // 异步操作  
+        getters: {}  // 在state的基本上计算出新的状态  类似于computed
+    })
+    let  AddCounter = { 
+        template:"#addcounter",
+        methods: {
+            add(){
+                // this.$store.state.counter = 100;  // 不OK  low
+                this.$store.commit("add")
+            }
+        }
+    }
+    let  SubCounter = { 
+        template:"#subcounter",
+        methods: {
+            sub(){
+                this.$store.commit("sub")
+            }
+        } }
+    let vm = new Vue({
+        el:"#app",
+        data () {
+            return {
+                msg:"hello"
+            }
+        },
+        components: {
+            AddCounter,
+            SubCounter
+        },
+        store   // vuex是vue的一个插件  用的时候需要注入到vue实例中
+    })
+</script>
+</body>
+</html>
+
+这要追溯至 2007 年初。苹果公司在发布首款 iPhone 前夕，遇到一个问题 —— 
+当时的网站都是为大屏幕设备所设计的。
+于是苹果的工程师们做了一些约定，应对 iPhone 这种小屏幕浏览桌面端站点的问题。这当中最出名的，
+当属双击缩放(double tap to zoom)。这也是会有上述 300 毫秒延迟的主要原因。
+
+当用户一次点击屏幕之后，浏览器并不能立刻判断用户是要进行双击缩放，还是想要进行单击操作。因此，
+iOS Safari 就等待 300 毫秒，以判断用户是否再次点击了屏幕。
+
+于是，300 毫秒延迟就这么诞生了。
+
+FastClick 是 FT Labs 专门为解决移动
