@@ -5,10 +5,12 @@
             :type="type"
             :value="value"
             :placeholder="placehoder"
+            @input="$emit('input',$event.target.value)"
         >
         <button v-if="btnTitle" :disabled="disabled">{{btnTitle}}</button>
-    </div>
-    <div v-if="error">{{error}}</div>
+    </div> 
+    <!-- 错误提醒 -->
+    <div v-if="error" class="invalid-feedback">{{error}}</div>
   </div>
 </template>
 
@@ -22,6 +24,11 @@ export default {
         btnTitle:String,
         disabled:Boolean,
         error:String
+    },
+    methods:{
+      // f1(ev){
+      //   this.$emit("input",ev.target.value)
+      // }
     }
 }
 </script>

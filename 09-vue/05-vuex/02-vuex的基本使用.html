@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue2.6.11.js"></script>
+    <script src="./vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>我是根组件</h3>
+        <p>使用仓库中的数据：{{this.$store.state.count}}</p>
+        <hr>
+        <add-counter></add-counter>
+        <hr>
+        <sub-counter></sub-counter>
+    </div>
+    <template id="addcounter">
+        <div>
+            <p>我是addcounter组件</p>
+            <p>使用仓库中的数据：{{this.$store.state.count}}</p>
+            <button @click="addone">加1</button>
+        </div>
+    </template>
+    <template id="subcounter">
+        <div>
+            <p>我是subcounter组件</p>
+            <p>使用仓库中的数据：{{this.$store.state.count}}</p>
+            <button @click="subone">减1</button>
+        </div>
+    </template>
+    <script>
+        let AddCounter = { 
+            template:"#addcounter",
+            methods: {
+                addone(){ 
+                    // this.$store.state.count++; // 不OK
+                    this.$store.commit("add");
+                }
+            }
+        }
+        let SubCounter = { 
+            template:"#subcounter",
+            methods: {
+                subone(){ 
+                    // this.$store.state.count--;  // 不OK
+                    this.$store.commit("sub");
+                }
+            } 
+        }
+
+        let store = new Vuex.Store({
+            state:{count:0},
+            mutations: {
+                add(state){
+                    state.count++;
+                },
+                sub(state){
+                    state.count--;
+                }
+            }
+        })
+        let vm = new Vue({
+            el:"#app",
+            data () {
+                return {
+                    msg:"hello"
+                }
+            },
+            store,
+            components: {
+                AddCounter,
+                SubCounter
+            }
+        })
+    </script>
+</body>
+</html>

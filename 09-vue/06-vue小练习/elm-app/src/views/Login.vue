@@ -4,6 +4,15 @@
          <img src="../assets/logo.jpg" alt="">
      </div>
      <!-- 手机号 -->
+     <!-- <InputGroup
+        type="number"
+        placehoder="手机号"
+        :value="phone"
+        @input="g1"
+        :btnTitle="btnTitle"
+        :disabled="disabled"
+        :error="errors.phone"
+     ></InputGroup> -->
      <InputGroup
         type="number"
         placehoder="手机号"
@@ -47,6 +56,11 @@ export default {
             disabled:false,
             errors:{}
        }
+    },
+    methods:{
+      g1(value){
+        console.log(value)
+      }
     },
     components:{
         InputGroup
