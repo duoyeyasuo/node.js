@@ -6,13 +6,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: ()=>import("../views/Index.vue"),
-    children:[
-      { path:"",redirect: "/home" },
-      { path:"/home",component: ()=>import("../views/Home.vue"),name:"home" },
-      { path:"/order",component: ()=>import("../views/Order.vue"),name:"order" },
-      { path:"/me",component: ()=>import("../views/Me.vue"),name:"me" },
-    ]
+    component: ()=>import("../views/Index.vue")
   },{
     path: '/login',
     name: 'index',
