@@ -1,14 +1,14 @@
 <template>
   <div class="home">
     <div class="header">
-      <div class="address_map" @click="$router.push({name:'address',params:{city}})">
+      <div class="address_map" @click="$router.push('/address')">
         <i class="fa fa-map-marker"></i>
         <span>{{address}}</span>
         <i class="fa fa-sort-desc"></i>
       </div>
       <div class="shop_search">
         <i class="fa fa-search"></i>
-        搜索商家 商家名称 {{city}}
+        搜索商家 商家名称
       </div>
     </div>
   </div>
@@ -20,9 +20,6 @@ export default {
   computed:{
     address(){
       return this.$store.getters.address
-    },
-    city(){
-      return this.$store.getters.location.addressComponent.city || this.$store.getters.location.addressComponent.province
     }
   }
 }
