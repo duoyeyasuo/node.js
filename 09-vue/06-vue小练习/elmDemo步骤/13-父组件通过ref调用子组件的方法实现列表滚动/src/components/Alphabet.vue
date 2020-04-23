@@ -2,7 +2,7 @@
     <div class="area" ref="area_scroll" v-if="cityInfo">
         <div class="scroll_wrap">
             <!-- 热门城市 -->
-            <div class="hot_wrap citylist">
+            <div class="hot_wrap">
                 <div class="title">热门城市</div>
                 <ul class="hot_city">
                     <li v-for="(item,index) in cityInfo.hotCities" :key="index">{{item.name}}</li>
@@ -11,7 +11,7 @@
             <!-- A~Z城市 -->
             <div class="city_wrap">
                 <!-- 循环字母A~Z -->
-                <div class="city_content citylist" v-for="(item,index) in keys" :key="index">
+                <div class="city_content" v-for="(item,index) in keys" :key="index">
                     <div class="title">{{item}}</div>
                     <!-- 渲染城市 -->
                     <ul>
@@ -20,13 +20,8 @@
                         </li>
                     </ul>
                 </div>
+                
             </div>
-        </div>
-        <div class="area_keys">
-          <ul>
-            <li @click="selectKey(0)">#</li>
-            <li @click="selectKey(index+1)" v-for="(item,index) in keys" :key="index">{{item}}</li>
-          </ul>
         </div>
     </div>
 </template>
@@ -50,19 +45,6 @@ export default {
         this.bscroll = new BScroll(this.$refs.area_scroll,{
           click: true,
         })
-      },
-      selectKey(index){
-        // console.log(index)
-        // 如果点击了#  index是0   
-        // console.log(this.$refs.area_scroll.getElementsByClassName("citylist")[index])
-
-        // 点击了不同的字母  得到的元素是不一样的
-        // 点击了# index是0  --->A和A下面的城市     
-        // 点击了A index是1  --->B和B下面的城市     
-        // 点击了B index是2  --->C和C下面的城市     
-        let el = this.$refs.area_scroll.getElementsByClassName("citylist")[index];
-
-        this.bscroll.scrollToElement(el,500)
       }
     }
 }

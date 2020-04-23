@@ -37,7 +37,7 @@ export default {
       // 获取所有的城市  this.$router  this.$store  this.$axios
       this.$axios("/api/posts/cities")
         .then(res => {
-          // console.log(res)
+          console.log(res)
           this.cityInfo = res.data;
           this.keys = Object.keys(res.data);
           this.keys.pop(); // 把热门城市的那个key删除掉
