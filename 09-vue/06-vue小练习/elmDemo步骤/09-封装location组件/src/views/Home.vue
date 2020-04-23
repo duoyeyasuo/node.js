@@ -8,7 +8,7 @@
       </div>
       <div class="shop_search">
         <i class="fa fa-search"></i>
-        搜索商家 商家名称
+        搜索商家 商家名称 {{city}}
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
     <Header :isLeft="true" title="选择收货地址"></Header>
     <div class="city_search">
         <div class="search">
-            <span class="city" @click="$router.push('/city')">
+            <span class="city">
                 {{city}}
                 <i class="fa fa-angle-down"></i>
             </span>
@@ -11,14 +11,6 @@
             <input type="text" v-model="search_val" placeholder="小区/写字楼/学校等">
         </div>
         <Location :address="address"></Location>
-    </div>
-    <div class="area">
-      <ul class="area_list" v-for="(item,index) in areaList" :key="index">
-        <li @click="selectAddress(item)">
-          <h4>{{item.name}}</h4>
-          <p>{{item.district}}{{item.address}}</p>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -32,36 +24,8 @@ export default {
   data(){
       return{
           city:"",
-          search_val:"",
-          areaList:[]
+          search_val:""
       }
-  },
-  methods:{
-    searchPlace(){
-      let self = this;
-      AMap.plugin('AMap.Autocomplete', function(){
-        // 实例化Autocomplete
-        var autoOptions = {
-          //city 限定城市，默认全国
-          city: self.city
-        }
-        var autoComplete= new AMap.Autocomplete(autoOptions);
-        autoComplete.search(self.search_val, function(status, result) {
-          // 搜索成功时，result即是对应的匹配数据
-          // console.log(result)
-          self.areaList = result.tips
-        })
-      })
-    },
-    selectAddress(item){
-      this.$store.dispatch("setAddress",item.district+item.address+item.name);
-      this.$router.push("/home")
-    }
-  },
-  watch:{  // watch是用来监控一个数据的变化 
-    search_val(){
-      this.searchPlace()
-    }
   },
   computed:{
     address(){

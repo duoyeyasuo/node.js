@@ -13,7 +13,6 @@ const routes = [
       { path:"/order",component: ()=>import("../views/Order.vue"),name:"order" },
       { path:"/me",component: ()=>import("../views/Me.vue"),name:"me" },
       { path:"/address",component: ()=>import("../views/Address.vue"),name:"address" },
-      { path:"/city",component: ()=>import("../views/City.vue"),name:"city" },
     ]
   },{
     path: '/login',
