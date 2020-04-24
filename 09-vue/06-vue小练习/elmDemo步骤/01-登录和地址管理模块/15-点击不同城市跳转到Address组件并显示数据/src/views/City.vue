@@ -5,19 +5,13 @@
         <i class="fa fa-search"></i>
         <input type="text" v-model="city_val" placeholder="输入城市名" />
       </div>
-      <!-- <button @click="$router.go(-1)">取消</button> -->
-      <button @click="$router.push({name:'address',params:{city:city}})">取消</button>
+      <button @click="$router.go(-1)">取消</button>
     </div>
-    <div style="height:100%" v-if="searchList.length==0">
+    <div style="height:100%">
       <div class="location">
         <Location :address="city"></Location>
       </div>
       <Alphabet @selectCity="selectCity" ref="allcity" :cityInfo="cityInfo" :keys="keys"></Alphabet>
-    </div>
-    <div class="search_list" v-else>
-      <ul>
-        <li @click="selectCity({name:item})" v-for="(item,index) in searchList" :key="index">{{item}}</li>
-      </ul>
     </div>
   </div>
 </template>
@@ -30,9 +24,7 @@ export default {
   data() {
     return {
       city_val: "",
-      allCities:[],  // 保存所有的城市  数组的形式
-      cityInfo: null, // 保存了所有的城市信息数据  对象的形式
-      searchList:[],  // 保存根据搜索关键字  匹配到的城市
+      cityInfo: null, // 保存了所有的城市信息数据
       keys: [] // 保存字母A~Z
     };
   },
@@ -47,7 +39,6 @@ export default {
         .then(res => {
           // console.log(res)
           this.cityInfo = res.data;
-          // console.log(this.cityInfo)
           this.keys = Object.keys(res.data);
           this.keys.pop(); // 把热门城市的那个key删除掉
           this.keys.sort(); // 进行排序
@@ -58,16 +49,6 @@ export default {
           this.$nextTick(()=>{
             this.$refs.allcity.initScroll();
           })
-
-          // 循环keys
-          this.keys.forEach(key=>{
-            // console.log(key)
-            this.cityInfo[key].forEach(city=>{
-              // console.log(city.name)
-              this.allCities.push(city.name)
-            })
-          })
-          // console.log(this.allCities)
         })
         .catch(err => {
           console.log(err);
@@ -76,23 +57,11 @@ export default {
     selectCity(city){
       // console.log(city)
       this.$router.push({name:"address",params:{city:city.name}})
-    },
-    searchCity(){
-      if(!this.city_val){
-        // 没有输入内容
-        this.searchList = [];
-      }else{  // 上   上海
-        this.searchList = this.allCities.filter(item=>{
-          return item.indexOf(this.city_val) != -1
-        })
-      }
     }
   },
   watch: {
     city_val() {
-      // console.log(this.city_val);
-      this.searchCity();
-      // console.log(this.searchList)
+      console.log(this.city_val);
     }
   },
   computed: {
