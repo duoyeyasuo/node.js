@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="search_wrap" :class="{'fixedview':showFilter}">
+    <div class="search_wrap">
       <div class="shop_search">
         <i class="fa fa-search"></i>
         搜索商家 商家名称
@@ -34,24 +34,17 @@
         </mt-swipe-item>
       </mt-swipe>
     </div>
-    <div class="shoplist-title">推荐商家</div>
-
-    <!-- 筛选 -->
-    <FilterView :filterData="filterData" @searchFixed="showFilterView"></FilterView>
   </div>
 </template>
 
 <script>
 import { Swipe, SwipeItem } from 'mint-ui';
-import FilterView from "../components/FilterView"
 export default {
   name: "Home",
   data(){
     return{
       swipeImgs:[],
-      entries:[],
-      filterData:null, 
-      showFilter:false
+      entries:[]
     }
   },
   computed: {
@@ -70,28 +63,14 @@ export default {
   },
   methods:{
     getData(){
-      // 获取轮播图和小导航的数据
       this.$axios("/api/profile/shopping").then(res=>{
+        // console.log(res)
         this.swipeImgs = res.data.swipeImgs;
         this.entries = res.data.entries;
       }).catch(err=>{
-        console.log(err)
+        // console.log(err)
       })
-      // 获取筛选相关的的数据
-      this.$axios("/api/profile/filter").then(res=>{
-        // console.log(res)
-        this.filterData = res.data;
-      }).catch(err=>{
-        console.log(err)
-      })
-
-    },
-    showFilterView(isShow){
-      this.showFilter = isShow
     }
-  },
-  components:{
-    FilterView
   }
 };
 </script>

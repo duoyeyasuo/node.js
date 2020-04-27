@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./bscroll.js"></script>
+    <style>
+        .wrapper {
+            height: 200px;
+            background: skyblue;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="wrapper">
+            <ul>
+                <li>我是第几1</li>
+                <li>我是第几2</li>
+                <li>我是第几3</li>
+                <li>我是第几4</li>
+                <li>我是第几5</li>
+                <li>我是第几6</li>
+                <li>我是第几7</li>
+                <li>我是第几8</li>
+                <li>我是第几9</li>
+                <li>我是第几11</li>
+                <li>我是第几12</li>
+                <li>我是第几13</li>
+                <li>我是第几14</li>
+                <li>我是第几15</li>
+                <li>我是第几16</li>
+                <li>我是第几17</li>
+                <li>我是第几18</li>
+                <li>我是第几19</li>
+                <li>我是第几20</li>
+                <li>我是第几21</li>
+                <li>我是第几22</li>
+                <li>我是第几23</li>
+                <li>我是第几24</li>
+                <li>我是第几25</li>
+                <li>我是第几26</li>
+                <li>我是第几27</li>
+                <li>我是第几28</li>
+                <li>我是第几29</li>
+                <li>我是第几30</li>
+                <li>我是第几31</li>
+                <li>我是第几32</li>
+                <li>我是第几33</li>
+                <li>我是第几34</li>
+                <li>我是第几35</li>
+                <li>我是第几36</li>
+                <li>我是第几37</li>
+                <li>我是第几38</li>
+                <li>我是第几39</li>
+                <li>我是第几40</li>
+                <li>我是第几41</li>
+                <li>我是第几100</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let bscroll = new BScroll(document.querySelector('.wrapper'), {
+            probeType: 3,
+            click: true,
+        })
+        bscroll.on('scroll', (position) => {
+            console.log(position)
+        })
+    </script>
+</body>
+
+</html>
