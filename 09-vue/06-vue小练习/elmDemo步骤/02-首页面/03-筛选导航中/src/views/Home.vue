@@ -80,7 +80,7 @@ export default {
       })
       // 获取筛选相关的的数据
       this.$axios("/api/profile/filter").then(res=>{
-        console.log(res)
+        // console.log(res)
         this.filterData = res.data;
       }).catch(err=>{
         console.log(err)
