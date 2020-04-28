@@ -26,7 +26,6 @@ export default {
 
 <style scoped>
 .tabbar {
-  margin-top: 45px;
   height: 45px;
   box-sizing: border-box;
   width: 100%;
@@ -71,4 +70,3 @@ a {
   color: #009eef;
 }
 </style>
-

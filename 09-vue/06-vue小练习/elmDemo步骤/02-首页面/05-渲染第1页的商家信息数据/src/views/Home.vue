@@ -20,7 +20,7 @@
       <!-- 轮播图 -->
       <mt-swipe :auto="4000" class="swiper">
         <mt-swipe-item v-for="(item,index) in swipeImgs" :key="index">
-          <img :src="item" alt />
+          <img :src="item" alt="">
         </mt-swipe-item>
       </mt-swipe>
       <!-- nav -->
@@ -28,7 +28,7 @@
         <mt-swipe-item v-for="(entry,index) in entries" :key="index">
           <div class="foodentry" v-for="(item,idx) in entry" :key="idx">
             <div class="img_wrap">
-              <img :src="item.image" alt />
+              <img :src="item.image" alt="">
             </div>
             <span>{{item.name}}</span>
           </div>
@@ -39,41 +39,30 @@
 
     <!-- 筛选 -->
     <FilterView :filterData="filterData" @searchFixed="showFilterView" @update="update"></FilterView>
-
+  
     <!-- 商家的信息 -->
-    <mt-loadmore
-      :top-method="loadTop"
-      :bottom-method="loadBottom"
-      :bottom-all-loaded="allLoaded"
-      :auto-fill = "false"
-      :bottomPullText = "bottomPullText"
-      ref="loadmore"
-    >
-      <div class="shoplist">
-        <IndexShop v-for="(item,index) in restaurants" :key="index" :restaurant="item.restaurant"></IndexShop>
-      </div>
-    </mt-loadmore>
+    <div class="shoplist">
+      <IndexShop v-for="(item,index) in restaurants" :key="index" :restaurant="item.restaurant"></IndexShop>
+    </div>
   </div>
 </template>
 
 <script>
-import { Swipe, SwipeItem, Loadmore } from "mint-ui";
-import FilterView from "../components/FilterView";
-import IndexShop from "../components/IndexShop";
+import { Swipe, SwipeItem } from 'mint-ui';
+import FilterView from "../components/FilterView"
+import IndexShop from "../components/IndexShop"
 export default {
   name: "Home",
-  data() {
-    return {
-      swipeImgs: [],
-      entries: [],
-      filterData: null,
-      showFilter: false,
-      page: 1,
-      size: 5,
-      restaurants: [],
-      allLoaded:false,   // 是否所有的都加载完毕
-      bottomPullText:"加载更多"
-    };
+  data(){
+    return{
+      swipeImgs:[],
+      entries:[],
+      filterData:null, 
+      showFilter:false,
+      page:1,
+      size:5,
+      restaurants:[],
+    }
   },
   computed: {
     address() {
@@ -86,84 +75,43 @@ export default {
       );
     }
   },
-  created() {
+  created(){
     this.getData();
   },
-  methods: {
-    getData() {
+  methods:{
+    getData(){
       // 获取轮播图和小导航的数据
-      this.$axios("/api/profile/shopping")
-        .then(res => {
-          this.swipeImgs = res.data.swipeImgs;
-          this.entries = res.data.entries;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$axios("/api/profile/shopping").then(res=>{
+        this.swipeImgs = res.data.swipeImgs;
+        this.entries = res.data.entries;
+      }).catch(err=>{
+        console.log(err)
+      })
       // 获取筛选相关的的数据
-      this.$axios("/api/profile/filter")
-        .then(res => {
-          // console.log(res)
-          this.filterData = res.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-        this.loadData()
-    },
-    loadData(){
-      this.page = 1;
-      this.allLoaded = false;
-      this.bottomPullText = "加载更多"
+      this.$axios("/api/profile/filter").then(res=>{
+        // console.log(res)
+        this.filterData = res.data;
+      }).catch(err=>{
+        console.log(err)
+      })
       // 获取商家信息的数据(需要提供条件，此时这个请求是post请求)
-      this.$axios
-        .post(`/api/profile/restaurants/${this.page}/${this.size}`)
-        .then(res => {
-          // console.log(res.data)
-          this.$refs.loadmore.onTopLoaded();
-          this.restaurants = res.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    loadBottom(){  // 上拉加载更多 loadData一上来就加载第1页的5条数据
-      if(!this.allLoaded){
-        // 还有数据
-        this.page++;
-        this.$axios
-        .post(`/api/profile/restaurants/${this.page}/${this.size}`)
-        .then(res => {
-          this.$refs.loadmore.onBottomLoaded();
-          if(res.data.length>0){  // restaurants 5 5 10  IndexShop   8  5  3
-            res.data.forEach(item=>{
-              this.restaurants.push(item)
-            })
-            if(res.data.length<this.size){  // 8  5  3
-              this.allLoaded = true;
-              this.bottomPullText = "~我是有底线的~"
-            }
-          }else{   /// 10  5   5  0
-            this.allLoaded = true;
-            this.bottomPullText = "~我是有底线的~"
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      }
-    },
-    loadTop(){  // 下拉刷新
+      this.$axios.post(`/api/profile/restaurants/${this.page}/${this.size}`).then(res=>{
+        // console.log(res.data)
+        this.restaurants = res.data
+      }).catch(err=>{
+        console.log(err)
+      })
+
 
     },
-    showFilterView(isShow) {
-      this.showFilter = isShow;
+    showFilterView(isShow){
+      this.showFilter = isShow
     },
-    update(condition) {
-      console.log(condition);
+    update(condition){
+      console.log(condition)
     }
   },
-  components: {
+  components:{
     FilterView,
     IndexShop
   }
@@ -280,7 +228,7 @@ export default {
   z-index: 999;
 }
 
-div.mint-loadmore {
+.mint-loadmore {
   height: calc(100% - 95px);
   overflow: auto;
 }

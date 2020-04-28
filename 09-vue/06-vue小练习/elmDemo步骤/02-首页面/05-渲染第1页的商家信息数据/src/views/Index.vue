@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="index">
+  <div id="app">
      <router-view></router-view>
      <TabBar :data="tabarData"></TabBar>
   </div>
@@ -22,9 +22,6 @@ export default {
   }
 }
 </script>
-<style scoped>
-.index {
-  width: 100%;
-  height: calc(100% - 45px);
-}
+<style>
+
 </style>
