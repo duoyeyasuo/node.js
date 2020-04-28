@@ -8,14 +8,12 @@ const routes = [
     name: 'index',
     component: ()=>import("../views/Index.vue"),
     children:[
-      // { path:"",redirect: "/home" },
-      { path:"",redirect: "/search" },
+      { path:"",redirect: "/home" },
       { path:"/home",component: ()=>import("../views/Home.vue"),name:"home" },
       { path:"/order",component: ()=>import("../views/Order.vue"),name:"order" },
       { path:"/me",component: ()=>import("../views/Me.vue"),name:"me" },
       { path:"/address",component: ()=>import("../views/Address.vue"),name:"address" },
       { path:"/city",component: ()=>import("../views/City.vue"),name:"city" },
-      { path:"/search",component: ()=>import("../views/Search.vue"),name:"search" },
     ]
   },{
     path: '/login',

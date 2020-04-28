@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input-price v-model="price"></input-price>
+        <!-- <input-price :value="price" @input="f1"></input-price> -->
+    </div>
+    <script>
+        Vue.component("input-price",{
+            template:"<input type='text' :value='value' @input='g1($event.target.value)'>",
+            props: ["value"],
+            methods:{
+                g1(val){
+                    this.$emit("input",val)
+                }
+            }
+        })
+        let vm = new Vue({
+            el:"#app",
+            data () {
+                return {
+                    price:"123"
+                }
+            },
+            methods: {
+                f1(value){
+                    console.log(value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
