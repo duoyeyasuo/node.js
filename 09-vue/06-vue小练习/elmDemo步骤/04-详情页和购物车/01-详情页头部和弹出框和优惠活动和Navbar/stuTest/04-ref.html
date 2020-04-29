@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 ref="h1">哈哈</h1>
+        <abc ref="abc"></abc>
+    </div>
+    <script>
+        Vue.component("abc",{
+            template:"<div></div>",
+            data(){
+                return{
+                    num2:"456"
+                }
+            },
+            methods:{
+                f2(){
+                    console.log("f2...")
+                }
+            }
+        })
+        let vm = new Vue({  // vm 叫根组件的实例  vm代理了根组件上的数据
+            el:"#app",
+            data () {
+                return {
+                    num:"123"
+                }
+            },
+            methods: {
+                f1(){
+                    // console.log(this.$refs.h1)  // <h1 ref="h1">哈哈</h1>
+                    // console.log(this.$refs.abc)  // 得到的是组件实例
+                    console.log("num2:",this.$refs.abc.num2)
+                    // this.$refs.f2()
+                    this.$nextTick(()=>{
+                        this.$refs.abc.f2()
+                    })
+                    console.log("f1...")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -9,24 +9,13 @@ const routes = [
     component: ()=>import("../views/Index.vue"),
     children:[
       // { path:"",redirect: "/home" },
-      // { path:"",redirect: "/search" },
-      { path:"",redirect: "/shop" },
+      { path:"",redirect: "/search" },
       { path:"/home",component: ()=>import("../views/Home.vue"),name:"home" },
       { path:"/order",component: ()=>import("../views/Order.vue"),name:"order" },
       { path:"/me",component: ()=>import("../views/Me.vue"),name:"me" },
       { path:"/address",component: ()=>import("../views/Address.vue"),name:"address" },
       { path:"/city",component: ()=>import("../views/City.vue"),name:"city" },
       { path:"/search",component: ()=>import("../views/Search.vue"),name:"search" },
-      { 
-        path:"/shop",
-        component: ()=>import("../views/Shop/Shop.vue"),
-        name:"shop" ,
-        children:[
-          { path:"/goods",component: ()=>import("../views/Shop/Goods"),name:"goods" },
-          { path:"/comments",component: ()=>import("../views/Shop/Comments"),name:"comments" },
-          { path:"/seller",component: ()=>import("../views/Shop/Seller"),name:"seller" },
-        ]
-      },
     ]
   },{
     path: '/login',
@@ -37,7 +26,6 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  linkActiveClass:"active",
   routes
 })
 
